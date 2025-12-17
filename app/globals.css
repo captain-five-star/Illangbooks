@@ -3,6 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --token-7d8af774-9a06-46b6-bf39-f388599cfc37: #3156a4;
+  --token-1c61757f-fa6d-4f7f-bd36-102d2932d91a: #edf3ff;
+  --token-e69fcfc3-b8e4-4efa-8f3e-16e7e659965e: #093696;
+  --token-2344cfaf-58d2-43d2-89fa-ad03dd665892: #212121;
+  --token-2de25e0c-4f2a-43f2-a000-2c6aed0562f5: #e0e0e0;
+  --token-fa38491b-8b73-4295-8463-50cb1c3fec5d: #f5f5f5;
+  --token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee: #a1a1a1;
+  --token-7ca771d8-75ba-4a9b-9919-290835c4a732: #e8799e;
+  --token-2c967473-f45c-477f-b1ec-e365d66235d3: #3a1d1d;
 }
 
 @theme inline {
