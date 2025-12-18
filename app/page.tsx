@@ -1,7 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { motion } from 'motion/react';
+import { Separator } from '@/components/ui/separator';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function Home() {
   // const [isClient, setIsClient] = useState(false);
@@ -660,13 +668,9 @@ export default function Home() {
                   </div>
                   <div className="framer-2u0x4t">
                     <div
-                      _constraints="[object Object]"
                       aria-hidden="true"
                       className="framer-g90923"
                       data-framer-component-type="SVG"
-                      parentsize="0"
-                      rotation="0"
-                      shadows=""
                       style={{
                         backgroundImage:
                           'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 12.728" overflow="visible"><path d="M 0 7.364 L 0 5.364 L 16.172 5.364 L 12.222 1.414 L 13.636 0 L 20 6.364 L 13.636 12.728 L 12.222 11.314 L 16.172 7.364 Z" fill="rgb(255, 255, 255)"></path></svg>\')',
@@ -686,21 +690,19 @@ export default function Home() {
                   style={{
                     borderRadius: 'inherit',
                     bottom: '0',
-                    cornerShape: 'inherit',
                     left: '0',
                     position: 'absolute',
                     right: '0',
                     top: '0',
                   }}
                 >
-                  <img
+                  <Image
                     alt=""
                     decoding="async"
                     height="1210"
                     src="https://framerusercontent.com/images/CMmvqOT0GuDIpo04T2Q4PjuQQ.png?width=1154&height=1210"
                     style={{
                       borderRadius: 'inherit',
-                      cornerShape: 'inherit',
                       display: 'block',
                       height: '100%',
                       objectFit: 'fill',
@@ -719,21 +721,19 @@ export default function Home() {
                   style={{
                     borderRadius: 'inherit',
                     bottom: '0',
-                    cornerShape: 'inherit',
                     left: '0',
                     position: 'absolute',
                     right: '0',
                     top: '0',
                   }}
                 >
-                  <img
+                  <Image
                     alt=""
                     decoding="async"
                     height="1210"
                     src="https://framerusercontent.com/images/CMmvqOT0GuDIpo04T2Q4PjuQQ.png?width=1154&height=1210"
                     style={{
                       borderRadius: 'inherit',
-                      cornerShape: 'inherit',
                       display: 'block',
                       height: '100%',
                       objectFit: 'contain',
@@ -924,21 +924,60 @@ export default function Home() {
                 </div>
               </div>
               <div className="framer-ntn7d0">
-                <div className="framer-1rhncfm" />
+                <Separator />
+                <Accordion type="multiple">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
                 <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
                   <div className="framer-d1aepi-container">
-                    <div
+                    <motion.div
                       className="framer-6CkqQ framer-vkCZz framer-idunJ framer-K1dSs framer-11ghnnt framer-v-1n81s41"
-                      data-framer-appear-id="11ghnnt"
-                      data-framer-name="Variant 2"
-                      data-highlight="true"
-                      style={{
-                        opacity: '0.001',
-                        transform: 'none',
-                        width: '100%',
-                        willChange: 'transform',
+                      initial={{
+                        opacity: 0.001,
+                        rotate: 0,
+                        rotateX: 0,
+                        rotateY: 0,
+                        scale: 1,
+                        skewX: 0,
+                        skewY: 0,
+                        x: 0,
+                        y: 0,
                       }}
-                      tabIndex="0"
+                      animate={{
+                        opacity: 1,
+                        rotate: 0,
+                        rotateX: 0,
+                        rotateY: 0,
+                        scale: 1,
+                        skewX: 0,
+                        skewY: 0,
+                        transition: {
+                          delay: 0,
+                          duration: 0.4,
+                          ease: [0.44, 0, 0.56, 1],
+                          type: 'tween',
+                        },
+                        x: 0,
+                        y: 0,
+                      }}
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-awg93p">
@@ -1042,13 +1081,9 @@ export default function Home() {
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1085,7 +1120,7 @@ export default function Home() {
                               '--variable-reference-es7vM9sEz-rqmlVMYjy': '16',
                               transform: 'none',
                             }}
-                            tabIndex="0"
+                            tabIndex={0}
                           >
                             <p
                               className="framer-text"
@@ -1107,7 +1142,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
                 <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
@@ -1123,7 +1158,7 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-awg93p">
@@ -1227,13 +1262,9 @@ export default function Home() {
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1270,7 +1301,7 @@ export default function Home() {
                               '--variable-reference-es7vM9sEz-rqmlVMYjy': '21',
                               transform: 'none',
                             }}
-                            tabIndex="0"
+                            tabIndex={0}
                           >
                             <p
                               className="framer-text"
@@ -1308,7 +1339,7 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-awg93p">
@@ -1412,13 +1443,9 @@ export default function Home() {
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1455,7 +1482,7 @@ export default function Home() {
                               '--variable-reference-es7vM9sEz-rqmlVMYjy': '18',
                               transform: 'none',
                             }}
-                            tabIndex="0"
+                            tabIndex={0}
                           >
                             <p
                               className="framer-text"
@@ -1494,7 +1521,7 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-awg93p">
@@ -1571,8 +1598,8 @@ export default function Home() {
                                     data-styles-preset="k2f62c5pc"
                                   >
                                     책은 커리어나 수익을 위한 수단이 되기도
-                                    하고, 자신만의 '굿즈'가 되기도 합니다.
-                                    출간까지의 생소한 과정을 일랑북스와
+                                    하고, 자신만의 &quot;굿즈&quot;가 되기도
+                                    합니다. 출간까지의 생소한 과정을 일랑북스와
                                     함께하세요.
                                   </p>
                                 </div>
@@ -1606,13 +1633,9 @@ export default function Home() {
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1649,7 +1672,7 @@ export default function Home() {
                               '--variable-reference-es7vM9sEz-rqmlVMYjy': '16',
                               transform: 'none',
                             }}
-                            tabIndex="0"
+                            tabIndex={0}
                           >
                             <p
                               className="framer-text"
@@ -1687,19 +1710,15 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1772,19 +1791,15 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1858,19 +1873,15 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -1943,19 +1954,15 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -2028,19 +2035,15 @@ export default function Home() {
                         width: '100%',
                         willChange: 'transform',
                       }}
-                      tabIndex="0"
+                      tabIndex={0}
                     >
                       <div className="framer-1k27qdv">
                         <div className="framer-13mw94z">
                           <div className="framer-8eu2ej">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-ct6ksz"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -2183,13 +2186,9 @@ export default function Home() {
                         <div className="framer-z74aj0">
                           <div className="framer-1rf3m8z">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-jdfis2"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -2481,13 +2480,9 @@ export default function Home() {
                         <div className="framer-6nri89">
                           <div className="framer-127zlra">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-1ly5mvp"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -2733,13 +2728,9 @@ export default function Home() {
                         <div className="framer-18xh5t0">
                           <div className="framer-1r5udmd">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-uz307i"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -2983,13 +2974,9 @@ export default function Home() {
                         <div className="framer-8iq45f">
                           <div className="framer-1upypqq">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-1gwhken"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 backgroundImage:
                                   'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" overflow="visible"><path d="M 8 0 C 12.418 0 16 3.182 16 7.111 C 15.999 9.565 14.009 11.554 11.555 11.555 L 9.982 11.555 C 9.245 11.555 8.649 12.151 8.649 12.889 C 8.649 13.226 8.782 13.538 8.986 13.769 C 9.2 14.009 9.334 14.32 9.334 14.666 C 9.334 15.405 8.72 16 8 16 C 3.582 16 0 12.418 0 8 C 0 3.582 3.582 0 8 0 Z M 4.4 8 C 5.063 8 5.6 7.463 5.6 6.8 C 5.6 6.137 5.063 5.6 4.4 5.6 C 3.737 5.6 3.2 6.137 3.2 6.8 C 3.2 7.463 3.737 8 4.4 8 Z M 11.6 8 C 12.263 8 12.8 7.463 12.8 6.8 C 12.8 6.137 12.263 5.6 11.6 5.6 C 10.937 5.6 10.4 6.137 10.4 6.8 C 10.4 7.463 10.937 8 11.6 8 Z M 8 5.6 C 8.663 5.6 9.2 5.063 9.2 4.4 C 9.2 3.737 8.663 3.2 8 3.2 C 7.337 3.2 6.8 3.737 6.8 4.4 C 6.8 5.063 7.337 5.6 8 5.6 Z" fill="rgb(49, 86, 164)"></path></svg>\')',
@@ -3214,13 +3201,9 @@ export default function Home() {
                         <div className="framer-5s49l5">
                           <div className="framer-1g66xth">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-qi2uut"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -3466,13 +3449,9 @@ export default function Home() {
                         <div className="framer-9z3pxr">
                           <div className="framer-bjcxk">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-tbdaur"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -3748,13 +3727,9 @@ export default function Home() {
                         <div className="framer-uzqock">
                           <div className="framer-10dvckg">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-1xhyp0j"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -3996,13 +3971,9 @@ export default function Home() {
                         <div className="framer-pz2tuc">
                           <div className="framer-1gk6qwi">
                             <div
-                              _constraints="[object Object]"
                               aria-hidden="true"
                               className="framer-kpzpeh"
                               data-framer-component-type="SVG"
-                              parentsize="0"
-                              rotation="0"
-                              shadows=""
                               style={{
                                 flexShrink: '0',
                                 imageRendering: 'pixelated',
@@ -4263,13 +4234,9 @@ export default function Home() {
                           <div className="framer-z74aj0">
                             <div className="framer-1rf3m8z">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-jdfis2"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -4426,13 +4393,9 @@ export default function Home() {
                           <div className="framer-18xh5t0">
                             <div className="framer-1r5udmd">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-uz307i"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -4565,13 +4528,9 @@ export default function Home() {
                           <div className="framer-5s49l5">
                             <div className="framer-1g66xth">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-qi2uut"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -4705,13 +4664,9 @@ export default function Home() {
                           <div className="framer-uzqock">
                             <div className="framer-10dvckg">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-1xhyp0j"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -4852,13 +4807,9 @@ export default function Home() {
                           <div className="framer-6nri89">
                             <div className="framer-127zlra">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-1ly5mvp"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -4992,13 +4943,9 @@ export default function Home() {
                           <div className="framer-8iq45f">
                             <div className="framer-1upypqq">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-1gwhken"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   backgroundImage:
                                     'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" overflow="visible"><path d="M 8 0 C 12.418 0 16 3.182 16 7.111 C 15.999 9.565 14.009 11.554 11.555 11.555 L 9.982 11.555 C 9.245 11.555 8.649 12.151 8.649 12.889 C 8.649 13.226 8.782 13.538 8.986 13.769 C 9.2 14.009 9.334 14.32 9.334 14.666 C 9.334 15.405 8.72 16 8 16 C 3.582 16 0 12.418 0 8 C 0 3.582 3.582 0 8 0 Z M 4.4 8 C 5.063 8 5.6 7.463 5.6 6.8 C 5.6 6.137 5.063 5.6 4.4 5.6 C 3.737 5.6 3.2 6.137 3.2 6.8 C 3.2 7.463 3.737 8 4.4 8 Z M 11.6 8 C 12.263 8 12.8 7.463 12.8 6.8 C 12.8 6.137 12.263 5.6 11.6 5.6 C 10.937 5.6 10.4 6.137 10.4 6.8 C 10.4 7.463 10.937 8 11.6 8 Z M 8 5.6 C 8.663 5.6 9.2 5.063 9.2 4.4 C 9.2 3.737 8.663 3.2 8 3.2 C 7.337 3.2 6.8 3.737 6.8 4.4 C 6.8 5.063 7.337 5.6 8 5.6 Z" fill="rgb(49, 86, 164)"></path></svg>\')',
@@ -5114,13 +5061,9 @@ export default function Home() {
                           <div className="framer-9z3pxr">
                             <div className="framer-bjcxk">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-tbdaur"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -5269,13 +5212,9 @@ export default function Home() {
                           <div className="framer-pz2tuc">
                             <div className="framer-1gk6qwi">
                               <div
-                                _constraints="[object Object]"
                                 aria-hidden="true"
                                 className="framer-kpzpeh"
                                 data-framer-component-type="SVG"
-                                parentsize="0"
-                                rotation="0"
-                                shadows=""
                                 style={{
                                   flexShrink: '0',
                                   imageRendering: 'pixelated',
@@ -5611,13 +5550,9 @@ export default function Home() {
                   <div className="framer-jyprwi">
                     <div className="ssr-variant hidden-1vk2m8p">
                       <div
-                        _constraints="[object Object]"
                         aria-hidden="true"
                         className="framer-1fq7on5"
                         data-framer-component-type="SVG"
-                        parentsize="0"
-                        rotation="0"
-                        shadows=""
                         style={{
                           backgroundImage:
                             'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 14.704" overflow="visible"><path d="M 7.999 0 C 12.418 0 16 2.792 16 6.236 C 16 9.68 12.418 12.472 8 12.472 C 7.56 12.472 7.121 12.444 6.684 12.388 L 3.326 14.584 C 2.944 14.786 2.809 14.764 2.966 14.27 L 3.646 11.467 C 1.451 10.355 0 8.427 0 6.236 C 0 2.792 3.581 0 8 0 Z M 12.501 6.141 L 13.621 5.056 C 13.755 4.916 13.755 4.696 13.62 4.557 C 13.485 4.417 13.265 4.41 13.121 4.539 L 11.652 5.961 L 11.652 4.786 C 11.652 4.588 11.491 4.427 11.292 4.427 C 11.094 4.427 10.933 4.588 10.933 4.786 L 10.933 6.734 C 10.919 6.79 10.919 6.848 10.933 6.904 L 10.933 8 C 10.933 8.199 11.094 8.36 11.292 8.36 C 11.491 8.36 11.652 8.199 11.652 8 L 11.652 6.962 L 11.977 6.647 L 13.065 8.196 C 13.179 8.358 13.404 8.398 13.566 8.283 C 13.729 8.169 13.768 7.945 13.654 7.782 L 12.501 6.14 Z M 10.247 7.607 L 9.134 7.607 L 9.134 4.798 C 9.126 4.606 8.967 4.455 8.775 4.455 C 8.583 4.455 8.425 4.606 8.416 4.798 L 8.416 7.966 C 8.416 8.165 8.576 8.326 8.775 8.326 L 10.247 8.326 C 10.445 8.326 10.606 8.165 10.606 7.966 C 10.606 7.768 10.445 7.607 10.247 7.607 Z M 5.784 6.776 L 6.315 5.474 L 6.801 6.775 L 5.784 6.775 Z M 7.707 7.147 L 7.708 7.134 C 7.708 7.044 7.673 6.957 7.611 6.891 L 6.814 4.757 C 6.746 4.549 6.556 4.405 6.337 4.396 C 6.116 4.395 5.918 4.531 5.839 4.737 L 4.573 7.842 C 4.498 8.025 4.586 8.235 4.77 8.31 C 4.954 8.386 5.164 8.297 5.239 8.114 L 5.492 7.494 L 7.069 7.494 L 7.296 8.104 C 7.338 8.228 7.444 8.319 7.573 8.342 C 7.702 8.365 7.834 8.316 7.916 8.214 C 7.998 8.112 8.019 7.974 7.97 7.852 Z M 5.176 4.802 C 5.176 4.603 5.015 4.442 4.817 4.442 L 2.344 4.442 C 2.146 4.442 1.985 4.603 1.985 4.802 C 1.985 5 2.146 5.161 2.344 5.161 L 3.228 5.161 L 3.228 8.008 C 3.228 8.206 3.389 8.367 3.588 8.367 C 3.786 8.367 3.947 8.206 3.947 8.008 L 3.947 5.161 L 4.816 5.161 C 5.015 5.161 5.176 5 5.176 4.802 Z" fill="rgb(255, 255, 255)"></path></svg>\')',
@@ -5629,13 +5564,9 @@ export default function Home() {
                     </div>
                     <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
                       <div
-                        _constraints="[object Object]"
                         aria-hidden="true"
                         className="framer-1fq7on5"
                         data-framer-component-type="SVG"
-                        parentsize="0"
-                        rotation="0"
-                        shadows=""
                         style={{
                           backgroundImage:
                             'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21 20.585" overflow="visible"><path d="M 10.499 0 C 16.299 0 21 3.908 21 8.731 C 21 13.552 16.299 17.46 10.5 17.46 C 9.923 17.461 9.346 17.421 8.773 17.343 L 4.365 20.418 C 3.864 20.701 3.687 20.67 3.893 19.978 L 4.785 16.054 C 1.905 14.497 0 11.798 0 8.731 C 0 3.909 4.7 0 10.5 0 Z M 16.407 8.597 L 17.877 7.078 C 18.053 6.883 18.053 6.574 17.876 6.379 C 17.699 6.184 17.41 6.174 17.221 6.355 L 15.293 8.346 L 15.293 6.701 C 15.293 6.423 15.082 6.197 14.821 6.197 C 14.56 6.197 14.349 6.423 14.349 6.701 L 14.349 9.428 C 14.331 9.506 14.331 9.587 14.349 9.665 L 14.349 11.2 C 14.349 11.478 14.56 11.703 14.821 11.703 C 15.082 11.703 15.293 11.478 15.293 11.2 L 15.293 9.746 L 15.72 9.306 L 17.148 11.474 C 17.298 11.702 17.593 11.757 17.806 11.597 C 18.019 11.437 18.071 11.123 17.921 10.895 L 16.407 8.596 Z M 13.449 10.65 L 11.989 10.65 L 11.989 6.717 C 11.977 6.448 11.77 6.237 11.517 6.237 C 11.265 6.237 11.058 6.448 11.046 6.717 L 11.046 11.153 C 11.046 11.43 11.256 11.657 11.517 11.657 L 13.449 11.657 C 13.71 11.657 13.921 11.431 13.921 11.153 C 13.921 10.875 13.71 10.65 13.449 10.65 Z M 7.592 9.486 L 8.288 7.664 L 8.926 9.485 L 7.592 9.485 Z M 10.115 10.005 L 10.117 9.988 C 10.117 9.861 10.071 9.739 9.99 9.647 L 8.944 6.66 C 8.854 6.369 8.604 6.167 8.317 6.155 C 8.028 6.153 7.768 6.343 7.664 6.631 L 6.002 10.978 C 5.903 11.236 6.019 11.53 6.261 11.635 C 6.502 11.74 6.777 11.616 6.876 11.359 L 7.208 10.492 L 9.278 10.492 L 9.576 11.345 C 9.631 11.519 9.771 11.647 9.94 11.679 C 10.109 11.711 10.282 11.642 10.39 11.5 C 10.498 11.357 10.525 11.163 10.46 10.993 Z M 6.793 6.722 C 6.793 6.444 6.582 6.219 6.322 6.219 L 3.077 6.219 C 2.816 6.219 2.605 6.444 2.605 6.722 C 2.605 7 2.816 7.226 3.077 7.226 L 4.237 7.226 L 4.237 11.211 C 4.237 11.489 4.448 11.714 4.709 11.714 C 4.97 11.714 5.181 11.489 5.181 11.211 L 5.181 7.226 L 6.321 7.226 C 6.582 7.226 6.793 7 6.793 6.722 Z" fill="rgb(255, 255, 255)"></path></svg>\')',
@@ -5770,27 +5701,23 @@ export default function Home() {
                       style={{
                         borderRadius: 'inherit',
                         bottom: '0',
-                        cornerShape: 'inherit',
                         left: '0',
                         position: 'absolute',
                         right: '0',
                         top: '0',
                       }}
                     >
-                      <img
+                      <Image
                         alt=""
                         data-framer-original-sizes="200px"
                         decoding="async"
                         height="990"
-                        loading="lazy"
                         sizes="(max-width: 809.98px) 200px, (min-width: 1200px) 302px, (min-width: 810px) and (max-width: 1199.98px) 206px"
-                        src="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?width=1151&height=990"
-                        srcSet="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?scale-down-to=512&width=1151&height=990 512w, https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?scale-down-to=1024&width=1151&height=990 1024w, https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?width=1151&height=990 1151w"
+                        src="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png"
                         style={{
                           borderRadius: 'inherit',
-                          cornerShape: 'inherit',
                           display: 'block',
-                          height: '100%',
+                          height: 'auto',
                           objectFit: 'cover',
                           objectPosition: 'center',
                           width: '100%',
@@ -5813,27 +5740,23 @@ export default function Home() {
                       style={{
                         borderRadius: 'inherit',
                         bottom: '0',
-                        cornerShape: 'inherit',
                         left: '0',
                         position: 'absolute',
                         right: '0',
                         top: '0',
                       }}
                     >
-                      <img
+                      <Image
                         alt=""
                         data-framer-original-sizes="302px"
                         decoding="async"
                         height="990"
-                        loading="lazy"
                         sizes="(max-width: 809.98px) 200px, (min-width: 1200px) 302px, (min-width: 810px) and (max-width: 1199.98px) 206px"
-                        src="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?width=1151&height=990"
-                        srcSet="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?scale-down-to=512&width=1151&height=990 512w, https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?scale-down-to=1024&width=1151&height=990 1024w, https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?width=1151&height=990 1151w"
+                        src="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png"
                         style={{
                           borderRadius: 'inherit',
-                          cornerShape: 'inherit',
                           display: 'block',
-                          height: '100%',
+                          height: 'auto',
                           objectFit: 'cover',
                           objectPosition: 'center',
                           width: '100%',
@@ -5856,27 +5779,23 @@ export default function Home() {
                       style={{
                         borderRadius: 'inherit',
                         bottom: '0',
-                        cornerShape: 'inherit',
                         left: '0',
                         position: 'absolute',
                         right: '0',
                         top: '0',
                       }}
                     >
-                      <img
+                      <Image
                         alt=""
                         data-framer-original-sizes="206px"
                         decoding="async"
                         height="990"
-                        loading="lazy"
                         sizes="(max-width: 809.98px) 200px, (min-width: 1200px) 302px, (min-width: 810px) and (max-width: 1199.98px) 206px"
-                        src="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?width=1151&height=990"
-                        srcSet="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?scale-down-to=512&width=1151&height=990 512w, https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?scale-down-to=1024&width=1151&height=990 1024w, https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png?width=1151&height=990 1151w"
+                        src="https://framerusercontent.com/images/rKFMjpUtlHUfssV2M3LZIUXMfA.png"
                         style={{
                           borderRadius: 'inherit',
-                          cornerShape: 'inherit',
                           display: 'block',
-                          height: '100%',
+                          height: 'auto',
                           objectFit: 'cover',
                           objectPosition: 'center',
                           width: '100%',
@@ -5927,13 +5846,9 @@ export default function Home() {
               </div>
             </div>
             <div
-              _constraints="[object Object]"
               aria-hidden="true"
               className="framer-1w5nd7t hidden-1vk2m8p"
               data-framer-component-type="SVG"
-              parentsize="0"
-              rotation="0"
-              shadows=""
               style={{
                 backgroundImage:
                   'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 152 128" overflow="visible"><path d="M 0 0 L 152 0 L 152 128 L 0 128 Z" fill="%23CCC"></path></svg>\')',
@@ -6687,14 +6602,13 @@ export default function Home() {
                     style={{
                       borderRadius: 'inherit',
                       bottom: '0',
-                      cornerShape: 'inherit',
                       left: '0',
                       position: 'absolute',
                       right: '0',
                       top: '0',
                     }}
                   >
-                    <img
+                    <Image
                       alt=""
                       decoding="async"
                       height="356"
@@ -6702,7 +6616,6 @@ export default function Home() {
                       src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
                       style={{
                         borderRadius: 'inherit',
-                        cornerShape: 'inherit',
                         display: 'block',
                         height: '100%',
                         objectFit: 'cover',
@@ -6721,14 +6634,13 @@ export default function Home() {
                     style={{
                       borderRadius: 'inherit',
                       bottom: '0',
-                      cornerShape: 'inherit',
                       left: '0',
                       position: 'absolute',
                       right: '0',
                       top: '0',
                     }}
                   >
-                    <img
+                    <Image
                       alt=""
                       decoding="async"
                       height="356"
@@ -6736,7 +6648,6 @@ export default function Home() {
                       src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
                       style={{
                         borderRadius: 'inherit',
-                        cornerShape: 'inherit',
                         display: 'block',
                         height: '100%',
                         objectFit: 'cover',
@@ -6755,14 +6666,13 @@ export default function Home() {
                     style={{
                       borderRadius: 'inherit',
                       bottom: '0',
-                      cornerShape: 'inherit',
                       left: '0',
                       position: 'absolute',
                       right: '0',
                       top: '0',
                     }}
                   >
-                    <img
+                    <Image
                       alt=""
                       decoding="async"
                       height="356"
@@ -6770,7 +6680,6 @@ export default function Home() {
                       src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
                       style={{
                         borderRadius: 'inherit',
-                        cornerShape: 'inherit',
                         display: 'block',
                         height: '100%',
                         objectFit: 'cover',
@@ -7105,7 +7014,6 @@ export default function Home() {
           <div className="framer-5x8ol7" data-framer-name="헤더">
             <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
               <a
-                as="a"
                 className="framer-sm25a6 framer-lux5qc"
                 data-framer-name="로고"
                 data-framer-page-link-current="true"
@@ -7119,21 +7027,19 @@ export default function Home() {
                   style={{
                     borderRadius: 'inherit',
                     bottom: '0',
-                    cornerShape: 'inherit',
                     left: '0',
                     position: 'absolute',
                     right: '0',
                     top: '0',
                   }}
                 >
-                  <img
+                  <Image
                     alt=""
                     decoding="async"
                     height="356"
                     src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
                     style={{
                       borderRadius: 'inherit',
-                      cornerShape: 'inherit',
                       display: 'block',
                       height: '100%',
                       objectFit: 'cover',
@@ -7147,7 +7053,6 @@ export default function Home() {
             </div>
             <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
               <a
-                as="a"
                 className="framer-sm25a6 framer-lux5qc"
                 data-framer-name="로고"
                 data-framer-page-link-current="true"
@@ -7158,21 +7063,19 @@ export default function Home() {
                   style={{
                     borderRadius: 'inherit',
                     bottom: '0',
-                    cornerShape: 'inherit',
                     left: '0',
                     position: 'absolute',
                     right: '0',
                     top: '0',
                   }}
                 >
-                  <img
+                  <Image
                     alt=""
                     decoding="async"
                     height="356"
                     src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
                     style={{
                       borderRadius: 'inherit',
-                      cornerShape: 'inherit',
                       display: 'block',
                       height: '100%',
                       objectFit: 'cover',
@@ -7186,7 +7089,6 @@ export default function Home() {
             </div>
             <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
               <a
-                as="a"
                 className="framer-sm25a6 framer-lux5qc"
                 data-framer-name="로고"
                 data-framer-page-link-current="true"
@@ -7197,21 +7099,19 @@ export default function Home() {
                   style={{
                     borderRadius: 'inherit',
                     bottom: '0',
-                    cornerShape: 'inherit',
                     left: '0',
                     position: 'absolute',
                     right: '0',
                     top: '0',
                   }}
                 >
-                  <img
+                  <Image
                     alt=""
                     decoding="async"
                     height="356"
                     src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
                     style={{
                       borderRadius: 'inherit',
-                      cornerShape: 'inherit',
                       display: 'block',
                       height: '100%',
                       objectFit: 'cover',
@@ -7228,17 +7128,13 @@ export default function Home() {
                 className="framer-1lbz3mg hidden-1vk2m8p"
                 data-framer-name="hambuger"
                 id="1lbz3mg"
-                tabIndex="0"
+                tabIndex={0}
               >
                 <div className="framer-1eyjj2k">
                   <div
-                    _constraints="[object Object]"
                     aria-hidden="true"
                     className="framer-tqp9mw"
                     data-framer-component-type="SVG"
-                    parentsize="0"
-                    rotation="0"
-                    shadows=""
                     style={{
                       backgroundImage:
                         'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 21.333" overflow="visible"><path d="M 0 0 L 24 0 L 24 2.667 L 0 2.667 Z M 0 9.333 L 24 9.333 L 24 12 L 0 12 Z M 0 18.667 L 24 18.667 L 24 21.333 L 0 21.333 Z" fill="rgb(255, 255, 255)"></path></svg>\')',
@@ -7251,13 +7147,9 @@ export default function Home() {
               </div>
               <div className="ssr-variant hidden-xpwx9r">
                 <div
-                  _constraints="[object Object]"
                   aria-hidden="true"
                   className="framer-16p14dq hidden-1vk2m8p"
                   data-framer-component-type="SVG"
-                  parentsize="0"
-                  rotation="0"
-                  shadows=""
                   style={{
                     flexShrink: '0',
                     imageRendering: 'pixelated',
@@ -7285,13 +7177,9 @@ export default function Home() {
               </div>
               <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
                 <div
-                  _constraints="[object Object]"
                   aria-hidden="true"
                   className="framer-16p14dq hidden-1vk2m8p"
                   data-framer-component-type="SVG"
-                  parentsize="0"
-                  rotation="0"
-                  shadows=""
                   style={{
                     flexShrink: '0',
                     imageRendering: 'pixelated',

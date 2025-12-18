@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import './framer.css';
 import Script from 'next/script';
+import SvgTemplates from './components/svg-templates';
 
 export const metadata: Metadata = {
   title: '일랑북스',
@@ -59,13 +60,7 @@ export default function RootLayout({
           data-no-nt
         ></Script>
         {children}
-        <script
-          suppressHydrationWarning={true}
-          type="module"
-          async
-          data-framer-bundle="main"
-          src="https://framerusercontent.com/sites/5PEV6T37b7TiNOethVqtHp/script_main.CkRkbLLM.mjs"
-        ></script>
+        <SvgTemplates />
       </body>
     </html>
   );
