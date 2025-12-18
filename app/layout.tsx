@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko"
-        suppressHydrationWarning>
+            suppressHydrationWarning={true}>
             <head>
                 <meta charSet="utf-8" />
 
@@ -39,13 +39,17 @@ export default function RootLayout({
 
                 <link href="https://fonts.gstatic.com" rel="preconnect" crossOrigin="anonymous" />
                 <meta name="robots" content="max-image-preview:large" />
-                <style data-framer-breakpoint-css></style><style data-framer-css-ssr-minified data-framer-components="framer-lib-cursors-host framer-3F5nR PropertyOverrides framer-6CkqQ"></style>
+                <style suppressHydrationWarning={true} 
+                data-framer-breakpoint-css></style>
+                <style suppressHydrationWarning={true} data-framer-css-ssr-minified data-framer-components="framer-lib-cursors-host framer-3F5nR PropertyOverrides framer-6CkqQ"></style>
             </head>
             <body>
-                <Script async src="https://events.framer.com/script?v=2"
+                <Script suppressHydrationWarning={true}
+                    async src="https://events.framer.com/script?v=2"
                     data-fid="bb9229f8597073bd554ad9b49e3b2304cbcca7422057248cf5b20c43c552a751" data-no-nt></Script>
                 {children}
-                <script type="module" async data-framer-bundle="main"
+                <script suppressHydrationWarning={true}
+                    type="module" async data-framer-bundle="main"
                     src="https://framerusercontent.com/sites/5PEV6T37b7TiNOethVqtHp/script_main.CkRkbLLM.mjs"></script>
             </body>
         </html>
