@@ -131,4 +131,9 @@
   body {
     @apply bg-background text-foreground;
   }
+
+@theme {
+  --breakpoint-md: 810px;
+  --breakpoint-xl: 1200px;
+}
 }

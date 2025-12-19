@@ -974,6 +974,242 @@ const FramerComponent = () => {
       return c;
     })()('data-framer-appear-id', '__Appear_Animation_Transform__', false);
 
+    // company
+
+    (() => {
+      function u() {
+        function n(t, e, i) {
+          let r = document.createElement('a');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          ((r.href = t),
+            (r.target = i),
+            (r.rel = e),
+            document.body.appendChild(r),
+            r.click(),
+            r.remove());
+        }
+        function o(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('click', o);
+            return;
+          } // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          if (!e) return;
+          if (
+            /Mac|iPod|iPhone|iPad/u.test(navigator.userAgent)
+              ? t.metaKey
+              : t.ctrlKey
+          )
+            return n(e, '', '_blank');
+          let r = this.getAttribute('rel') ?? '',
+            c = this.getAttribute('target') ?? '';
+          n(e, r, c);
+        }
+        function a(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('auxclick', o);
+            return;
+          }
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          e && n(e, '', '_blank');
+        }
+        function s(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('keydown', s);
+            return;
+          }
+          if (t.key !== 'Enter') return;
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          if (!e) return;
+          let i = this.getAttribute('rel') ?? '',
+            r = this.getAttribute('target') ?? '';
+          n(e, i, r);
+        }
+        document.querySelectorAll('[data-nested-link]').forEach((t) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          t instanceof HTMLElement &&
+            (t.addEventListener('click', o),
+            t.addEventListener('auxclick', a),
+            t.addEventListener('keydown', s));
+        });
+      }
+      return u;
+    })()();
+
+    (() => {
+      function i() {
+        for (let e of document.querySelectorAll(
+          '[data-framer-original-sizes]'
+        )) {
+          let t = e.getAttribute('data-framer-original-sizes');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t === '' ? e.removeAttribute('sizes') : e.setAttribute('sizes', t),
+            e.removeAttribute('data-framer-original-sizes'));
+        }
+      }
+      function a() {
+        window.__framer_onRewriteBreakpoints = i;
+      }
+      return a;
+    })()();
+
+    // faq 페이지 스크립트
+    (() => {
+      function u() {
+        function n(t, e, i) {
+          let r = document.createElement('a');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          ((r.href = t),
+            (r.target = i),
+            (r.rel = e),
+            document.body.appendChild(r),
+            r.click(),
+            r.remove());
+        }
+        function o(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('click', o);
+            return;
+          }
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          if (!e) return;
+          if (
+            /Mac|iPod|iPhone|iPad/u.test(navigator.userAgent)
+              ? t.metaKey
+              : t.ctrlKey
+          )
+            return n(e, '', '_blank');
+          let r = this.getAttribute('rel') ?? '',
+            c = this.getAttribute('target') ?? '';
+          n(e, r, c);
+        }
+        function a(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('auxclick', o);
+            return;
+          }
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          e && n(e, '', '_blank');
+        }
+        function s(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('keydown', s);
+            return;
+          }
+          if (t.key !== 'Enter') return;
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          if (!e) return;
+          let i = this.getAttribute('rel') ?? '',
+            r = this.getAttribute('target') ?? '';
+          n(e, i, r);
+        }
+        document.querySelectorAll('[data-nested-link]').forEach((t) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          t instanceof HTMLElement &&
+            (t.addEventListener('click', o),
+            t.addEventListener('auxclick', a),
+            t.addEventListener('keydown', s));
+        });
+      }
+      return u;
+    })()();
+    (() => {
+      function u() {
+        function n(t, e, i) {
+          let r = document.createElement('a');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          ((r.href = t),
+            (r.target = i),
+            (r.rel = e),
+            document.body.appendChild(r),
+            r.click(),
+            r.remove());
+        }
+        function o(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('click', o);
+            return;
+          }
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          if (!e) return;
+          if (
+            /Mac|iPod|iPhone|iPad/u.test(navigator.userAgent)
+              ? t.metaKey
+              : t.ctrlKey
+          )
+            return n(e, '', '_blank');
+          let r = this.getAttribute('rel') ?? '',
+            c = this.getAttribute('target') ?? '';
+          n(e, r, c);
+        }
+        function a(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('auxclick', o);
+            return;
+          }
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          e && n(e, '', '_blank');
+        }
+        function s(t) {
+          if (this.dataset.hydrated) {
+            this.removeEventListener('keydown', s);
+            return;
+          }
+          if (t.key !== 'Enter') return;
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t.preventDefault(), t.stopPropagation());
+          let e = this.getAttribute('href');
+          if (!e) return;
+          let i = this.getAttribute('rel') ?? '',
+            r = this.getAttribute('target') ?? '';
+          n(e, i, r);
+        }
+        document.querySelectorAll('[data-nested-link]').forEach((t) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          t instanceof HTMLElement &&
+            (t.addEventListener('click', o),
+            t.addEventListener('auxclick', a),
+            t.addEventListener('keydown', s));
+        });
+      }
+      return u;
+    })()();
+
+    (() => {
+      function i() {
+        for (let e of document.querySelectorAll(
+          '[data-framer-original-sizes]'
+        )) {
+          let t = e.getAttribute('data-framer-original-sizes');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          (t === '' ? e.removeAttribute('sizes') : e.setAttribute('sizes', t),
+            e.removeAttribute('data-framer-original-sizes'));
+        }
+      }
+      function a() {
+        window.__framer_onRewriteBreakpoints = i;
+      }
+      return a;
+    })()();
+
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     typeof document < 'u' &&
       (window.process = {
