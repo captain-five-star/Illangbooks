@@ -137,3 +137,22 @@
   --breakpoint-xl: 1200px;
 }
 }
+
+/* 반응형 이미지 */
+.katalk-mb {
+  display: block;
+}
+
+.katalk-pc {
+  display: none;
+}
+
+@media (min-width: 810px) {
+  .katalk-mb {
+    display: none;
+  }
+
+  .katalk-pc {
+    display: block;
+  }
+}

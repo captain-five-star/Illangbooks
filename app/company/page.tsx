@@ -9,7 +9,7 @@ const page = () => {
         data-framer-root=""
         style={{
           minHeight: '100vh',
-          width: 'auto',
+          width: '100%',
         }}
       >
         <div className="framer-108tk09">

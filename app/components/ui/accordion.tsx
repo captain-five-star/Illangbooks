@@ -42,7 +42,7 @@ function AccordionTrigger({
       >
         <ChevronDownIcon className="text-muted-foreground pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-200" />
         <div className="flex h-full items-center">
-          <p className="items-center text-center text-base lg:text-xl">
+          <p className="items-center text-start text-base lg:text-xl">
             {children}
           </p>
         </div>

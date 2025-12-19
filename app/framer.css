@@ -2223,7 +2223,6 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     align-items: center;
     gap: 10px;
     width: 100%;
-    height: 150px;
     padding: 8px;
     display: flex;
     position: relative;
@@ -2853,7 +2852,6 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     }
 
     .framer-3F5nR .framer-p44x6u {
-        height: 240px;
         padding: 40px 80px
     }
 
@@ -3151,7 +3149,6 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
 
     .framer-3F5nR .framer-p44x6u {
         order: 3;
-        height: 300px;
         padding: 40px 160px
     }
 
