@@ -61,11 +61,11 @@ function AccordionContent({
       className="framer-awg93p framer-wamkf7 mb-4 h-full w-full px-7 pt-7 pb-7 text-sm/6 whitespace-pre-wrap antialiased md:text-base/6"
       style={{
         '--vvm4vb': '30px 20px 30px 20px',
-        'background-color': 'rgb(245, 245, 245)',
-        'border-bottom-left-radius': '12px',
-        'border-bottom-right-radius': '12px',
-        'border-top-left-radius': '12px',
-        'border-top-right-radius': '12px',
+        backgroundColor: 'rgb(245, 245, 245)',
+        borderBottomLeftRadius: '12px',
+        borderBottomRightRadius: '12px',
+        borderTopLeftRadius: '12px',
+        borderTopRightRadius: '12px',
       }}
       {...props}
     >

@@ -128,14 +128,30 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 
-@theme {
-  --breakpoint-md: 810px;
-  --breakpoint-xl: 1200px;
+  @theme {
+    --breakpoint-md: 810px;
+    --breakpoint-xl: 1200px;
+  }
 }
+
+html,
+* {
+  font-family: 'pretendard', sans-serif;
+}
+
+@inline {
+  --font-pretendard: 'Pretendard Light', sans-serif;
+  --font-instrument: 'Instrument Sans', 'sans-serif';
+}
+
+@font inline {
+  --font-instrument: 'Instrument Sans', 'sans-serif';
+  --font-pretendard: 'Pretendard Light', 'sans-serif';
 }
 
 /* 반응형 이미지 */

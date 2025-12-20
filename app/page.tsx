@@ -2,9 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import katalkMb from './components/img/katalk-mb.jpg';
-import katalkPc from './components/img/katalk-pc.jpg';
 import QnaBox from './components/QnaBox';
+import Link from 'next/link';
+import ContactUs from './components/ContactUs';
 
 export default function Home() {
   const FramerComponent = dynamic(
@@ -612,7 +612,7 @@ export default function Home() {
                       '--framer-text-color': 'rgb(255, 255, 255)',
                     }}
                   >
-                    회사 소개 바로가기
+                    <Link href="/company">회사 소개 바로가기</Link>
                   </p>
                 </div>
               </div>
@@ -636,7 +636,7 @@ export default function Home() {
                       '--framer-text-color': 'rgb(255, 255, 255)',
                     }}
                   >
-                    회사 소개 바로가기
+                    <Link href="/company">회사 소개 바로가기</Link>
                   </p>
                 </div>
               </div>
@@ -660,7 +660,7 @@ export default function Home() {
                       '--framer-text-color': 'rgb(255, 255, 255)',
                     }}
                   >
-                    회사 소개 바로가기
+                    <Link href="/company">회사 소개 바로가기</Link>
                   </p>
                 </div>
               </div>
@@ -1165,15 +1165,7 @@ export default function Home() {
                           >
                             견적 문의 내용을 바탕으로 상담을 진행합니다. 견적
                             문의와 함께 원고의 일부를 미리 전송해 주셔야 정확한
-                            상담이 가능합니다. (
-                            <a
-                              className="__cf_email__"
-                              data-cfemail="acd5c5c0cdc2cb9e9c9d95ecc2cddac9de82cfc3c1"
-                              href="/cdn-cgi/l/email-protection"
-                            >
-                              [email protected]
-                            </a>
-                            )
+                            상담이 가능합니다. (yilang2019@naver.com)
                           </p>
                         </div>
                       </div>
@@ -1198,15 +1190,7 @@ export default function Home() {
                           >
                             견적 문의 내용을 바탕으로 상담을 진행합니다. 견적
                             문의와 함께 원고의 일부를 미리 전송해 주셔야 정확한
-                            상담이 가능합니다. (
-                            <a
-                              className="__cf_email__"
-                              data-cfemail="a8d1c1c4c9c6cf9a989991e8c6c9decdda86cbc7c5"
-                              href="/cdn-cgi/l/email-protection"
-                            >
-                              [email protected]
-                            </a>
-                            )
+                            상담이 가능합니다. (yilang2019@naver.com)
                           </p>
                         </div>
                       </div>
@@ -3146,15 +3130,7 @@ export default function Home() {
                           >
                             견적 문의 내용을 바탕으로 상담을 진행합니다. 견적
                             문의와 함께 원고의 일부를 미리 전송해 주셔야 정확한
-                            상담이 가능합니다. (
-                            <a
-                              className="__cf_email__"
-                              data-cfemail="d6afbfbab7b8b1e4e6e7ef96b8b7a0b3a4f8b5b9bb"
-                              href="/cdn-cgi/l/email-protection"
-                            >
-                              [email protected]
-                            </a>
-                            )
+                            상담이 가능합니다. (yilang2019@naver.com)
                           </p>
                         </div>
                         <div
@@ -4156,29 +4132,35 @@ export default function Home() {
         </div>
       </div>
       <div className="framer-p44x6u" data-framer-name="섹션4: 카톡문의">
-        <Image
-          src={katalkMb}
-          alt="카톡문의"
-          className="katalk-mb"
-          style={{
-            objectFit: 'contain',
-            position: 'relative',
-            width: '100%',
-            height: '100%',
-          }}
-        />
-        <Image
-          src={katalkPc}
-          alt="카톡문의"
-          className="katalk-pc"
-          style={{
-            objectFit: 'contain',
-            position: 'relative',
-            width: '100%',
-            height: '100%',
-          }}
-        />
-        <div
+        <a href="https://open.kakao.com/o/sv0MPsAg" target="_blank">
+          <Image
+            src="/katalk-mb.png"
+            width={720}
+            height={269}
+            alt="카톡문의"
+            className="katalk-mb"
+            style={{
+              objectFit: 'contain',
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+            }}
+          />
+          <Image
+            src="/katalk-pc.png"
+            width={1400}
+            height={385}
+            alt="카톡문의"
+            className="katalk-pc"
+            style={{
+              objectFit: 'contain',
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+            }}
+          />
+        </a>
+        {/* <div
           aria-hidden="true"
           className="framer-1w5nd7t hidden-1vk2m8p"
           data-framer-component-type="SVG"
@@ -4189,725 +4171,9 @@ export default function Home() {
             flexShrink: '0',
             imageRendering: 'pixelated',
           }}
-        ></div>
+        ></div> */}
       </div>
-      <div className="framer-ur7txx" data-framer-name="섹션5: 문의하기">
-        <div className="framer-kd1ens">
-          <div className="framer-tvwqul">
-            <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-              <div
-                className="framer-zi6tbb"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                    '--framer-font-family':
-                      '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                    '--framer-font-size': '28px',
-                    '--framer-font-weight': '700',
-                    '--framer-text-color': 'rgb(33, 33, 33)',
-                  }}
-                >
-                  Contact
-                </p>
-              </div>
-            </div>
-            <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-              <div
-                className="framer-zi6tbb"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                    '--framer-font-family':
-                      '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                    '--framer-font-size': '72px',
-                    '--framer-font-weight': '700',
-                    '--framer-text-color': 'rgb(33, 33, 33)',
-                  }}
-                >
-                  Contact
-                </p>
-              </div>
-            </div>
-            <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-              <div
-                className="framer-zi6tbb"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                    '--framer-font-family':
-                      '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                    '--framer-font-size': '48px',
-                    '--framer-font-weight': '700',
-                    '--framer-text-color': 'rgb(33, 33, 33)',
-                  }}
-                >
-                  Contact
-                </p>
-              </div>
-            </div>
-            <div className="framer-1kq9tof">
-              <div className="framer-on49ll">
-                <div className="framer-1skgo30" data-border="true">
-                  <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-                    <div
-                      className="framer-wgrfs9"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '14px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        이름 (회사명)
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-                    <div
-                      className="framer-wgrfs9"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '18px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        이름 (회사명)
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-                    <div
-                      className="framer-wgrfs9"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        이름 (회사명)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="framer-11io6m6" data-border="true">
-                  <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-                    <div
-                      className="framer-pu7f4t"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '14px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        전화번호
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-                    <div
-                      className="framer-pu7f4t"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '18px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        전화번호
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-                    <div
-                      className="framer-pu7f4t"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        전화번호
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="framer-12qye4t" data-border="true">
-                  <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-                    <div
-                      className="framer-f4du2"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '14px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        이메일
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-                    <div
-                      className="framer-f4du2"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '18px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        이메일
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-                    <div
-                      className="framer-f4du2"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        이메일
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="framer-zx5tnm" data-border="true">
-                  <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-                    <div
-                      className="framer-v4g9vj"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '14px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        문의 내용을 상세히 작성해 주세요.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-                    <div
-                      className="framer-v4g9vj"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-size': '18px',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        문의 내용을 상세히 작성해 주세요.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-                    <div
-                      className="framer-v4g9vj"
-                      data-framer-component-type="RichTextContainer"
-                      style={{
-                        transform: 'none',
-                      }}
-                    >
-                      <p
-                        className="framer-text"
-                        style={{
-                          '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                          '--framer-font-family':
-                            '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                          '--framer-font-weight': '300',
-                          '--framer-line-height': '1em',
-                          '--framer-text-color':
-                            'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                        }}
-                      >
-                        문의 내용을 상세히 작성해 주세요.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-                <div
-                  className="framer-k1k810"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgU2VtaUJvbGQ=',
-                      '--framer-font-family':
-                        '"Pretendard SemiBold", "Pretendard SemiBold Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '600',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    -외주 편집, 자비 출판 관련 문의
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color':
-                        'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                    }}
-                  >
-                    도서 장르, 제목, 원고 (예상) 분량, 원고 완성도, 원고 구성
-                    요소(EX: 텍스트, 사진, 삽화, 도표, 음원 유무 및 대략의 개수)
-                    필수 기재
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    <br className="framer-text trailing-break" />
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgU2VtaUJvbGQ=',
-                      '--framer-font-family':
-                        '"Pretendard SemiBold", "Pretendard SemiBold Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '600',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    -출판 코칭 관련 문의
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color':
-                        'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                    }}
-                  >
-                    코칭 목적 (EX: 개인 소장용 도서 출간, 출판사 투고 및 계약
-                    관련, 출판사 취업(창업) 준비 등) 필수 기재
-                  </p>
-                </div>
-              </div>
-              <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-                <div
-                  className="framer-k1k810"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgU2VtaUJvbGQ=',
-                      '--framer-font-family':
-                        '"Pretendard SemiBold", "Pretendard SemiBold Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '600',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    -외주 편집, 자비 출판 관련 문의
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color':
-                        'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                    }}
-                  >
-                    도서 장르, 제목, 원고 (예상) 분량, 원고 완성도, 원고 구성
-                    요소(EX: 텍스트, 사진, 삽화, 도표, 음원 유무 및 대략의 개수)
-                    필수 기재
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    <br className="framer-text trailing-break" />
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgU2VtaUJvbGQ=',
-                      '--framer-font-family':
-                        '"Pretendard SemiBold", "Pretendard SemiBold Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '600',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    -출판 코칭 관련 문의
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color':
-                        'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                    }}
-                  >
-                    코칭 목적 (EX: 개인 소장용 도서 출간, 출판사 투고 및 계약
-                    관련, 출판사 취업(창업) 준비 등) 필수 기재
-                  </p>
-                </div>
-              </div>
-              <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-                <div
-                  className="framer-k1k810"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgU2VtaUJvbGQ=',
-                      '--framer-font-family':
-                        '"Pretendard SemiBold", "Pretendard SemiBold Placeholder", sans-serif',
-                      '--framer-font-size': '14px',
-                      '--framer-font-weight': '600',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    -외주 편집, 자비 출판 관련 문의
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '14px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color':
-                        'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                    }}
-                  >
-                    도서 장르, 제목, 원고 (예상) 분량, 원고 완성도, 원고 구성
-                    요소(EX: 텍스트, 사진, 삽화, 도표, 음원 유무 및 대략의 개수)
-                    필수 기재
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '12px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    <br className="framer-text trailing-break" />
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgU2VtaUJvbGQ=',
-                      '--framer-font-family':
-                        '"Pretendard SemiBold", "Pretendard SemiBold Placeholder", sans-serif',
-                      '--framer-font-size': '14px',
-                      '--framer-font-weight': '600',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color': 'rgb(94, 94, 94)',
-                    }}
-                  >
-                    -출판 코칭 관련 문의
-                  </p>
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '14px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1.5em',
-                      '--framer-text-color':
-                        'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
-                    }}
-                  >
-                    코칭 목적 (EX: 개인 소장용 도서 출간, 출판사 투고 및 계약
-                    관련, 출판사 취업(창업) 준비 등) 필수 기재
-                  </p>
-                </div>
-              </div>
-              <div className="framer-1kzllwq">
-                <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-                  <div
-                    className="framer-1kt4wg0"
-                    data-framer-component-type="RichTextContainer"
-                    data-framer-name="문의하기"
-                    style={{
-                      transform: 'none',
-                    }}
-                  >
-                    <p
-                      className="framer-text"
-                      style={{
-                        '--font-selector':
-                          'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                        '--framer-font-family':
-                          '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                        '--framer-letter-spacing': '-0.02em',
-                        '--framer-line-height': '1.7em',
-                        '--framer-text-color': 'rgb(255, 255, 255)',
-                      }}
-                    >
-                      출판 상담 문의하기
-                    </p>
-                  </div>
-                </div>
-                <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-                  <div
-                    className="framer-1kt4wg0"
-                    data-framer-component-type="RichTextContainer"
-                    data-framer-name="문의하기"
-                    style={{
-                      transform: 'none',
-                    }}
-                  >
-                    <p
-                      className="framer-text"
-                      style={{
-                        '--font-selector':
-                          'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                        '--framer-font-family':
-                          '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                        '--framer-font-size': '21px',
-                        '--framer-letter-spacing': '-0.02em',
-                        '--framer-line-height': '1.7em',
-                        '--framer-text-color': 'rgb(255, 255, 255)',
-                      }}
-                    >
-                      출판 상담 문의하기
-                    </p>
-                  </div>
-                </div>
-                <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-                  <div
-                    className="framer-1kt4wg0"
-                    data-framer-component-type="RichTextContainer"
-                    data-framer-name="문의하기"
-                    style={{
-                      transform: 'none',
-                    }}
-                  >
-                    <p
-                      className="framer-text"
-                      style={{
-                        '--font-selector':
-                          'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                        '--framer-font-family':
-                          '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                        '--framer-font-size': '18px',
-                        '--framer-letter-spacing': '-0.02em',
-                        '--framer-line-height': '1.7em',
-                        '--framer-text-color': 'rgb(255, 255, 255)',
-                      }}
-                    >
-                      출판 상담 문의하기
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ContactUs />
     </>
   );
 }
