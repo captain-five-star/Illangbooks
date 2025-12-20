@@ -139,19 +139,14 @@
   }
 }
 
-html,
-* {
-  font-family: 'pretendard', sans-serif;
+html{
+  @apply antialiased;
+  @apply font-pretendard;
 }
 
-@inline {
+@theme {
   --font-pretendard: 'Pretendard Light', sans-serif;
   --font-instrument: 'Instrument Sans', 'sans-serif';
-}
-
-@font inline {
-  --font-instrument: 'Instrument Sans', 'sans-serif';
-  --font-pretendard: 'Pretendard Light', 'sans-serif';
 }
 
 /* 반응형 이미지 */
