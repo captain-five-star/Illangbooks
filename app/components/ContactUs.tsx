@@ -7,7 +7,8 @@ import Title from './Title';
 const ContactUs = () => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     formData.append('access_key', '085056b3-f5ee-4677-8752-e4815de74b6a');
 
     try {
@@ -20,11 +21,12 @@ const ContactUs = () => {
 
       if (data.success) {
         toast.success('전송되었습니다.');
-        event.currentTarget.reset();
+        form.reset();
       } else {
         toast.error('전송에 실패하였습니다.');
       }
     } catch (error) {
+      console.error('Error submitting form:', error);
       toast.error('오류가 발생했습니다.');
     }
   };
