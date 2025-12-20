@@ -94,13 +94,26 @@ const ContactUs = () => {
             </div>
 
             <div>
-              <div className="text-pretty break-keep">
-                <strong>-외주 편집, 자비 출판 관련 문의</strong>
-                도서 장르, 제목, 원고(예상)분량, 원고 완성도, 원고 구성 요소(EX:
-                텍스트, 사진, 삽화, 도표, 음원 유무 및 대략의 개수) 필수 기재
-                <strong>-출판 코칭 관련 문의</strong>
-                코칭 목적 (EX: 개인 소장용 도서 출간, 출판사 투고 및 계약 관련,
-                출판사 취업(창업) 준비 등) 필수 기재
+              <div className="text-balance">
+                <div className="">
+                  <p>
+                    <strong>-외주 편집, 자비 출판 관련 문의</strong>
+                  </p>
+                  <p>
+                    도서 장르, 제목, 원고(예상)분량, 원고 완성도, 원고 구성
+                    요소(EX: 텍스트, 사진, 삽화, 도표, 음원 유무 및 대략의 개수)
+                    필수 기재
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <p>
+                    <strong>-출판 코칭 관련 문의</strong>
+                  </p>
+                  <p>
+                    코칭 목적 (EX: 개인 소장용 도서 출간, 출판사 투고 및 계약
+                    관련, 출판사 취업(창업) 준비 등) 필수 기재
+                  </p>
+                </div>
               </div>
             </div>
 
