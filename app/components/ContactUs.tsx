@@ -34,8 +34,8 @@ const ContactUs = () => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <div className="framer-ur7txx" data-framer-name="섹션5: 문의하기">
         <div className="framer-kd1ens flex-col justify-between xl:flex-row">
-          <div>
-            <h2 className="font-instrument text-[28px] font-bold md:text-[48px] xl:text-[72px]">
+          <div className="mb-4">
+            <h2 className="font-instrument text-[28px] leading-[0.8] font-bold md:text-[48px] xl:text-[72px]">
               Contact
             </h2>
           </div>
@@ -45,52 +45,69 @@ const ContactUs = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             onSubmit={onSubmit}
-            className="grid w-full gap-3 sm:grid-cols-2 sm:gap-5 xl:max-w-2xl"
+            className="flex w-full flex-col gap-3 sm:gap-5 xl:max-w-2xl"
           >
             <div>
-              <p className="font-pretendard mb-2 text-base font-medium xl:text-lg">
-                이름
-              </p>
               <div className="flex rounded-lg border border-gray-300 pl-3 dark:border-gray-600">
                 <input
                   name="name"
                   type="text"
-                  placeholder="이름(회사명)을 입력하세요"
-                  className="font-pretendard w-full p-3 text-sm outline-none"
+                  placeholder="이름(회사명)"
+                  className="w-full px-1.5 py-2.5 text-sm outline-none md:text-base"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <p className="mb-2 text-sm font-medium">Email id</p>
+              <div className="flex rounded-lg border border-gray-300 pl-3 dark:border-gray-600">
+                <input
+                  name="phone"
+                  type="text"
+                  placeholder="전화번호"
+                  className="w-full px-1.5 py-2.5 text-sm outline-none md:text-base"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
               <div className="flex rounded-lg border border-gray-300 pl-3 dark:border-gray-600">
                 <input
                   name="email"
                   type="email"
-                  placeholder="Enter your email"
-                  className="w-full p-3 text-sm outline-none"
+                  placeholder="이메일"
+                  className="w-full px-1.5 py-2.5 text-sm outline-none md:text-base"
                   required
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <p className="mb-2 text-sm font-medium">Message</p>
               <textarea
                 name="message"
                 rows={8}
-                placeholder="Enter your message"
-                className="w-full rounded-lg border border-gray-300 p-3 text-sm outline-none dark:border-gray-600"
+                placeholder="문의 내용을 상세히 입력해 주세요."
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none md:text-base dark:border-gray-600"
                 required
               />
             </div>
 
-            <button
-              type="submit"
-              className="bg-primary flex w-max cursor-pointer gap-2 rounded-full px-10 py-3 text-sm text-white transition-all hover:scale-103"
-            >
-              Submit
+            <div>
+              <div className="text-pretty break-keep">
+                <strong>-외주 편집, 자비 출판 관련 문의</strong>
+                도서 장르, 제목, 원고(예상)분량, 원고 완성도, 원고 구성 요소(EX:
+                텍스트, 사진, 삽화, 도표, 음원 유무 및 대략의 개수) 필수 기재
+                <strong>-출판 코칭 관련 문의</strong>
+                코칭 목적 (EX: 개인 소장용 도서 출간, 출판사 투고 및 계약 관련,
+                출판사 취업(창업) 준비 등) 필수 기재
+              </div>
+            </div>
+
+            <button type="submit" className="framer-3F5nR framer-1kzllwq">
+              <p className="text-base text-white md:text-lg lg:text-[21px]">
+                출판 상담 문의하기
+              </p>
             </button>
           </motion.form>
         </div>
