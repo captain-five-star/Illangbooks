@@ -767,12 +767,11 @@ export default function Home() {
         </div>
       </div>
       <div className="framer-1w5b1ly" data-framer-name="섹션2: 서비스">
-        <div className="framer-1g5rh3z">
+        <div className="framer-1g5rh3z" key={isMobile.toString()}>
           <motion.div
-            key={isMobile.toString()}
             initial={{
               opacity: 0,
-              y: console.log(isMobile) || isMobile ? 30 : 60,
+              y: isMobile ? 30 : 60,
               x: isMobile ? 0 : -30,
             }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
@@ -950,7 +949,6 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div
-            key={isMobile.toString()}
             initial={{
               opacity: 0,
               y: isMobile ? 20 : 0,
