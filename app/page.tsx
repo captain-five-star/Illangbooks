@@ -945,9 +945,10 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div
+            key={isMobile.toString()}
             initial={{
               opacity: 0,
-              y: console.log(isMobile) || isMobile ? 0 : 60,
+              y: isMobile ? 0 : 60,
             }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
