@@ -769,8 +769,13 @@ export default function Home() {
       <div className="framer-1w5b1ly" data-framer-name="섹션2: 서비스">
         <div className="framer-1g5rh3z">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            key={isMobile.toString()}
+            initial={{
+              opacity: 0,
+              y: console.log(isMobile) || isMobile ? 30 : 60,
+              x: isMobile ? 0 : -30,
+            }}
+            whileInView={{ opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="framer-1fr8tv6"
@@ -948,9 +953,10 @@ export default function Home() {
             key={isMobile.toString()}
             initial={{
               opacity: 0,
-              y: isMobile ? 0 : 60,
+              y: isMobile ? 20 : 0,
+              x: isMobile ? 0 : 30,
             }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="framer-ntn7d0 qna-container"
