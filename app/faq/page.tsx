@@ -1,7 +1,8 @@
-import React from 'react';
+'use client';
 import QnaBox from '@/app/components/QnaBox';
+import { motion } from 'motion/react';
 
-const page = () => {
+const Page = () => {
   const qnaData = [
     {
       title: '자비출판이란 무엇인가요?',
@@ -29,6 +30,17 @@ const page = () => {
       desc: `네, 가능합니다. 일랑북스에서는 교정교열 또는 디자인 작업만 따로 의뢰하실 수 있습니다. 특히 공모전 준비 중인 원고나 웹소설 업로드를 준비 중이신 경우, 저자가 직접 출간을 계획하시는 경우, 1인 출판사 또는 일반 출판사가 부분적으로 작업을 의뢰하실 때 매우 유용합니다. 각 작업 단계마다 전문 편집인들이 세심하게 작업을 진행하므로, 원하시는 부분에 대해 높은 퀄리티의 결과물을 받아 보실 수 있습니다. 언제든 문의 주시면 자세한 상담을 통해 맞춤형 서비스를 제공해 드리겠습니다.`,
     },
   ];
+  const variantsOuter = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3 },
+    },
+  };
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
   return (
     <>
       <div
@@ -40,10 +52,19 @@ const page = () => {
         }}
       >
         <div className="framer-1t21uct" data-framer-name="섹션: FAQ">
-          <div className="framer-5jmcbr">
-            <div className="framer-1opixmp">
+          <motion.div
+            variants={variantsOuter}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="framer-5jmcbr"
+          >
+            <motion.div
+              variants={variants}
+              className="framer-1opixmp h-full! w-full!"
+            >
               <div
-                className="framer-7osg2r"
+                className="framer-7osg2r relative!"
                 data-framer-component-type="RichTextContainer"
                 style={{
                   transform: 'none',
@@ -64,7 +85,7 @@ const page = () => {
                 </p>
               </div>
               <div
-                className="framer-9xgl4"
+                className="framer-9xgl4 relative! h-full w-full"
                 data-framer-component-type="RichTextContainer"
                 style={{
                   transform: 'none',
@@ -84,14 +105,17 @@ const page = () => {
                   자주 묻는 질문에 대한 답변을 정리해 두었습니다.
                 </p>
               </div>
-            </div>
-            <div className="framer-ntn7d0 qna-container w-full!">
+            </motion.div>
+            <motion.div
+              variants={variants}
+              className="framer-ntn7d0 qna-container w-full!"
+            >
               {qnaData.map((item, index) => (
                 <QnaBox key={index} title={item.title} desc={item.desc} />
               ))}
               <div className="framer-1977wgu" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
       <div id="overlay" />
@@ -99,4 +123,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

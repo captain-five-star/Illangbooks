@@ -1,7 +1,8 @@
-import React from 'react';
+'use client';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <div
@@ -12,7 +13,13 @@ const page = () => {
           width: '100%',
         }}
       >
-        <div className="framer-108tk09">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, staggerChildren: 1 }}
+          viewport={{ once: true }}
+          className="framer-108tk09"
+        >
           <div className="framer-amsmam">
             <div className="ssr-variant hidden-1ef32pi hidden-xksy3p">
               <div
@@ -1038,9 +1045,15 @@ const page = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
         <div className="framer-yxyu08" />
-        <div className="framer-dkjntl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="framer-dkjntl"
+        >
           <div className="framer-5wfw8l">
             <div className="framer-bf6xm3">
               <div className="ssr-variant hidden-1ef32pi hidden-xksy3p">
@@ -1966,11 +1979,11 @@ const page = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div id="overlay" />
     </>
   );
 };
 
-export default page;
+export default Page;

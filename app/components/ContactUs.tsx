@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
 
-const ContactUs = () => {
+const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -37,8 +37,12 @@ const ContactUs = () => {
       <div className="framer-ur7txx" data-framer-name="섹션5: 문의하기">
         <div className="framer-kd1ens flex-col justify-between xl:flex-row">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{
+              opacity: 0,
+              x: isMobile ? 0 : -30,
+              y: isMobile ? 20 : 0,
+            }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="mb-6"
@@ -48,12 +52,16 @@ const ContactUs = () => {
             </h2>
           </motion.div>
           <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{
+              opacity: 0,
+              x: isMobile ? 0 : 30,
+              y: isMobile ? 20 : 0,
+            }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             onSubmit={onSubmit}
-            className="flex w-full flex-col gap-3 sm:gap-5 xl:max-w-2xl"
+            className="flex w-full flex-col gap-3 sm:gap-5 xl:max-w-[58%]"
           >
             <div>
               <div className="flex rounded-lg border border-gray-300 pl-3 dark:border-gray-600">
@@ -139,7 +147,6 @@ const ContactUs = () => {
             </button>
           </motion.form>
         </div>
-        {/* <Title title="Contact" desc="Get in touch with us" /> */}
       </div>
     </>
   );

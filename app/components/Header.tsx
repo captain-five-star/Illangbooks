@@ -49,6 +49,7 @@ const Header: FC = () => {
                 width: '100%',
               }}
               width="440"
+              loading="eager"
             />
           </div>
         </Link>
@@ -84,6 +85,7 @@ const Header: FC = () => {
                 width: '100%',
               }}
               width="440"
+              loading="eager"
             />
           </div>
         </Link>
@@ -120,6 +122,7 @@ const Header: FC = () => {
                 width: '100%',
               }}
               width="440"
+              loading="eager"
             />
           </div>
         </Link>
@@ -280,7 +283,14 @@ const Header: FC = () => {
               '--framer-text-color': 'rgb(33, 33, 33)',
             }}
           >
-            일랑 블로그
+            <Link
+              className="framer-text framer-styles-preset-fa0lqh"
+              data-styles-preset="NSj8aKz2Q"
+              href="https://buly.kr/9MRgv48"
+              target="_blank"
+            >
+              일랑 블로그
+            </Link>
           </p>
         </div>
       </div>

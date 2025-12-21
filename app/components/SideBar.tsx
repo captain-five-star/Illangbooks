@@ -1,14 +1,5 @@
-import React from 'react';
-import clsx from 'clsx';
 import Link from 'next/link';
-
-interface SideBarWrapProps {
-  children: React.ReactNode;
-}
-
-const SideBarWrap: React.FC<SideBarWrapProps> = ({ children }) => {
-  return <>{children}</>;
-};
+import { motion, AnimatePresence } from 'motion/react';
 
 const SideBar = ({
   isOpen,
@@ -18,167 +9,168 @@ const SideBar = ({
   toggleBtn: () => void;
 }) => {
   return (
-    <SideBarWrap>
-      <div
-        id="overlay"
-        className=""
-        style={{ display: isOpen ? 'block' : 'none' }}
-      >
-        <div
-          className="framer-3F5nR framer-idunJ"
-          data-framer-portal-id="1lbz3mg"
-          style={{
-            height: 'auto',
-            right: '0px',
-            position: 'fixed',
-            top: '0px',
-            visibility: 'visible',
-            width: '100%',
-            zIndex: '20',
-          }}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          id="overlay"
+          className="fixed top-0 left-0 z-40 h-full w-full bg-[#aaaaaab]"
+          initial={{ opacity: 0, backdropFilter: 'blur(0)' }}
+          animate={{ opacity: 1, backdropFilter: 'blur(10px)' }}
+          exit={{ opacity: 0, backdropFilter: 'blur(0)' }}
         >
           <div
-            aria-hidden="true"
+            className="framer-3F5nR framer-idunJ relative z-30"
             style={{
-              inset: '0px',
+              height: 'auto',
+              right: '0px',
               position: 'fixed',
+              top: '0px',
+              width: '100%',
             }}
-          />
-          <div>
+          >
             <div
-              className={clsx('framer-57kvng', isOpen && 'open')}
-              onClick={toggleBtn}
-              role="dialog"
-            >
-              <div className="framer-1kb52hl">
-                <div
-                  className="framer-1mi9bxb"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
+              aria-hidden="true"
+              style={{
+                inset: '0px',
+                position: 'fixed',
+              }}
+            />
+            <div>
+              <div className="framer-57kvng" onClick={toggleBtn} role="dialog">
+                <div className="framer-1kb52hl">
+                  <div
+                    className="framer-1mi9bxb"
+                    data-framer-component-type="RichTextContainer"
                     style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1em',
-                      '--framer-text-color': 'rgb(255, 255, 255)',
+                      transform: 'none',
                     }}
                   >
-                    <Link
-                      className="framer-text framer-styles-preset-fa0lqh"
-                      href="./"
+                    <p
+                      className="framer-text"
+                      style={{
+                        '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
+                        '--framer-font-family':
+                          '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
+                        '--framer-font-size': '18px',
+                        '--framer-font-weight': '300',
+                        '--framer-line-height': '1em',
+                        '--framer-text-color': 'rgb(255, 255, 255)',
+                      }}
                     >
-                      일랑북스
-                    </Link>
-                  </p>
-                </div>
-                <div
-                  className="framer-1bikthn"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
+                      <Link
+                        className="framer-text framer-styles-preset-fa0lqh"
+                        href="./"
+                      >
+                        일랑북스
+                      </Link>
+                    </p>
+                  </div>
+                  <div
+                    className="framer-1bikthn"
+                    data-framer-component-type="RichTextContainer"
                     style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1em',
-                      '--framer-text-color': 'rgb(255, 255, 255)',
+                      transform: 'none',
                     }}
                   >
-                    <Link
-                      className="framer-text framer-styles-preset-fa0lqh"
-                      href="/company"
+                    <p
+                      className="framer-text"
+                      style={{
+                        '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
+                        '--framer-font-family':
+                          '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
+                        '--framer-font-size': '18px',
+                        '--framer-font-weight': '300',
+                        '--framer-line-height': '1em',
+                        '--framer-text-color': 'rgb(255, 255, 255)',
+                      }}
                     >
-                      회사소개
-                    </Link>
-                  </p>
-                </div>
-                <div
-                  className="framer-1cvo8xd"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
+                      <Link
+                        className="framer-text framer-styles-preset-fa0lqh"
+                        href="/company"
+                      >
+                        회사소개
+                      </Link>
+                    </p>
+                  </div>
+                  <div
+                    className="framer-1cvo8xd"
+                    data-framer-component-type="RichTextContainer"
                     style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1em',
-                      '--framer-text-color': 'rgb(255, 255, 255)',
+                      transform: 'none',
                     }}
                   >
-                    <Link
-                      className="framer-text framer-styles-preset-fa0lqh"
-                      href="/faq"
+                    <p
+                      className="framer-text"
+                      style={{
+                        '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
+                        '--framer-font-family':
+                          '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
+                        '--framer-font-size': '18px',
+                        '--framer-font-weight': '300',
+                        '--framer-line-height': '1em',
+                        '--framer-text-color': 'rgb(255, 255, 255)',
+                      }}
                     >
-                      FAQ
-                    </Link>
-                  </p>
-                </div>
-                <div
-                  className="framer-1je3kmh"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
+                      <Link
+                        className="framer-text framer-styles-preset-fa0lqh"
+                        href="/faq"
+                      >
+                        FAQ
+                      </Link>
+                    </p>
+                  </div>
+                  <div
+                    className="framer-1je3kmh"
+                    data-framer-component-type="RichTextContainer"
                     style={{
-                      '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
-                      '--framer-font-family':
-                        '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
-                      '--framer-font-size': '18px',
-                      '--framer-font-weight': '300',
-                      '--framer-line-height': '1em',
-                      '--framer-text-color': 'rgb(255, 255, 255)',
+                      transform: 'none',
                     }}
                   >
-                    <Link
-                      className="framer-text framer-styles-preset-fa0lq"
-                      href="https://buly.kr/9MRgv48"
-                      target="_blank"
+                    <p
+                      className="framer-text"
+                      style={{
+                        '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
+                        '--framer-font-family':
+                          '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
+                        '--framer-font-size': '18px',
+                        '--framer-font-weight': '300',
+                        '--framer-line-height': '1em',
+                        '--framer-text-color': 'rgb(255, 255, 255)',
+                      }}
                     >
-                      일랑 블로그
-                    </Link>
-                  </p>
+                      <Link
+                        className="framer-text framer-styles-preset-fa0lq"
+                        href="https://buly.kr/9MRgv48"
+                        target="_blank"
+                      >
+                        일랑 블로그
+                      </Link>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="framer-1vxqsea" tabIndex={0} onClick={toggleBtn}>
                 <div
-                  aria-hidden="true"
-                  className="framer-jgtes9"
-                  // data-framer-component-type="SVG"
-                  style={{
-                    backgroundImage: `url('/public/close-icon.png')`,
-                    backgroundSize: '100% 100%',
-                    flexShrink: '0',
-                    imageRendering: 'pixelated',
-                  }}
-                />
+                  className="framer-1vxqsea"
+                  tabIndex={0}
+                  onClick={toggleBtn}
+                >
+                  <div
+                    aria-hidden="true"
+                    className="framer-jgtes9"
+                    // data-framer-component-type="SVG"
+                    style={{
+                      backgroundImage: `url('/close-icon.png')`,
+                      backgroundSize: '100% 100%',
+                      flexShrink: '0',
+                      imageRendering: 'pixelated',
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </SideBarWrap>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
