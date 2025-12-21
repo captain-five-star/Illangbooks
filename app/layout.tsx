@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './framer.css';
-import Script from 'next/script';
 import SvgTemplates from './components/svg-templates';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -41,13 +40,6 @@ export default function RootLayout({
         ></style>
       </head>
       <body>
-        <Script
-          suppressHydrationWarning={true}
-          async
-          src="https://events.framer.com/script?v=2"
-          data-fid="bb9229f8597073bd554ad9b49e3b2304cbcca7422057248cf5b20c43c552a751"
-          data-no-nt
-        ></Script>
         <div
           data-framer-generated-page=""
           data-framer-hydrate-v2='{"routeId":"augiA20Il","localeId":"default","breakpoints":[{"hash":"1vk2m8p","mediaQuery":"(min-width: 1200px)"},{"hash":"xpwx9r","mediaQuery":"(min-width: 810px) and (max-width: 1199.98px)"},{"hash":"72rtr7","mediaQuery":"(max-width: 809.98px)"}]}'

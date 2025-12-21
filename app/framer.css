@@ -1499,7 +1499,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
 
 .framer-3F5nR .framer-xfdacz {
     flex-flow: column;
-    flex: none;
+    flex: default;
     place-content: flex-start center;
     align-items: flex-start;
     gap: 30px;
@@ -1508,8 +1508,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     padding: 0;
     display: flex;
     position: absolute;
-    top: 64%;
     left: 40px;
+    top: 30%;
     overflow: hidden;
     transform: translateY(-50%)
 }
@@ -2797,7 +2797,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     }
 
     .framer-3F5nR .framer-xfdacz {
-        top: 59%;
+        top: 35%;
         left: 80px
     }
 

@@ -5,6 +5,8 @@ import Image from 'next/image';
 import QnaBox from './components/QnaBox';
 import Link from 'next/link';
 import ContactUs from './components/ContactUs';
+import { motion } from 'motion/react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 export default function Home() {
   const FramerComponent = dynamic(
@@ -42,12 +44,18 @@ export default function Home() {
       foot: `- 비용 : 30분 / 55,000원`,
     },
   ];
-
+  const isMobile = useIsMobile();
   return (
     <>
       <FramerComponent />
       <div className="framer-va6j0a" data-framer-name="섹션1">
-        <div className="framer-xfdacz">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="framer-xfdacz"
+        >
           <div className="framer-1bt0651">
             <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
               <div
@@ -591,7 +599,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <a className="framer-1c25ncm framer-lux5qc" href="./회사소개">
+          <Link className="framer-1c25ncm framer-lux5qc" href="./company">
             <div className="framer-igrsqc">
               <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
                 <div
@@ -612,7 +620,7 @@ export default function Home() {
                       '--framer-text-color': 'rgb(255, 255, 255)',
                     }}
                   >
-                    <Link href="/company">회사 소개 바로가기</Link>
+                    회사 소개 바로가기
                   </p>
                 </div>
               </div>
@@ -636,7 +644,7 @@ export default function Home() {
                       '--framer-text-color': 'rgb(255, 255, 255)',
                     }}
                   >
-                    <Link href="/company">회사 소개 바로가기</Link>
+                    회사 소개 바로가기
                   </p>
                 </div>
               </div>
@@ -660,7 +668,7 @@ export default function Home() {
                       '--framer-text-color': 'rgb(255, 255, 255)',
                     }}
                   >
-                    <Link href="/company">회사 소개 바로가기</Link>
+                    회사 소개 바로가기
                   </p>
                 </div>
               </div>
@@ -679,10 +687,16 @@ export default function Home() {
                 ></div>
               </div>
             </div>
-          </a>
-        </div>
+          </Link>
+        </motion.div>
         <div className="ssr-variant hidden-1vk2m8p">
-          <div className="framer-1dzt9ka">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="framer-1dzt9ka"
+          >
             <div
               data-framer-background-image-wrapper="true"
               style={{
@@ -697,6 +711,7 @@ export default function Home() {
               <Image
                 alt=""
                 decoding="async"
+                loading="eager"
                 height="1210"
                 src="https://framerusercontent.com/images/CMmvqOT0GuDIpo04T2Q4PjuQQ.png?width=1154&height=1210"
                 style={{
@@ -710,10 +725,16 @@ export default function Home() {
                 width="1154"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-          <div className="framer-1dzt9ka">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="framer-1dzt9ka"
+          >
             <div
               data-framer-background-image-wrapper="true"
               style={{
@@ -729,6 +750,7 @@ export default function Home() {
                 alt=""
                 decoding="async"
                 height="1210"
+                loading="eager"
                 src="https://framerusercontent.com/images/CMmvqOT0GuDIpo04T2Q4PjuQQ.png?width=1154&height=1210"
                 style={{
                   borderRadius: 'inherit',
@@ -741,12 +763,18 @@ export default function Home() {
                 width="1154"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="framer-1w5b1ly" data-framer-name="섹션2: 서비스">
         <div className="framer-1g5rh3z">
-          <div className="framer-1fr8tv6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="framer-1fr8tv6"
+          >
             <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
               <div
                 className="framer-1g17qil"
@@ -915,8 +943,17 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="framer-ntn7d0 qna-container">
+          </motion.div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: console.log(isMobile) || isMobile ? 0 : 60,
+            }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="framer-ntn7d0 qna-container"
+          >
             {qnaData.map((item, index) => (
               <QnaBox
                 key={index}
@@ -926,7 +963,7 @@ export default function Home() {
               />
             ))}
             <div className="framer-1977wgu" />
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="framer-j9mvpp" data-framer-name="섹션3: 출간과정">
@@ -4132,7 +4169,7 @@ export default function Home() {
         </div>
       </div>
       <div className="framer-p44x6u" data-framer-name="섹션4: 카톡문의">
-        <a href="https://open.kakao.com/o/sv0MPsAg" target="_blank">
+        <Link href="https://open.kakao.com/o/sv0MPsAg" target="_blank">
           <Image
             src="/katalk-mb.png"
             width={720}
@@ -4159,19 +4196,7 @@ export default function Home() {
               height: '100%',
             }}
           />
-        </a>
-        {/* <div
-          aria-hidden="true"
-          className="framer-1w5nd7t hidden-1vk2m8p"
-          data-framer-component-type="SVG"
-          style={{
-            backgroundImage:
-              'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 152 128" overflow="visible"><path d="M 0 0 L 152 0 L 152 128 L 0 128 Z" fill="%23CCC"></path></svg>\')',
-            backgroundSize: '100% 100%',
-            flexShrink: '0',
-            imageRendering: 'pixelated',
-          }}
-        ></div> */}
+        </Link>
       </div>
       <ContactUs />
     </>

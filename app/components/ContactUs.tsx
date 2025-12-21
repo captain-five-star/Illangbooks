@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 const ContactUs = () => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append('access_key', '085056b3-f5ee-4677-8752-e4815de74b6a');
@@ -35,14 +36,20 @@ const ContactUs = () => {
       <Toaster position="bottom-center" reverseOrder={false} />
       <div className="framer-ur7txx" data-framer-name="섹션5: 문의하기">
         <div className="framer-kd1ens flex-col justify-between xl:flex-row">
-          <div className="mb-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
             <h2 className="font-instrument text-[28px] leading-[0.8] font-bold md:text-[48px] xl:text-[72px]">
               Contact
             </h2>
-          </div>
+          </motion.div>
           <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             onSubmit={onSubmit}
