@@ -234,7 +234,7 @@ const Header: FC = () => {
               data-styles-preset="NSj8aKz2Q"
               href="/company"
             >
-              회사소개
+              회사 소개
             </Link>
           </p>
         </div>

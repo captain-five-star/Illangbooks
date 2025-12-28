@@ -147,6 +147,7 @@ html{
 @theme {
   --font-pretendard: 'Pretendard Regular', 'sans-serif';
   --font-instrument: 'Instrument Sans', 'sans-serif';
+  --font-gowunbatang: 'Gowun Batang Bold', 'serif';
 }
 
 /* 반응형 이미지 */
