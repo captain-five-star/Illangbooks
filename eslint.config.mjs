@@ -30,6 +30,7 @@ export default defineConfig([
       },
     },
     rules: {
+      'react/jsx-no-literals': 'off',
       'prettier/prettier': [
         'error',
         {

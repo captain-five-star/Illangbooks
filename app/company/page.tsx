@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import CompanyMDX from './company.mdx';
 
 const Page = () => {
   return (
@@ -22,34 +23,9 @@ const Page = () => {
         >
           <div className="h-full w-full bg-amber-100">
             <p className="h-full w-full text-base leading-[1.7em] break-keep whitespace-pre-line md:text-lg xl:text-[21px]">
-              일랑북스는
-출판사의 출간 예정 도서를 기획·편집하고,
-개인·기업·기관의 도서 콘텐츠를
-기획 단계부터 인쇄까지 전 과정을 구조적으로 설계하는 출판기획사입니다.
-경력 20년 내외의 전문 편집인들이 모여
-교재, 소설, 실용, 에세이, 동화 등 다양한 장르의 도서를 기획하고 편집합니다.
-
-글을 쓰고, 책의 형태를 갖춘 인쇄물을 만드는 것은
-이제 더 이상 특별한 일이 아닙니다.
-하지만 그 원고가 어떤 독자를 위한 것인지,
-무엇을 말하는지,
-적절한 구성과 분량을 갖추고 있는지를 판단하는 일은
-여전히 전문적인 기획과 편집을 필요로 합니다.
-
-일랑북스의 기획·편집은
-문장을 고치는 데서 끝나지 않습니다.
-원고의 방향을 점검하고,
-내용의 밀도와 흐름을 재구성하며,
-독자에게 어떻게 전달될지를 기준으로
-책 전체의 구조를 설계합니다.
-그 위에 조화로운 디자인과 제작이 더해질 때
-읽을수록 설득력 있고 볼수록 완성도 높은 책이 만들어진다고 믿습니다.
-
-일랑북스는
-단순히 책을 ‘만드는 곳’이 아니라,
-책으로 완성될 수 있도록 판단하고 설계하는 출판기획 파트너입니다.
+              <CompanyMDX />
             </p>
-            <p className="h-full w-full text-base break-keep whitespace-pre-line md:text-lg xl:text-[21px] pt-15">
+            <p className="h-full w-full pt-15 text-base break-keep whitespace-pre-line md:text-lg xl:text-[21px]">
               {`일랑북스 일동 드림`}
             </p>
           </div>
