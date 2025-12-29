@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 
 const SideBar = ({
@@ -88,7 +89,34 @@ const SideBar = ({
                         className="framer-text framer-styles-preset-fa0lqh"
                         href="/company"
                       >
-                        회사소개
+                        회사 소개
+                      </Link>
+                    </p>
+                  </div>
+                  <div
+                    className="framer-1bikthn"
+                    data-framer-component-type="RichTextContainer"
+                    style={{
+                      transform: 'none',
+                    }}
+                  >
+                    <p
+                      className="framer-text"
+                      style={{
+                        '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgTGlnaHQ=',
+                        '--framer-font-family':
+                          '"Pretendard Light", "Pretendard Light Placeholder", sans-serif',
+                        '--framer-font-size': '18px',
+                        '--framer-font-weight': '300',
+                        '--framer-line-height': '1em',
+                        '--framer-text-color': 'rgb(255, 255, 255)',
+                      }}
+                    >
+                      <Link
+                        className="framer-text framer-styles-preset-fa0lqh"
+                        href="/inquiry"
+                      >
+                        견적 문의
                       </Link>
                     </p>
                   </div>
@@ -149,20 +177,15 @@ const SideBar = ({
                   </div>
                 </div>
                 <div
-                  className="framer-1vxqsea"
+                  className="framer-1vxqsea md:right-10!"
                   tabIndex={0}
                   onClick={toggleBtn}
                 >
-                  <div
-                    aria-hidden="true"
-                    className="framer-jgtes9"
-                    // data-framer-component-type="SVG"
-                    style={{
-                      backgroundImage: `url('/close-icon.png')`,
-                      backgroundSize: '100% 100%',
-                      flexShrink: '0',
-                      imageRendering: 'pixelated',
-                    }}
+                  <Image
+                    src="/close-icon.png"
+                    alt="Close"
+                    width={40}
+                    height={40}
                   />
                 </div>
               </div>

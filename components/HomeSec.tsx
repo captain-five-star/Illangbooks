@@ -30,7 +30,7 @@ const HomeSec = () => {
         className="framer-xfdacz relative! h-full w-full"
       >
         <div className="framer-1bt0651">
-          <h2 className="title font-instrument letter-spacing-[-0.02em] text-[28px] font-bold md:text-5xl xl:text-[72px]">
+          <h2 className="title font-instrument letter-spacing-[-0.02em] text-[28px] font-bold md:text-5xl xl:text-6xl">
             About
           </h2>
           <div>
@@ -40,7 +40,7 @@ const HomeSec = () => {
             <div className="pt-6">
               {descTag.map((tag, index) => (
                 <span
-                  className="rounded-full bg-[#F5F5F5] px-2 py-1 text-sm md:text-base xl:px-4 xl:py-2 xl:text-lg"
+                  className="mr-1 rounded-full bg-[#F5F5F5] px-2 py-1 text-sm md:text-base xl:px-4 xl:py-2 xl:text-lg"
                   key={index}
                 >
                   {tag}
@@ -50,7 +50,7 @@ const HomeSec = () => {
           </div>
         </div>
         <Link
-          className="link-btn framer-1c25ncm framer-lux5qc"
+          className="link-btn framer-1c25ncm framer-lux5qc rounded-md"
           href="./company"
         >
           <div className="framer-igrsqc">

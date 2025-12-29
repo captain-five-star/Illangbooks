@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './framer.css';
-import SvgTemplates from './components/svg-templates';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import SvgTemplates from '../components/svg-templates';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
   title: '일랑북스',

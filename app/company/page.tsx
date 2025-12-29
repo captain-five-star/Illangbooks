@@ -1,9 +1,12 @@
 'use client';
 import { motion } from 'motion/react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import Image from 'next/image';
-import CompanyMDX from './company.mdx';
+import CompanyMDX from '../mdx-fields/company.mdx';
 
 const Page = () => {
+  const isMobile = useIsMobile();
+
   return (
     <>
       <div
@@ -19,15 +22,12 @@ const Page = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, staggerChildren: 1 }}
           viewport={{ once: true }}
-          className="framer-108tk09 bg-amber-300"
+          className="framer-108tk09"
         >
-          <div className="h-full w-full bg-amber-100">
-            <p className="h-full w-full text-base leading-[1.7em] break-keep whitespace-pre-line md:text-lg xl:text-[21px]">
+          <div className="w-ful h-full">
+            <div className="h-full w-full text-base leading-[1.7em] break-keep whitespace-pre-wrap md:text-lg xl:text-[21px]">
               <CompanyMDX />
-            </p>
-            <p className="h-full w-full pt-15 text-base break-keep whitespace-pre-line md:text-lg xl:text-[21px]">
-              {`일랑북스 일동 드림`}
-            </p>
+            </div>
           </div>
         </motion.div>
         <div className="framer-yxyu08" />
@@ -39,79 +39,12 @@ const Page = () => {
           viewport={{ once: true }}
           className="framer-dkjntl"
         >
-          <div className="framer-5wfw8l">
-            <div className="framer-bf6xm3">
-              <div className="ssr-variant hidden-1ef32pi hidden-xksy3p">
-                <div
-                  className="framer-1oiwr9b"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                      '--framer-font-family':
-                        '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                      '--framer-font-size': '28px',
-                      '--framer-font-weight': '700',
-                      '--framer-text-color':
-                        'var(--token-2344cfaf-58d2-43d2-89fa-ad03dd665892, rgb(33, 33, 33))',
-                    }}
-                  >
-                    Our Team
-                  </p>
-                </div>
-              </div>
-              <div className="ssr-variant hidden-1pz4wa5 hidden-xksy3p">
-                <div
-                  className="framer-1oiwr9b"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                      '--framer-font-family':
-                        '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                      '--framer-font-size': '72px',
-                      '--framer-font-weight': '700',
-                      '--framer-text-color':
-                        'var(--token-2344cfaf-58d2-43d2-89fa-ad03dd665892, rgb(33, 33, 33))',
-                    }}
-                  >
-                    Our Team
-                  </p>
-                </div>
-              </div>
-              <div className="ssr-variant hidden-1pz4wa5 hidden-1ef32pi">
-                <div
-                  className="framer-1oiwr9b"
-                  data-framer-component-type="RichTextContainer"
-                  style={{
-                    transform: 'none',
-                  }}
-                >
-                  <p
-                    className="framer-text"
-                    style={{
-                      '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                      '--framer-font-family':
-                        '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                      '--framer-font-size': '48px',
-                      '--framer-font-weight': '700',
-                      '--framer-text-color':
-                        'var(--token-2344cfaf-58d2-43d2-89fa-ad03dd665892, rgb(33, 33, 33))',
-                    }}
-                  >
-                    Our Team
-                  </p>
-                </div>
+          <div className="framer-5wfw8l h-full">
+            <div className="flex h-full flex-col items-center justify-center gap-4 md:gap-6 xl:items-baseline">
+              <div>
+                <h2 className="font-pretendard text-[28px] leading-[1em] font-bold md:text-[48px] xl:text-6xl">
+                  팀원 소개
+                </h2>
               </div>
               <div className="ssr-variant hidden-1ef32pi hidden-xksy3p">
                 <div
@@ -130,7 +63,7 @@ const Page = () => {
               <div className="ssr-variant hidden-1pz4wa5 hidden-xksy3p">
                 <div
                   aria-hidden="true"
-                  className="framer-1tlsfdj"
+                  className="framer-1tlsfdj hidden"
                   data-framer-component-type="SVG"
                   style={{
                     backgroundImage:
