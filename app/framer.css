@@ -316,16 +316,6 @@ body,
     -webkit-font-smoothing: inherit
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-figure {
-    margin: 0
-}
 
 
 body {
@@ -986,7 +976,7 @@ ol.framer-text {
 li.framer-text {
     counter-increment: list-item;
     padding-inline-start: 2ch;
-    list-style: none
+    /* list-style: none */
 }
 
 ol.framer-text>li.framer-text:before {
@@ -1225,7 +1215,7 @@ th.framer-text {
 
 [data-framer-component-type=DeprecatedRichText] li {
     counter-increment: list-item;
-    list-style: none;
+    /* list-style: none; */
     display: table-row
 }
 
@@ -1685,7 +1675,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     gap: 10px;
     width: 100%;
     height: min-content;
-    padding: 60px 40px;
+    padding: 60px 40px 40px;
     display: flex;
     position: relative;
     overflow: hidden
@@ -1770,7 +1760,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
 }
 
 .framer-3F5nR .framer-7ki120 {
-    background-color: #f5f5f5;
+    background-color: #f9f9f9;
     flex-flow: row;
     flex: none;
     place-content: center;
@@ -2210,10 +2200,10 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     align-items: center;
     gap: 10px;
     width: 100%;
-    padding: 8px;
     display: flex;
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+
 }
 
 .framer-3F5nR .framer-1gj7paw {
@@ -2715,13 +2705,13 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     display: flex;
     position: absolute;
     top: 14px;
-    right: 10px;
+    right: 20px;
     overflow: hidden
 }
 
 .framer-3F5nR .framer-jgtes9 {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     position: relative
 }
 
@@ -2809,7 +2799,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     .framer-3F5nR .framer-1w5b1ly,
     .framer-3F5nR .framer-7ki120,
     .framer-3F5nR .framer-ur7txx {
-        padding: 60px 80px
+        padding: 60px 80px 40px;
     }
 
     .framer-3F5nR .framer-1g5rh3z {
@@ -3038,7 +3028,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
 
     .framer-3F5nR .framer-1w5b1ly {
         order: 1;
-        padding: 120px 160px 140px
+        padding: 120px 160px 80px
     }
 
     .framer-3F5nR .framer-1g5rh3z,
@@ -3635,17 +3625,6 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     -webkit-font-smoothing: inherit
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-figure {
-    margin: 0
-}
-
 
 body {
     --token-7d8af774-9a06-46b6-bf39-f388599cfc37: #3156a4;
@@ -4305,11 +4284,11 @@ ol.framer-text {
 li.framer-text {
     counter-increment: list-item;
     padding-inline-start: 2ch;
-    list-style: none
+    /* list-style: none */
 }
 
 ol.framer-text>li.framer-text:before {
-    content: counter(list-item, var(--list-style-type))".";
+    /* content: counter(list-item, var(--list-style-type))"."; */
     font-variant-numeric: tabular-nums;
     position: absolute;
     inset-inline-start: 0
@@ -4544,7 +4523,7 @@ th.framer-text {
 
 [data-framer-component-type=DeprecatedRichText] li {
     counter-increment: list-item;
-    list-style: none;
+    /* list-style: none; */
     display: table-row
 }
 
@@ -4819,7 +4798,8 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     width: 100%;
     padding: 140px 40px 80px;
     display: flex;
-    position: relative
+    position: relative;
+    justify-content: flex-start;
 }
 
 .framer-WmVtc .framer-amsmam {
@@ -5561,16 +5541,6 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     -webkit-font-smoothing: inherit
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-figure {
-    margin: 0
-}
 
 body {
     --token-7d8af774-9a06-46b6-bf39-f388599cfc37: #3156a4;
@@ -6217,7 +6187,7 @@ ol.framer-text {
 li.framer-text {
     counter-increment: list-item;
     padding-inline-start: 2ch;
-    list-style: none
+    /* list-style: none */
 }
 
 ol.framer-text>li.framer-text:before {
@@ -6456,7 +6426,7 @@ th.framer-text {
 
 [data-framer-component-type=DeprecatedRichText] li {
     counter-increment: list-item;
-    list-style: none;
+    /* list-style: none; */
     display: table-row
 }
 

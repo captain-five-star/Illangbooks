@@ -42,7 +42,7 @@ function AccordionTrigger({
       >
         <ChevronDownIcon className="text-muted-foreground pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-200" />
         <div className="flex h-full items-center">
-          <p className="items-center text-start text-base lg:text-xl">
+          <p className="items-center text-start text-base whitespace-pre-wrap lg:text-xl">
             {children}
           </p>
         </div>
@@ -58,7 +58,7 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="framer-awg93p framer-wamkf7 mb-4 h-full w-full px-7 pt-7 pb-7 text-sm/6 whitespace-pre-wrap antialiased md:text-base/6"
+      className="mb-4 h-full w-full px-7 pt-7 pb-7 text-sm/6 whitespace-pre-line md:text-base/6"
       style={{
         '--vvm4vb': '30px 20px 30px 20px',
         backgroundColor: 'rgb(245, 245, 245)',

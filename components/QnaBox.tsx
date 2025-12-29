@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/app/components/ui/accordion';
-import { Separator } from '@/app/components/ui/separator';
+} from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
 import { ReactNode } from 'react';
 
 const QnaBox = ({
@@ -28,15 +28,12 @@ const QnaBox = ({
           <AccordionContent>
             {desc}
             {foot && (
-              <div className="px-2 py-4 text-xs/5 font-semibold text-[#E04F75] md:text-sm/6">
-                {foot}
-              </div>
+              <div className="text-primary pt-6 pb-4 font-semibold">{foot}</div>
             )}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
     </>
-    //   <div className="framer-1977wgu" />
     // </div>
   );
 };

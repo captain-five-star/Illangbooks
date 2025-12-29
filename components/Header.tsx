@@ -239,6 +239,33 @@ const Header: FC = () => {
           </p>
         </div>
         <div
+          className="framer-1njcwyh hidden-72rtr7"
+          data-framer-component-type="RichTextContainer"
+          style={{
+            transform: 'none',
+          }}
+        >
+          <p
+            className="framer-text"
+            style={{
+              '--font-selector': 'Q1VTVE9NO1ByZXRlbmRhcmQgUmVndWxhcg==',
+              '--framer-font-family':
+                '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
+              '--framer-font-size': '18px',
+              '--framer-line-height': '1.8em',
+              '--framer-text-color': 'rgb(33, 33, 33)',
+            }}
+          >
+            <Link
+              className="framer-text framer-styles-preset-fa0lqh"
+              data-styles-preset="NSj8aKz2Q"
+              href="/inquiry"
+            >
+              견적 문의
+            </Link>
+          </p>
+        </div>
+        <div
           className="framer-220atz hidden-72rtr7"
           data-framer-component-type="RichTextContainer"
           style={{
