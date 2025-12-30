@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
@@ -21,34 +20,35 @@ import {
 } from './ui/select';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
+import { handleForm } from '@/app/actions/mail-handler';
 
 const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    formData.append('access_key', '085056b3-f5ee-4677-8752-e4815de74b6a');
+  //   const form = event.currentTarget;
+  //   const formData = new FormData(form);
+  //   formData.append('access_key', '085056b3-f5ee-4677-8752-e4815de74b6a');
 
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
+  //   try {
+  //     const response = await fetch('https://api.web3forms.com/submit', {
+  //       method: 'POST',
+  //       body: formData,
+  //     });
 
-      const data = await response.json();
+  //     const data = await response.json();
 
-      if (data.success) {
-        toast.success('전송되었습니다.');
-        form.reset();
-      } else {
-        toast.error('전송에 실패하였습니다.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('오류가 발생했습니다.');
-    }
-  };
+  //     if (data.success) {
+  //       toast.success('전송되었습니다.');
+  //       form.reset();
+  //     } else {
+  //       toast.error('전송에 실패하였습니다.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error submitting form:', error);
+  //     toast.error('오류가 발생했습니다.');
+  //   }
+  // };
 
   return (
     <>
@@ -62,8 +62,8 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        onSubmit={onSubmit}
         className="left mb-10 h-full w-full xl:w-[58%]"
+        action={handleForm}
       >
         <Separator className="my-6 xl:hidden" />
         <FieldSet>
@@ -74,9 +74,9 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             <div className="col-span-2 pl-2">
               <Input
                 id="name"
+                name="name"
                 autoComplete="off"
                 placeholder="저자명/기업명을 입력해 주세요."
-                required
               />
             </div>
           </Field>
@@ -89,7 +89,6 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 id="phone"
                 autoComplete="off"
                 placeholder="연락처를 입력해 주세요."
-                required
               />
             </div>
           </Field>
@@ -100,9 +99,9 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             <div className="col-span-2 pl-2">
               <Input
                 id="email"
+                name="email"
                 autoComplete="off"
                 placeholder="이메일을 입력해 주세요."
-                required
               />
             </div>
           </Field>
@@ -115,7 +114,6 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 id="bookTitle"
                 autoComplete="off"
                 placeholder="도서명(가제)을 입력해 주세요."
-                required
               />
             </div>
           </Field>
@@ -529,7 +527,6 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             <Input
               id="manuscriptFile"
               autoComplete="off"
-              required
               type="file"
               className="h-10 border-0 shadow-none md:h-12"
             />
