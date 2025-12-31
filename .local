@@ -1,4 +1,0 @@
-# .env.local
-SMTP_USERNAME=yilang2019@naver.com
-SMTP_PASSWORD=WPXKJUPFEH5C
-RECEIVER_EMAIL=canxi925@gmail.com

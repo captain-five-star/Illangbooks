@@ -34,6 +34,21 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
     }));
   };
 
+  // 폼 액션으로 사용할 클라이언트 래퍼 함수
+  const onSubmit = async (formData: FormData) => {
+    const toastId = toast.loading("메일을 보내는 중입니다...");
+    const result = await handleForm(formData);
+    
+    if (result.success) {
+      toast.success(result.message, { id: toastId });
+
+    } else {
+      toast.error(result.message, { id: toastId });
+    }
+  };
+
+  //form action state
+
   return (
     <>
       <Toaster position="bottom-center" reverseOrder={false} />
@@ -47,7 +62,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         className="left mb-10 h-full w-full xl:w-[58%]"
-        action={handleForm}
+        action={onSubmit}
       >
         <Separator className="my-6 xl:hidden" />
         <FieldSet>
@@ -585,6 +600,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
           <div className="col-span-2 pl-2">
             <Input
               id="manuscriptFile"
+              name="manuscriptFile"
               autoComplete="off"
               type="file"
               className="h-10 border-0 shadow-none md:h-12"

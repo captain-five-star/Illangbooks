@@ -11,8 +11,8 @@ const formSchema = z.object({
   bookCategory: z.array(z.string()),
   purpose: z.string(),
   completeness: z.string(),
-  bookDescription: z.string().nullish(),
-  schedule: z.string().nullish(),
+  bookDescription: z.string().optional(),
+  schedule: z.string().optional(),
   toIllangbooks: z.array(z.string()).default([]),
   printingPlan: z.array(z.string()).default([]),
   printRun: z
@@ -31,9 +31,25 @@ const formSchema = z.object({
     .string()
     .nullish()
     .transform((val) => val ?? ''),
+  manuscriptFile: z.any().refine((file) => file instanceof File && file.size <= 5 * 1024 * 1024).nullish(),
 });
 
 export async function handleForm(formData: FormData) {
+
+  const file = formData.get('manuscriptFile') as File | null;
+
+  let attachments = [];
+
+  if (file && file.size > 0) {
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    attachments.push({
+      filename: file.name,
+      content: buffer,
+    })
+  }
+
   const validateFields = formSchema.safeParse({
     name: formData.get('name'),
     phone: formData.get('phone'),
@@ -50,12 +66,12 @@ export async function handleForm(formData: FormData) {
     printingMethod: formData.get('printingMethod'),
     coverType: formData.get('coverType'),
     printingPreferences: formData.get('printingPreferences'),
+    manuscriptFile: file,
   });
 
   // 에러 핸들링
   if (!validateFields.success) {
-    console.log('Validation failed:', validateFields.error);
-    return;
+    throw new Error('폼 데이터가 유효하지 않습니다.');
   }
 
   //   transporter setup
@@ -76,17 +92,52 @@ export async function handleForm(formData: FormData) {
   const message = {
     from: process.env.SMTP_USERNAME,
     to: process.env.RECEIVER_EMAIL,
-    subject: '도서 견적 메일이 도착하였습니다.',
+    subject: '도서 문의 메일이 도착하였습니다.',
     text: `저자명(기업명): ${inquiryData.name}\n연락처: ${inquiryData.phone}\n이메일: ${inquiryData.email}\n작업 도서명: ${inquiryData.bookTitle}\n도서 분야: ${inquiryData.bookCategory}\n출판 목적: ${inquiryData.purpose}\n원고 완성도: ${inquiryData.completeness}\n도서 소개 및 예상 독자층: ${inquiryData.bookDescription}\n희망 일정: ${inquiryData.schedule}\n일랑북스에 기대하는 역할: ${inquiryData.toIllangbooks.join(', ')}\n인쇄 계획: ${inquiryData.printingPlan.join(', ')}\n예상 부수: ${inquiryData.printRun}\n내지 인쇄 방식: ${inquiryData.printingMethod}\n표지 형태: ${inquiryData.coverType}\n인쇄·제작 방향에 대한 선호: ${inquiryData.printingPreferences}`,
-    html: `저자명(기업명): ${inquiryData.name}<br/>연락처: ${inquiryData.phone}<br/>이메일: ${inquiryData.email}<br/>작업 도서명: ${inquiryData.bookTitle}<br/>도서 분야: ${inquiryData.bookCategory}<br/>출판 목적: ${inquiryData.purpose}<br/>원고 완성도: ${inquiryData.completeness}<br/>도서 소개 및 예상 독자층: ${inquiryData.bookDescription}<br/>희망 일정: ${inquiryData.schedule}<br/>일랑북스에 기대하는 역할: ${inquiryData.toIllangbooks.join(', ')}<br/>인쇄 계획: ${inquiryData.printingPlan.join(', ')}<br/>예상 부수: ${inquiryData.printRun}<br/>내지 인쇄 방식: ${inquiryData.printingMethod}<br/>표지 형태: ${inquiryData.coverType}<br/>인쇄·제작 방향에 대한 선호: ${inquiryData.printingPreferences}`,
+    html: `<div style="">
+    도서 문의 메일이 도착했습니다.
+    <br/><br/>
+        <strong>저자명(기업명):</strong> ${inquiryData.name}
+        <br/>
+        <strong>연락처 :</strong> ${inquiryData.phone}
+        <br/>
+        <strong>이메일 :</strong> ${inquiryData.email}
+        <br/>
+        <strong>작업 도서명 :</strong> ${inquiryData.bookTitle}
+        <br/>
+        <strong>도서 분야 :</strong> ${inquiryData.bookCategory}
+        <br/>
+        <strong>출판 목적 :</strong> ${inquiryData.purpose}
+        <br/>
+        <strong>원고 완성도 :</strong> ${inquiryData.completeness}
+        <br/>
+        <strong>도서 소개 및 예상 독자층 :</strong> ${inquiryData.bookDescription}
+        <br/>
+        <strong>희망 일정 :</strong> ${inquiryData.schedule}
+        <br/>
+        <strong>일랑북스에 기대하는 역할 :</strong> ${inquiryData.toIllangbooks.join(', ')}
+        <br/>
+        <strong>인쇄 계획 :</strong> ${inquiryData.printingPlan.join(', ')}
+        <br/>
+        <strong>예상 부수 :</strong> ${inquiryData.printRun}
+        <br/>
+        <strong>내지 인쇄 방식 :</strong> ${inquiryData.printingMethod}
+        <br/>
+        <strong>표지 형태 :</strong> ${inquiryData.coverType}
+        <br/>
+        <strong>인쇄·제작 방향에 대한 선호 :</strong> ${inquiryData.printingPreferences}
+    </div>
+</div>`,
+    attachments: attachments,
   };
 
   //   send mail
   try {
     await transporter.sendMail(message);
-    console.log('Email sent successfully');
+    return { success: true, message: "문의가 접수되었습니다." };
+
   } catch (error) {
-    console.error('Error sending email:', error);
+    return { success: false, message: "전송에 실패했습니다." };
   }
 
   console.log(validateFields.data);
