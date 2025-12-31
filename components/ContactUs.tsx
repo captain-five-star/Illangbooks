@@ -21,34 +21,18 @@ import {
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { handleForm } from '@/app/actions/mail-handler';
+import { useState } from 'react';
 
 const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
-  // const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-
-  //   const form = event.currentTarget;
-  //   const formData = new FormData(form);
-  //   formData.append('access_key', '085056b3-f5ee-4677-8752-e4815de74b6a');
-
-  //   try {
-  //     const response = await fetch('https://api.web3forms.com/submit', {
-  //       method: 'POST',
-  //       body: formData,
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (data.success) {
-  //       toast.success('전송되었습니다.');
-  //       form.reset();
-  //     } else {
-  //       toast.error('전송에 실패하였습니다.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting form:', error);
-  //     toast.error('오류가 발생했습니다.');
-  //   }
-  // };
+  const [checkedStates, setCheckedStates] = useState<Record<string, boolean>>(
+    {}
+  );
+  const toggleCheck = (id: string, checked: boolean) => {
+    setCheckedStates((prev) => ({
+      ...prev,
+      [id]: checked,
+    }));
+  };
 
   return (
     <>
@@ -87,6 +71,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             <div className="col-span-2 pl-2">
               <Input
                 id="phone"
+                name="phone"
                 autoComplete="off"
                 placeholder="연락처를 입력해 주세요."
               />
@@ -112,6 +97,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             <div className="col-span-2 pl-2">
               <Input
                 id="bookTitle"
+                name="bookTitle"
                 autoComplete="off"
                 placeholder="도서명(가제)을 입력해 주세요."
               />
@@ -128,7 +114,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="novelEssay" />
+                    <Checkbox
+                      id="novelEssay"
+                      name="bookCategory"
+                      value="소설/에세이"
+                    />
                     <FieldLabel
                       htmlFor="novelEssay"
                       className="left w-full place-items-start font-normal"
@@ -141,7 +131,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="humanities" />
+                    <Checkbox
+                      id="humanities"
+                      name="bookCategory"
+                      value="인문"
+                    />
                     <FieldLabel
                       htmlFor="humanities"
                       className="left w-full place-items-start font-normal"
@@ -154,7 +148,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="businessSelfHelp" />
+                    <Checkbox
+                      id="businessSelfHelp"
+                      name="bookCategory"
+                      value="경영/자기계발"
+                    />
                     <FieldLabel
                       htmlFor="businessSelfHelp"
                       className="left w-full place-items-start font-normal"
@@ -167,7 +165,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="practical" />
+                    <Checkbox
+                      id="practical"
+                      name="bookCategory"
+                      value="실용(여행, IT, 요리 등)"
+                    />
                     <FieldLabel
                       htmlFor="practical"
                       className="left w-full place-items-start font-normal"
@@ -180,7 +182,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="children" />
+                    <Checkbox id="children" name="bookCategory" value="동화" />
                     <FieldLabel
                       htmlFor="children"
                       className="left w-full place-items-start font-normal"
@@ -196,7 +198,12 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     className="mb-3 flex flex-col items-start md:mb-4"
                   >
                     <div className="flex justify-items-start">
-                      <Checkbox id="textbook" />
+                      <Checkbox
+                        id="textbook"
+                        name="bookCategory"
+                        value="교재(과목명) : "
+                        onCheckedChange={(v) => toggleCheck('textbook', !!v)}
+                      />
                       <FieldLabel
                         htmlFor="textbook"
                         className="left place-items-start font-normal"
@@ -207,7 +214,9 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     </div>
                     <div className="w-full pl-6">
                       <Input
-                        id="textbook"
+                        id="textbookDetail"
+                        name="bookCategory"
+                        disabled={!checkedStates['textbook']}
                         autoComplete="off"
                         placeholder="교과목을 작성해 주세요."
                         className="mt-2 h-6 w-full text-sm md:h-8 md:text-sm"
@@ -219,7 +228,12 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     className="mb-3 flex flex-col items-start md:mb-4"
                   >
                     <div className="flex justify-items-start">
-                      <Checkbox id="etc" />
+                      <Checkbox
+                        id="etc"
+                        name="bookCategory"
+                        value="기타 : "
+                        onCheckedChange={(v) => toggleCheck('etc', !!v)}
+                      />
                       <FieldLabel
                         htmlFor="etc"
                         className="left place-items-start font-normal"
@@ -230,7 +244,9 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     </div>
                     <div className="w-full pl-6">
                       <Input
-                        id="etc"
+                        id="etcDetail"
+                        name="bookCategory"
+                        disabled={!checkedStates['etc']}
                         autoComplete="off"
                         placeholder="분야를 작성해 주세요."
                         className="mt-2 h-6 w-full text-sm md:h-8 md:text-sm"
@@ -249,25 +265,23 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
               책을 만드는 목적
             </FieldLabel>
             <div className="col-span-2 h-full pl-2">
-              <Select>
+              <Select name="purpose">
                 <SelectTrigger>
                   <SelectValue placeholder="내용을 선택해 주세요." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="personalBranding">개인 브랜딩</SelectItem>
-                  <SelectItem value="corporateTraining">
-                    기업 교육 자료
-                  </SelectItem>
-                  <SelectItem value="privateDistribution">
+                  <SelectItem value="개인 브랜딩">개인 브랜딩</SelectItem>
+                  <SelectItem value="기업 교육 자료">기업 교육 자료</SelectItem>
+                  <SelectItem value="개인 소장·지인 공유">
                     개인 소장·지인 공유
                   </SelectItem>
-                  <SelectItem value="internalUse">
+                  <SelectItem value="내부 자료용(기업·단체 성과물)">
                     내부 자료용(기업·단체 성과물)
                   </SelectItem>
-                  <SelectItem value="limitedDistribution">
+                  <SelectItem value="제한된 배포(기업·기관·학원 등)">
                     제한된 배포(기업·기관·학원 등)
                   </SelectItem>
-                  <SelectItem value="generalDistribution">
+                  <SelectItem value="일반 독자 대상(서점 유통 염두)">
                     일반 독자 대상(서점 유통 염두)
                   </SelectItem>
                 </SelectContent>
@@ -278,19 +292,23 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             </div>
           </Field>
           <Field>
-            <FieldLabel htmlFor="purpose" className="h-full">
+            <FieldLabel htmlFor="completeness" className="h-full">
               원고 완성도<span className="text-amber-700">*</span>
             </FieldLabel>
             <div className="col-span-2 h-full pl-2">
-              <Select required>
+              <Select name="completeness" required>
                 <SelectTrigger>
                   <SelectValue placeholder="내용을 선택해 주세요." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="complete">완성(100%)</SelectItem>
-                  <SelectItem value="finalizing">거의 완성(약 80%)</SelectItem>
-                  <SelectItem value="draft">초고 단계(약 50%)</SelectItem>
-                  <SelectItem value="planning">
+                  <SelectItem value="완성(100%)">완성(100%)</SelectItem>
+                  <SelectItem value="거의 완성(약 80%)">
+                    거의 완성(약 80%)
+                  </SelectItem>
+                  <SelectItem value="초고 단계(약 50%)">
+                    초고 단계(약 50%)
+                  </SelectItem>
+                  <SelectItem value="기획·구성 단계(아이디어 위주)">
                     기획·구성 단계(아이디어 위주)
                   </SelectItem>
                 </SelectContent>
@@ -299,14 +317,16 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
           </Field>
           <Field>
             <FieldLabel
-              htmlFor="message"
+              htmlFor="bookDescription"
               className="h-full items-baseline pt-1"
             >
               도서 소개 및 예상 독자층
             </FieldLabel>
             <div className="col-span-2 pl-2">
               <Textarea
-                id="message"
+                id="bookDescription"
+                name="bookDescription"
+                autoComplete="off"
                 placeholder={`도서에 대한 간략한 소개 및 예상 독자층을 작성해 주세요.
 (예: 직장인을 대상으로 한 토익 교재입니다. 짬을 내어 학습할 수 있도록 각 장은 10분 내 학습 분량으로 구성되며, 기본 설명과 간단한 예문으로 전개됩니다.)`}
                 rows={6}
@@ -319,14 +339,14 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
               원하는 일정
             </FieldLabel>
             <div className="col-span-2 h-full pl-2">
-              <Select>
+              <Select name="schedule">
                 <SelectTrigger>
                   <SelectValue placeholder="내용을 선택해 주세요." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="oneToTwo">1-2개월</SelectItem>
-                  <SelectItem value="threeToFour">3-4개월</SelectItem>
-                  <SelectItem value="discussion">상담 후 협의</SelectItem>
+                  <SelectItem value="1-2개월">1-2개월</SelectItem>
+                  <SelectItem value="3-4개월">3-4개월</SelectItem>
+                  <SelectItem value="상담 후 협의">상담 후 협의</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -344,7 +364,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   orientation="horizontal"
                   className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                 >
-                  <Checkbox id="fullProgress" />
+                  <Checkbox
+                    id="fullProgress"
+                    name="toIllangbooks"
+                    value="기획·편집·디자인·조판(전체 진행)"
+                  />
                   <FieldLabel
                     htmlFor="fullProgress"
                     className="left w-full place-items-start font-normal"
@@ -357,7 +381,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   orientation="horizontal"
                   className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                 >
-                  <Checkbox id="editingDesign" />
+                  <Checkbox
+                    id="editingDesign"
+                    name="toIllangbooks"
+                    value="편집·디자인·조판(기획이 완료된 원고에 한함)"
+                  />
                   <FieldLabel
                     htmlFor="editingDesign"
                     className="left w-full place-items-start font-normal"
@@ -370,7 +398,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   orientation="horizontal"
                   className="mb-1 flex items-center md:mb-2 xl:col-span-1"
                 >
-                  <Checkbox id="printingProduction" />
+                  <Checkbox
+                    id="printingProduction"
+                    name="toIllangbooks"
+                    value="인쇄·제작"
+                  />
                   <FieldLabel
                     htmlFor="printingProduction"
                     className="left w-full place-items-start font-normal"
@@ -399,7 +431,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="noPrinting" />
+                    <Checkbox
+                      id="noPrinting"
+                      name="printingPlan"
+                      value="인쇄를 고려하지 않음(거래처가 있어요)"
+                    />
                     <FieldLabel
                       htmlFor="noPrinting"
                       className="left w-full place-items-start font-normal"
@@ -412,7 +448,11 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="printingUndecided" />
+                    <Checkbox
+                      id="printingUndecided"
+                      name="printingPlan"
+                      value="인쇄 예정이나 구체적인 사양은 미정"
+                    />
                     <FieldLabel
                       htmlFor="printingUndecided"
                       className="left w-full place-items-start font-normal"
@@ -425,7 +465,14 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     orientation="horizontal"
                     className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                   >
-                    <Checkbox id="printingExpected" />
+                    <Checkbox
+                      id="printingExpected"
+                      onCheckedChange={(v) =>
+                        toggleCheck('printingExpected', !!v)
+                      }
+                      name="printingPlan"
+                      value="인쇄 예정이며 대략적인 조건이 있음"
+                    />
                     <FieldLabel
                       htmlFor="printingExpected"
                       className="left w-full place-items-start font-normal"
@@ -443,16 +490,17 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   예상 부수
                 </FieldLabel>
                 <div className="col-span-2 h-full pl-2">
-                  <Select>
+                  <Select
+                    name="printRun"
+                    disabled={!checkedStates['printingExpected']}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="내용을 선택해 주세요." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="hundred">100부 미만</SelectItem>
-                      <SelectItem value="threeToFiveHundred">
-                        300~500부
-                      </SelectItem>
-                      <SelectItem value="thousand">1000부</SelectItem>
+                      <SelectItem value="100부 미만">100부 미만</SelectItem>
+                      <SelectItem value="300~500부">300~500부</SelectItem>
+                      <SelectItem value="1000부">1000부</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -462,14 +510,17 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   내지 인쇄 방식
                 </FieldLabel>
                 <div className="col-span-2 h-full pl-2">
-                  <Select>
+                  <Select
+                    name="printingMethod"
+                    disabled={!checkedStates['printingExpected']}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="내용을 선택해 주세요." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="color">전면 컬러</SelectItem>
-                      <SelectItem value="partialColor">일부 컬러</SelectItem>
-                      <SelectItem value="blackAndWhite">흑백</SelectItem>
+                      <SelectItem value="전면 컬러">전면 컬러</SelectItem>
+                      <SelectItem value="일부 컬러">일부 컬러</SelectItem>
+                      <SelectItem value="흑백">흑백</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -479,14 +530,19 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   표지 형태
                 </FieldLabel>
                 <div className="col-span-2 h-full pl-2">
-                  <Select>
+                  <Select
+                    name="coverType"
+                    disabled={!checkedStates['printingExpected']}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="내용을 선택해 주세요." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="wireless">일반(무선제본)</SelectItem>
-                      <SelectItem value="hardcover">양장</SelectItem>
-                      <SelectItem value="undecided">
+                      <SelectItem value="일반(무선제본)">
+                        일반(무선제본)
+                      </SelectItem>
+                      <SelectItem value="양장">양장</SelectItem>
+                      <SelectItem value="미정(계약 후 협의)">
                         미정(계약 후 협의)
                       </SelectItem>
                     </SelectContent>
@@ -498,18 +554,21 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   인쇄·제작 방향에 대한 선호
                 </FieldLabel>
                 <div className="col-span-2 h-full pl-2">
-                  <Select>
+                  <Select
+                    name="printingPreference"
+                    disabled={!checkedStates['printingExpected']}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="내용을 선택해 주세요." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="designPreference">
+                      <SelectItem value="디자인·후가공 등 고급스러운 이미지를 원함">
                         디자인·후가공 등 고급스러운 이미지를 원함
                       </SelectItem>
-                      <SelectItem value="costEffective">
+                      <SelectItem value="제작비를 고려한 합리적인 구성을 원함">
                         제작비를 고려한 합리적인 구성을 원함
                       </SelectItem>
-                      <SelectItem value="undecided">
+                      <SelectItem value="미정(계약 후 협의)">
                         미정(계약 후 협의)
                       </SelectItem>
                     </SelectContent>
