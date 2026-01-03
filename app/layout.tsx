@@ -4,6 +4,7 @@ import './framer.css';
 import SvgTemplates from '../components/svg-templates';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Toaster } from '../components/ui/sonner';
 
 export const metadata: Metadata = {
   title: '일랑북스',
@@ -40,6 +41,7 @@ export default function RootLayout({
         ></style>
       </head>
       <body>
+        <Toaster />
         <div
           data-framer-generated-page=""
           data-framer-hydrate-v2='{"routeId":"augiA20Il","localeId":"default","breakpoints":[{"hash":"1vk2m8p","mediaQuery":"(min-width: 1200px)"},{"hash":"xpwx9r","mediaQuery":"(min-width: 810px) and (max-width: 1199.98px)"},{"hash":"72rtr7","mediaQuery":"(max-width: 809.98px)"}]}'

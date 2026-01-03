@@ -11,7 +11,6 @@ const Header: FC = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(isOpen);
   return (
     <div className="framer-5x8ol7" data-framer-name="헤더">
       <SideBar isOpen={isOpen} toggleBtn={toggleBtn} />

@@ -3,12 +3,17 @@
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 
+export type formState = {
+  success: boolean;
+  message: string;
+} | null;
+
 const formSchema = z.object({
   name: z.string().min(1),
   phone: z.string().min(1),
   email: z.string(),
   bookTitle: z.string().min(1),
-  bookCategory: z.array(z.string()),
+  bookCategory: z.array(z.string()).min(1, '도서 분야를 선택해 주세요.'),
   purpose: z.string(),
   completeness: z.string(),
   bookDescription: z.string().optional(),
@@ -31,14 +36,18 @@ const formSchema = z.object({
     .string()
     .nullish()
     .transform((val) => val ?? ''),
-  manuscriptFile: z.any().refine((file) => file instanceof File && file.size <= 5 * 1024 * 1024).nullish(),
+  manuscriptFile: z
+    .any()
+    .refine((file) => file instanceof File && file.size <= 5 * 1024 * 1024)
+    .nullish(),
 });
 
-export async function handleForm(formData: FormData) {
-
+export async function handleForm(
+  prevState: formState,
+  formData: FormData
+): Promise<formState> {
   const file = formData.get('manuscriptFile') as File | null;
-
-  let attachments = [];
+  const attachments = [];
 
   if (file && file.size > 0) {
     const arrayBuffer = await file.arrayBuffer();
@@ -47,10 +56,10 @@ export async function handleForm(formData: FormData) {
     attachments.push({
       filename: file.name,
       content: buffer,
-    })
+    });
   }
 
-  const validateFields = formSchema.safeParse({
+  const fields = {
     name: formData.get('name'),
     phone: formData.get('phone'),
     email: formData.get('email'),
@@ -67,14 +76,15 @@ export async function handleForm(formData: FormData) {
     coverType: formData.get('coverType'),
     printingPreferences: formData.get('printingPreferences'),
     manuscriptFile: file,
-  });
+  };
+  const validateFields = formSchema.safeParse(fields);
 
   // 에러 핸들링
   if (!validateFields.success) {
-    throw new Error('폼 데이터가 유효하지 않습니다.');
+    return { success: false, message: '문의 폼을 작성해 주세요.' };
   }
 
-  //   transporter setup
+  // transporter setup
   const transporter = nodemailer.createTransport({
     service: 'naver',
     host: 'smtp.naver.com',
@@ -131,17 +141,11 @@ export async function handleForm(formData: FormData) {
     attachments: attachments,
   };
 
-  //   send mail
+  // send mail
   try {
     await transporter.sendMail(message);
-    return { success: true, message: "문의가 접수되었습니다." };
-
-  } catch (error) {
-    return { success: false, message: "전송에 실패했습니다." };
+    return { success: true, message: '문의가 접수되었습니다.' };
+  } catch {
+    return { success: false, message: '전송에 실패했습니다.' };
   }
-
-  console.log(validateFields.data);
-  console.log('ID 확인:', process.env.SMTP_USERNAME);
-  console.log('PW 존재 여부:', process.env.SMTP_PASSWORD ? '있음' : '없음');
-  console.log('ID 확인:', process.env.RECEIVER_EMAIL);
 }

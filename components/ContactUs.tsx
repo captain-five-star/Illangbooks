@@ -1,6 +1,4 @@
 import { motion } from 'motion/react';
-import toast from 'react-hot-toast';
-import { Toaster } from 'react-hot-toast';
 import {
   Field,
   FieldDescription,
@@ -21,7 +19,8 @@ import {
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { handleForm } from '@/app/actions/mail-handler';
-import { useState } from 'react';
+import { useActionState, useState, useEffect, useRef } from 'react';
+import { toast } from 'sonner';
 
 const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
   const [checkedStates, setCheckedStates] = useState<Record<string, boolean>>(
@@ -34,24 +33,25 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
     }));
   };
 
-  // 폼 액션으로 사용할 클라이언트 래퍼 함수
-  const onSubmit = async (formData: FormData) => {
-    const toastId = toast.loading("메일을 보내는 중입니다...");
-    const result = await handleForm(formData);
-    
-    if (result.success) {
-      toast.success(result.message, { id: toastId });
-
-    } else {
-      toast.error(result.message, { id: toastId });
-    }
-  };
+  //form 값 저장
+  const formRef = useRef<HTMLFormElement>(null);
 
   //form action state
+  const [formState, formAction] = useActionState(handleForm, null);
+
+  //state 변화를 감지하여 토스트 발생
+  useEffect(() => {
+    if (!formState) return;
+
+    if (formState.success) {
+      toast.success(formState.message);
+    } else {
+      toast.error(formState.message);
+    }
+  }, [formState]);
 
   return (
     <>
-      <Toaster position="bottom-center" reverseOrder={false} />
       <motion.form
         initial={{
           opacity: 0,
@@ -62,7 +62,8 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         className="left mb-10 h-full w-full xl:w-[58%]"
-        action={onSubmit}
+        action={formAction}
+        ref={formRef}
       >
         <Separator className="my-6 xl:hidden" />
         <FieldSet>
@@ -76,6 +77,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 name="name"
                 autoComplete="off"
                 placeholder="저자명/기업명을 입력해 주세요."
+                required
               />
             </div>
           </Field>
@@ -89,6 +91,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 name="phone"
                 autoComplete="off"
                 placeholder="연락처를 입력해 주세요."
+                required
               />
             </div>
           </Field>
@@ -102,6 +105,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 name="email"
                 autoComplete="off"
                 placeholder="이메일을 입력해 주세요."
+                required
               />
             </div>
           </Field>
@@ -115,6 +119,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 name="bookTitle"
                 autoComplete="off"
                 placeholder="도서명(가제)을 입력해 주세요."
+                required
               />
             </div>
           </Field>
