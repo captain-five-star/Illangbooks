@@ -142,7 +142,6 @@
 html{
   @apply antialiased;
   @apply font-pretendard;
-  word-break: keep-all;
   letter-spacing: -0.02em;
 }
 
@@ -173,4 +172,7 @@ html{
 
 ol{
   list-style: decimal!important; 
+}
+li{
+  list-style: "- ";
 }

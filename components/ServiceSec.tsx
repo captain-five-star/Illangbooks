@@ -1,18 +1,14 @@
 import { motion } from 'motion/react';
 import Title from './Title';
 import QnaBox from './QnaBox';
+import TestMDX from '@/app/mdx/test.mdx';
 
 const ServiceSec = ({ isMobile }: { isMobile: boolean }) => {
   const qnaData = [
     {
       title: '출간을 전제로 한 기획·편집',
-      desc: `[대상] 초보 1인 출판, 강사, 번역가, 작가, 공모전 준비자 등
-
-- 이 원고가 책으로 팔릴 구조인지 잘 모르겠습니다. 
-- 마음에 드는 편집자와 디자이너를 구하기가 힘듭니다.
-- 1인 출판이라 일손이 달리지만 직원을 채용하긴 부담이 됩니다.
-- 잘못된 방향으로 가고 있는 건 아닌지 크로스 체크가 필요합니다.
-`,
+      target: '초보 1인 출판, 강사, 번역가, 작가, 공모전 준비자 등 ',
+      desc: <TestMDX />,
       foot: `일랑북스는 원고를 ‘출간 가능한 책 구조’로 재설계하고, 불필요한 시행착오를 막아 드립니다.`,
     },
     {
@@ -65,6 +61,7 @@ const ServiceSec = ({ isMobile }: { isMobile: boolean }) => {
             <QnaBox
               key={index}
               title={item.title}
+              target={item.target}
               desc={item.desc}
               foot={item.foot}
             />

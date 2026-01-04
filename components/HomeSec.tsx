@@ -2,17 +2,14 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useIsMobile } from '@/hooks/use-mobile';
+import HomeMDX from '@/app/mdx/home.mdx';
+import { Button } from './ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const HomeSec = () => {
   const isMobile = useIsMobile();
 
-  const descText = `도서 기획과 편집은
-경험과 판단이 필요한 작업입니다.
-일랑북스는 원고의 방향과 구조를 설계합니다.
-
-출판사, 기관/기업, 개인 저자를 대상으로
-출판 기획·편집 중심의 작업을 진행합니다.
-`;
+  // const descText = <HomeMdx />;
 
   const descTag = ['출판기획', '기획편집', '편집외주'];
 
@@ -34,9 +31,9 @@ const HomeSec = () => {
             About
           </h2>
           <div>
-            <p className="h-full w-full text-base break-keep whitespace-pre-line md:text-lg xl:text-[21px]">
-              {descText}
-            </p>
+            <div className="h-full w-full text-base break-keep whitespace-pre-line md:text-lg">
+              <HomeMDX />
+            </div>
             <div className="pt-6">
               {descTag.map((tag, index) => (
                 <span
@@ -49,97 +46,11 @@ const HomeSec = () => {
             </div>
           </div>
         </div>
-        <Link
-          className="link-btn framer-1c25ncm framer-lux5qc rounded-md"
-          href="./company"
-        >
-          <div className="framer-igrsqc">
-            <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-              <div
-                className="framer-w8ofc0"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                    '--framer-font-family':
-                      '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                    '--framer-letter-spacing': '-0.02em',
-                    '--framer-line-height': '1.7em',
-                    '--framer-text-color': 'rgb(255, 255, 255)',
-                  }}
-                >
-                  회사 소개 바로가기
-                </p>
-              </div>
-            </div>
-            <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-              <div
-                className="framer-w8ofc0"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                    '--framer-font-family':
-                      '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                    '--framer-font-size': '21px',
-                    '--framer-letter-spacing': '-0.02em',
-                    '--framer-line-height': '1.7em',
-                    '--framer-text-color': 'rgb(255, 255, 255)',
-                  }}
-                >
-                  회사 소개 바로가기
-                </p>
-              </div>
-            </div>
-            <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-              <div
-                className="framer-w8ofc0"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                    '--framer-font-family':
-                      '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                    '--framer-font-size': '18px',
-                    '--framer-letter-spacing': '-0.02em',
-                    '--framer-line-height': '1.7em',
-                    '--framer-text-color': 'rgb(255, 255, 255)',
-                  }}
-                >
-                  회사 소개 바로가기
-                </p>
-              </div>
-            </div>
-            <div className="framer-2u0x4t">
-              <div
-                aria-hidden="true"
-                className="framer-g90923"
-                data-framer-component-type="SVG"
-                style={{
-                  backgroundImage:
-                    'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 12.728" overflow="visible"><path d="M 0 7.364 L 0 5.364 L 16.172 5.364 L 12.222 1.414 L 13.636 0 L 20 6.364 L 13.636 12.728 L 12.222 11.314 L 16.172 7.364 Z" fill="rgb(255, 255, 255)"></path></svg>\')',
-                  backgroundSize: '100% 100%',
-                  flexShrink: '0',
-                  imageRendering: 'pixelated',
-                }}
-              ></div>
-            </div>
-          </div>
+        <Link className="" href="./company">
+          <Button type="button" className="mb-4 px-5! md:px-6! md:text-lg">
+            회사 소개 바로 가기
+            <ArrowRight className="size-5 md:size-6" />
+          </Button>
         </Link>
       </motion.div>
       <div className="book-image ssr-variant">

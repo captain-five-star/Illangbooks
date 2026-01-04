@@ -58,7 +58,7 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="mb-4 h-full w-full px-7 pt-7 pb-7 text-sm/6 whitespace-pre-line md:text-base/6"
+      className="mb-4 h-full w-full px-7 pt-7 pb-7 text-sm/6 md:text-base/6"
       style={{
         '--vvm4vb': '30px 20px 30px 20px',
         backgroundColor: 'rgb(245, 245, 245)',

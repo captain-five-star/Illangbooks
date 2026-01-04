@@ -77,14 +77,18 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         className="left mb-10 h-full w-full xl:w-[58%]"
-        action={formAction}
         onSubmit={form.handleSubmit(
           (data, e) => {
             startTransition(() => {
-              formAction(new FormData(e!.currentTarget));
+              formAction(new FormData(e!.target.closest('form')));
             });
           },
-          (e) => toast.error('입력한 내용을 다시 한 번 확인해 주세요.')
+          (e) => {
+            document
+              .querySelector<HTMLElement>(`label[for=${Object.keys(e)[0]}]`)
+              ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            toast.error('입력한 내용을 다시 한 번 확인해 주세요.');
+          }
         )}
       >
         <Separator className="my-6 xl:hidden" />

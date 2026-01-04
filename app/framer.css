@@ -980,7 +980,7 @@ li.framer-text {
 }
 
 ol.framer-text>li.framer-text:before {
-    content: counter(list-item, var(--list-style-type))".";
+    /* content: counter(list-item, var(--list-style-type))"."; */
     font-variant-numeric: tabular-nums;
     position: absolute;
     inset-inline-start: 0
@@ -6191,7 +6191,7 @@ li.framer-text {
 }
 
 ol.framer-text>li.framer-text:before {
-    content: counter(list-item, var(--list-style-type))".";
+    /* content: counter(list-item, var(--list-style-type))"."; */
     font-variant-numeric: tabular-nums;
     position: absolute;
     inset-inline-start: 0

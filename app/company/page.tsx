@@ -2,7 +2,7 @@
 import { motion } from 'motion/react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Image from 'next/image';
-import CompanyMDX from '../mdx-fields/company.mdx';
+import CompanyMDX from '../mdx/company.mdx';
 
 const Page = () => {
   const isMobile = useIsMobile();
