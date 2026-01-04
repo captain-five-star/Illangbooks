@@ -27,9 +27,7 @@ import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 const formSchema = z.object({
-  bookCategory: z
-    .array(z.string())
-    .min(1, '도서 분야를 하나 이상 선택해 주세요.'),
+  bookCategory: z.array(z.string()).min(1, '도서 분야를 선택해 주세요.'),
 });
 
 const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
@@ -50,6 +48,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
     defaultValues: {
       bookCategory: [],
     },
+    mode: 'onChange',
   });
 
   //form action state
@@ -79,12 +78,14 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
         viewport={{ once: true }}
         className="left mb-10 h-full w-full xl:w-[58%]"
         action={formAction}
-        onSubmit={(e) => {
-          e.preventDefault();
-          startTransition(() => {
-            formAction(new FormData(e.currentTarget));
-          });
-        }}
+        onSubmit={form.handleSubmit(
+          (data, e) => {
+            startTransition(() => {
+              formAction(new FormData(e!.currentTarget));
+            });
+          },
+          (e) => toast.error('입력한 내용을 다시 한 번 확인해 주세요.')
+        )}
       >
         <Separator className="my-6 xl:hidden" />
         <FieldSet>
@@ -149,9 +150,14 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             name="bookCategory"
             render={({ field, fieldState }) => (
               <FieldGroup className="grid grid-cols-3 align-top">
-                <FieldLabel htmlFor="bookCategory" className="items-baseline">
-                  도서 분야<span className="text-amber-700">*</span>
-                </FieldLabel>
+                <div>
+                  <FieldLabel htmlFor="bookCategory" className="items-baseline">
+                    도서 분야<span className="text-amber-700">*</span>
+                  </FieldLabel>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </div>
                 <div className="col-span-2 pl-2">
                   <FieldGroup
                     className="col-span-2 flex items-start gap-0 xl:grid xl:grid-cols-2"
@@ -189,11 +195,22 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                       <Field
                         orientation="horizontal"
                         className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                        data-invalid={fieldState.invalid}
                       >
                         <Checkbox
                           id="humanities"
                           name="bookCategory"
                           value="인문"
+                          aria-invalid={fieldState.invalid}
+                          checked={field.value?.includes('인문')}
+                          onCheckedChange={(checked) => {
+                            const newValue = checked
+                              ? [...field.value, '인문']
+                              : field.value?.filter(
+                                  (value) => value !== '인문'
+                                );
+                            field.onChange(newValue);
+                          }}
                         />
                         <FieldLabel
                           htmlFor="humanities"
@@ -206,11 +223,22 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                       <Field
                         orientation="horizontal"
                         className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                        data-invalid={fieldState.invalid}
                       >
                         <Checkbox
                           id="businessSelfHelp"
                           name="bookCategory"
                           value="경영/자기계발"
+                          aria-invalid={fieldState.invalid}
+                          checked={field.value?.includes('경영/자기계발')}
+                          onCheckedChange={(checked) => {
+                            const newValue = checked
+                              ? [...field.value, '경영/자기계발']
+                              : field.value?.filter(
+                                  (value) => value !== '경영/자기계발'
+                                );
+                            field.onChange(newValue);
+                          }}
                         />
                         <FieldLabel
                           htmlFor="businessSelfHelp"
@@ -223,11 +251,24 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                       <Field
                         orientation="horizontal"
                         className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                        data-invalid={fieldState.invalid}
                       >
                         <Checkbox
                           id="practical"
                           name="bookCategory"
                           value="실용(여행, IT, 요리 등)"
+                          aria-invalid={fieldState.invalid}
+                          checked={field.value?.includes(
+                            '실용(여행, IT, 요리 등)'
+                          )}
+                          onCheckedChange={(checked) => {
+                            const newValue = checked
+                              ? [...field.value, '실용(여행, IT, 요리 등)']
+                              : field.value?.filter(
+                                  (value) => value !== '실용(여행, IT, 요리 등)'
+                                );
+                            field.onChange(newValue);
+                          }}
                         />
                         <FieldLabel
                           htmlFor="practical"
@@ -240,11 +281,22 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                       <Field
                         orientation="horizontal"
                         className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                        data-invalid={fieldState.invalid}
                       >
                         <Checkbox
                           id="children"
                           name="bookCategory"
                           value="동화"
+                          aria-invalid={fieldState.invalid}
+                          checked={field.value?.includes('동화')}
+                          onCheckedChange={(checked) => {
+                            const newValue = checked
+                              ? [...field.value, '동화']
+                              : field.value?.filter(
+                                  (value) => value !== '동화'
+                                );
+                            field.onChange(newValue);
+                          }}
                         />
                         <FieldLabel
                           htmlFor="children"
@@ -259,15 +311,24 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                       <Field
                         orientation="horizontal"
                         className="mb-3 flex flex-col items-start md:mb-4"
+                        data-invalid={fieldState.invalid}
                       >
                         <div className="flex justify-items-start">
                           <Checkbox
                             id="textbook"
                             name="bookCategory"
-                            value="교재(과목명) : "
-                            onCheckedChange={(v) =>
-                              toggleCheck('textbook', !!v)
-                            }
+                            value="교재(과목명)"
+                            aria-invalid={fieldState.invalid}
+                            checked={field.value?.includes('교재(과목명)')}
+                            onCheckedChange={(checked) => {
+                              const newValue = checked
+                                ? [...field.value, '교재(과목명)']
+                                : field.value?.filter(
+                                    (value) => value !== '교재(과목명)'
+                                  );
+                              field.onChange(newValue);
+                              toggleCheck('textbook', !!checked);
+                            }}
                           />
                           <FieldLabel
                             htmlFor="textbook"
@@ -291,13 +352,24 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                       <Field
                         orientation="horizontal"
                         className="mb-3 flex flex-col items-start md:mb-4"
+                        data-invalid={fieldState.invalid}
                       >
                         <div className="flex justify-items-start">
                           <Checkbox
                             id="etc"
                             name="bookCategory"
-                            value="기타 : "
-                            onCheckedChange={(v) => toggleCheck('etc', !!v)}
+                            value="기타"
+                            aria-invalid={fieldState.invalid}
+                            checked={field.value?.includes('기타')}
+                            onCheckedChange={(checked) => {
+                              const newValue = checked
+                                ? [...field.value, '기타']
+                                : field.value?.filter(
+                                    (value) => value !== '기타'
+                                  );
+                              field.onChange(newValue);
+                              toggleCheck('etc', !!checked);
+                            }}
                           />
                           <FieldLabel
                             htmlFor="etc"
@@ -321,9 +393,6 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                     </div>
                   </FieldGroup>
                 </div>
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
               </FieldGroup>
             )}
           />
