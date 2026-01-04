@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldSet,
@@ -19,10 +20,20 @@ import {
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { handleForm } from '@/app/actions/mail-handler';
-import { useActionState, useState, useEffect, useRef } from 'react';
+import { useActionState, useState, useEffect, startTransition } from 'react';
 import { toast } from 'sonner';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
+import * as z from 'zod';
+
+const formSchema = z.object({
+  bookCategory: z
+    .array(z.string())
+    .min(1, '도서 분야를 하나 이상 선택해 주세요.'),
+});
 
 const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
+  // 체크 시 입력칸 활성화
   const [checkedStates, setCheckedStates] = useState<Record<string, boolean>>(
     {}
   );
@@ -33,8 +44,13 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
     }));
   };
 
-  //form 값 저장
-  const formRef = useRef<HTMLFormElement>(null);
+  //form hook
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      bookCategory: [],
+    },
+  });
 
   //form action state
   const [formState, formAction] = useActionState(handleForm, null);
@@ -63,7 +79,12 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
         viewport={{ once: true }}
         className="left mb-10 h-full w-full xl:w-[58%]"
         action={formAction}
-        ref={formRef}
+        onSubmit={(e) => {
+          e.preventDefault();
+          startTransition(() => {
+            formAction(new FormData(e.currentTarget));
+          });
+        }}
       >
         <Separator className="my-6 xl:hidden" />
         <FieldSet>
@@ -123,160 +144,189 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
               />
             </div>
           </Field>
-          <FieldGroup className="grid grid-cols-3 align-top">
-            <FieldLabel htmlFor="bookCategory" className="items-baseline">
-              도서 분야<span className="text-amber-700">*</span>
-            </FieldLabel>
-            <div className="col-span-2 pl-2">
-              <FieldGroup className="col-span-2 flex items-start gap-0 xl:grid xl:grid-cols-2">
-                <div className="flex flex-col">
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+          <Controller
+            control={form.control}
+            name="bookCategory"
+            render={({ field, fieldState }) => (
+              <FieldGroup className="grid grid-cols-3 align-top">
+                <FieldLabel htmlFor="bookCategory" className="items-baseline">
+                  도서 분야<span className="text-amber-700">*</span>
+                </FieldLabel>
+                <div className="col-span-2 pl-2">
+                  <FieldGroup
+                    className="col-span-2 flex items-start gap-0 xl:grid xl:grid-cols-2"
+                    data-slot="book-title-checkbox"
                   >
-                    <Checkbox
-                      id="novelEssay"
-                      name="bookCategory"
-                      value="소설/에세이"
-                    />
-                    <FieldLabel
-                      htmlFor="novelEssay"
-                      className="left w-full place-items-start font-normal"
-                      defaultChecked
-                    >
-                      소설/에세이
-                    </FieldLabel>
-                  </Field>
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex items-center md:mb-4 xl:col-span-1"
-                  >
-                    <Checkbox
-                      id="humanities"
-                      name="bookCategory"
-                      value="인문"
-                    />
-                    <FieldLabel
-                      htmlFor="humanities"
-                      className="left w-full place-items-start font-normal"
-                      defaultChecked
-                    >
-                      인문
-                    </FieldLabel>
-                  </Field>
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex items-center md:mb-4 xl:col-span-1"
-                  >
-                    <Checkbox
-                      id="businessSelfHelp"
-                      name="bookCategory"
-                      value="경영/자기계발"
-                    />
-                    <FieldLabel
-                      htmlFor="businessSelfHelp"
-                      className="left w-full place-items-start font-normal"
-                      defaultChecked
-                    >
-                      경영/자기계발
-                    </FieldLabel>
-                  </Field>
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex items-center md:mb-4 xl:col-span-1"
-                  >
-                    <Checkbox
-                      id="practical"
-                      name="bookCategory"
-                      value="실용(여행, IT, 요리 등)"
-                    />
-                    <FieldLabel
-                      htmlFor="practical"
-                      className="left w-full place-items-start font-normal"
-                      defaultChecked
-                    >
-                      실용(여행, IT, 요리 등)
-                    </FieldLabel>
-                  </Field>
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex items-center md:mb-4 xl:col-span-1"
-                  >
-                    <Checkbox id="children" name="bookCategory" value="동화" />
-                    <FieldLabel
-                      htmlFor="children"
-                      className="left w-full place-items-start font-normal"
-                      defaultChecked
-                    >
-                      동화
-                    </FieldLabel>
-                  </Field>
-                </div>
-                <div className="flex w-full flex-col">
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex flex-col items-start md:mb-4"
-                  >
-                    <div className="flex justify-items-start">
-                      <Checkbox
-                        id="textbook"
-                        name="bookCategory"
-                        value="교재(과목명) : "
-                        onCheckedChange={(v) => toggleCheck('textbook', !!v)}
-                      />
-                      <FieldLabel
-                        htmlFor="textbook"
-                        className="left place-items-start font-normal"
-                        defaultChecked
+                    <div className="flex flex-col">
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                        data-invalid={fieldState.invalid}
                       >
-                        교재(과목명)
-                      </FieldLabel>
-                    </div>
-                    <div className="w-full pl-6">
-                      <Input
-                        id="textbookDetail"
-                        name="bookCategory"
-                        disabled={!checkedStates['textbook']}
-                        autoComplete="off"
-                        placeholder="교과목을 작성해 주세요."
-                        className="mt-2 h-6 w-full text-sm md:h-8 md:text-sm"
-                      />
-                    </div>
-                  </Field>
-                  <Field
-                    orientation="horizontal"
-                    className="mb-3 flex flex-col items-start md:mb-4"
-                  >
-                    <div className="flex justify-items-start">
-                      <Checkbox
-                        id="etc"
-                        name="bookCategory"
-                        value="기타 : "
-                        onCheckedChange={(v) => toggleCheck('etc', !!v)}
-                      />
-                      <FieldLabel
-                        htmlFor="etc"
-                        className="left place-items-start font-normal"
-                        defaultChecked
+                        <Checkbox
+                          id="novelEssay"
+                          name="bookCategory"
+                          value="소설/에세이"
+                          aria-invalid={fieldState.invalid}
+                          checked={field.value?.includes('소설/에세이')}
+                          onCheckedChange={(checked) => {
+                            const newValue = checked
+                              ? [...field.value, '소설/에세이']
+                              : field.value?.filter(
+                                  (value) => value !== '소설/에세이'
+                                );
+                            field.onChange(newValue);
+                          }}
+                        />
+                        <FieldLabel
+                          htmlFor="novelEssay"
+                          className="left w-full place-items-start font-normal"
+                          defaultChecked
+                        >
+                          소설/에세이
+                        </FieldLabel>
+                      </Field>
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex items-center md:mb-4 xl:col-span-1"
                       >
-                        기타
-                      </FieldLabel>
+                        <Checkbox
+                          id="humanities"
+                          name="bookCategory"
+                          value="인문"
+                        />
+                        <FieldLabel
+                          htmlFor="humanities"
+                          className="left w-full place-items-start font-normal"
+                          defaultChecked
+                        >
+                          인문
+                        </FieldLabel>
+                      </Field>
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                      >
+                        <Checkbox
+                          id="businessSelfHelp"
+                          name="bookCategory"
+                          value="경영/자기계발"
+                        />
+                        <FieldLabel
+                          htmlFor="businessSelfHelp"
+                          className="left w-full place-items-start font-normal"
+                          defaultChecked
+                        >
+                          경영/자기계발
+                        </FieldLabel>
+                      </Field>
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                      >
+                        <Checkbox
+                          id="practical"
+                          name="bookCategory"
+                          value="실용(여행, IT, 요리 등)"
+                        />
+                        <FieldLabel
+                          htmlFor="practical"
+                          className="left w-full place-items-start font-normal"
+                          defaultChecked
+                        >
+                          실용(여행, IT, 요리 등)
+                        </FieldLabel>
+                      </Field>
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex items-center md:mb-4 xl:col-span-1"
+                      >
+                        <Checkbox
+                          id="children"
+                          name="bookCategory"
+                          value="동화"
+                        />
+                        <FieldLabel
+                          htmlFor="children"
+                          className="left w-full place-items-start font-normal"
+                          defaultChecked
+                        >
+                          동화
+                        </FieldLabel>
+                      </Field>
                     </div>
-                    <div className="w-full pl-6">
-                      <Input
-                        id="etcDetail"
-                        name="bookCategory"
-                        disabled={!checkedStates['etc']}
-                        autoComplete="off"
-                        placeholder="분야를 작성해 주세요."
-                        className="mt-2 h-6 w-full text-sm md:h-8 md:text-sm"
-                      />
+                    <div className="flex w-full flex-col">
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex flex-col items-start md:mb-4"
+                      >
+                        <div className="flex justify-items-start">
+                          <Checkbox
+                            id="textbook"
+                            name="bookCategory"
+                            value="교재(과목명) : "
+                            onCheckedChange={(v) =>
+                              toggleCheck('textbook', !!v)
+                            }
+                          />
+                          <FieldLabel
+                            htmlFor="textbook"
+                            className="left place-items-start font-normal"
+                            defaultChecked
+                          >
+                            교재(과목명)
+                          </FieldLabel>
+                        </div>
+                        <div className="w-full pl-6">
+                          <Input
+                            id="textbookDetail"
+                            name="bookCategory"
+                            disabled={!checkedStates['textbook']}
+                            autoComplete="off"
+                            placeholder="교과목을 작성해 주세요."
+                            className="mt-2 h-6 w-full text-sm md:h-8 md:text-sm"
+                          />
+                        </div>
+                      </Field>
+                      <Field
+                        orientation="horizontal"
+                        className="mb-3 flex flex-col items-start md:mb-4"
+                      >
+                        <div className="flex justify-items-start">
+                          <Checkbox
+                            id="etc"
+                            name="bookCategory"
+                            value="기타 : "
+                            onCheckedChange={(v) => toggleCheck('etc', !!v)}
+                          />
+                          <FieldLabel
+                            htmlFor="etc"
+                            className="left place-items-start font-normal"
+                            defaultChecked
+                          >
+                            기타
+                          </FieldLabel>
+                        </div>
+                        <div className="w-full pl-6">
+                          <Input
+                            id="etcDetail"
+                            name="bookCategory"
+                            disabled={!checkedStates['etc']}
+                            autoComplete="off"
+                            placeholder="분야를 작성해 주세요."
+                            className="mt-2 h-6 w-full text-sm md:h-8 md:text-sm"
+                          />
+                        </div>
+                      </Field>
                     </div>
-                  </Field>
+                  </FieldGroup>
                 </div>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </FieldGroup>
-            </div>
-          </FieldGroup>
+            )}
+          />
           <Field>
             <FieldLabel
               htmlFor="purpose"
@@ -651,5 +701,4 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
     </>
   );
 };
-
 export default ContactUs;
