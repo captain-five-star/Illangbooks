@@ -30,7 +30,11 @@ export default function Home() {
         className="framer-p44x6u"
         data-framer-name="섹션3: 카톡문의"
       >
-        <Link href="https://open.kakao.com/o/sv0MPsAg" target="_blank">
+        <Link
+          href="https://open.kakao.com/o/sv0MPsAg"
+          target="_blank"
+          className="flex"
+        >
           <Image
             src="/katalk-mb.png"
             width={720}
@@ -49,12 +53,10 @@ export default function Home() {
             width={1400}
             height={385}
             alt="카톡문의"
-            className="katalk-pc"
+            className="katalk-pc left-[50%] max-h-[280px] translate-x-[-50%]"
             style={{
               objectFit: 'contain',
               position: 'relative',
-              width: '100%',
-              height: '100%',
             }}
           />
         </Link>
