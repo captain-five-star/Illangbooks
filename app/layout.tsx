@@ -5,8 +5,6 @@ import SvgTemplates from '../components/svg-templates';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Toaster } from '../components/ui/sonner';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/app-sidebar';
 
 export const metadata: Metadata = {
   title: '일랑북스',
@@ -44,31 +42,28 @@ export default function RootLayout({
       </head>
       <body>
         <Toaster />
-        <SidebarProvider>
-          <AppSidebar />
+        <div
+          data-framer-generated-page=""
+          data-framer-hydrate-v2='{"routeId":"augiA20Il","localeId":"default","breakpoints":[{"hash":"1vk2m8p","mediaQuery":"(min-width: 1200px)"},{"hash":"xpwx9r","mediaQuery":"(min-width: 810px) and (max-width: 1199.98px)"},{"hash":"72rtr7","mediaQuery":"(max-width: 809.98px)"}]}'
+          data-framer-page-optimized-at="2025-12-11T08:31:09.634Z"
+          data-framer-ssr-released-at="2025-12-10T16:53:31.331Z"
+          id="main"
+          suppressHydrationWarning={true}
+        >
           <div
-            data-framer-generated-page=""
-            data-framer-hydrate-v2='{"routeId":"augiA20Il","localeId":"default","breakpoints":[{"hash":"1vk2m8p","mediaQuery":"(min-width: 1200px)"},{"hash":"xpwx9r","mediaQuery":"(min-width: 810px) and (max-width: 1199.98px)"},{"hash":"72rtr7","mediaQuery":"(max-width: 809.98px)"}]}'
-            data-framer-page-optimized-at="2025-12-11T08:31:09.634Z"
-            data-framer-ssr-released-at="2025-12-10T16:53:31.331Z"
-            id="main"
+            className="hamburger framer-3F5nR framer-idunJ framer-72rtr7"
+            data-framer-name=""
+            style={{
+              minHeight: '100vh',
+              width: 'auto',
+            }}
             suppressHydrationWarning={true}
           >
-            <div
-              className="hamburger framer-3F5nR framer-idunJ framer-72rtr7"
-              data-framer-name=""
-              style={{
-                minHeight: '100vh',
-                width: 'auto',
-              }}
-              suppressHydrationWarning={true}
-            >
-              {children}
-              <Header />
-              <Footer />
-            </div>
+            {children}
+            <Header />
+            <Footer />
           </div>
-        </SidebarProvider>
+        </div>
         <SvgTemplates />
       </body>
     </html>

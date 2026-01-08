@@ -2644,20 +2644,22 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
 }
 
 .framer-3F5nR .framer-57kvng {
-    background-color: rgba(75, 75, 75, 0.8);
+    background-color: rgba(250, 250, 250, 1);
     flex-flow: row;
     place-content: center;
     align-items: center;
     gap: 10px;
     width: 100%;
+    /* min-width: 400px; */
+    max-width: 480px;
     height: min-content;
     padding: 0;
     display: flex;
     overflow: hidden;
-    box-shadow: 0 10px 40px #0000000d;
+    box-shadow: 0px 0px 10px rgba(116, 116, 116, 0.21);
     top: 0;
+    right: 0;
     position: fixed;
-    transition: all 0.5s ease-in-out !important;
 }
 
 .open {
@@ -2668,11 +2670,10 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     flex-flow: column;
     flex: 1 0 0;
     place-content: center;
-    align-items: center;
-    gap: 30px;
+    padding: 0 0 80px 40px;
+    gap: 16px;
     width: 1px;
     height: 100vh;
-    padding: 0;
     display: flex;
     position: relative;
     overflow: hidden

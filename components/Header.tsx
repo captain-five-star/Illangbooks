@@ -1,8 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import SideBar from './SideBar';
 import Link from 'next/link';
+import { useIsTablet } from '../hooks/use-mobile';
 
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,11 @@ const Header: FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const isTablet = useIsTablet();
+
   return (
     <div className="framer-5x8ol7" data-framer-name="헤더">
-      <SideBar isOpen={isOpen} toggleBtn={toggleBtn} />
+      <SideBar isOpen={isOpen && isTablet} toggleBtn={toggleBtn} />
       <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
         <Link
           className="framer-sm25a6 framer-lux5qc"
@@ -320,7 +323,7 @@ const Header: FC = () => {
           </p>
         </div>
       </div>
-      <div className="framer-1iv6rq5 hidden-72rtr7 hidden-xpwx9r" />
+      {/* <div className="framer-1iv6rq5 hidden-72rtr7 hidden-xpwx9r" /> */}
     </div>
   );
 };
