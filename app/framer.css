@@ -2670,7 +2670,7 @@ NavigationContainer [data-framer-component-type=NavigationContainer]>*,
     flex-flow: column;
     flex: 1 0 0;
     place-content: center;
-    padding: 0 0 80px 40px;
+    padding: 0 0 100px 40px;
     gap: 16px;
     width: 1px;
     height: 100vh;

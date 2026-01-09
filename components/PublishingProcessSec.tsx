@@ -50,9 +50,7 @@ const PublishingProcessSec = () => {
             {CardData.map((card, index) => (
               <Card key={index} className="w-full p-6 last:md:col-span-2">
                 <CardTitle>{card.title}</CardTitle>
-                <CardDescription className="text-pretty">
-                  {card.desc}
-                </CardDescription>
+                <CardDescription className="">{card.desc}</CardDescription>
                 <CardFooter>{card.foot}</CardFooter>
               </Card>
             ))}

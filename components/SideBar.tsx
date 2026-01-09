@@ -20,7 +20,7 @@ const SideBar = ({
             <motion.div
               initial={{ x: '100%' }}
               transition={{
-                duration: 1,
+                duration: 0.6,
                 ease: [0.65, 0, 0.35, 1],
               }}
               animate={{ x: 0 }}

@@ -123,8 +123,10 @@ const Footer = () => {
                     'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
                 }}
               >
-                <Link href="/">홈</Link> | <Link href="/company">회사소개</Link>{' '}
-                | <Link href="/faq">FAQ</Link> |{' '}
+                <Link href="/">홈</Link> |{' '}
+                <Link href="/company">회사 소개</Link> |{' '}
+                <Link href="/inquiry">견적 문의</Link> |{' '}
+                <Link href="/faq">FAQ</Link> |{' '}
                 <Link href="https://buly.kr/9MRgv48" target="_blank">
                   일랑 블로그
                 </Link>
@@ -151,8 +153,10 @@ const Footer = () => {
                     'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
                 }}
               >
-                <Link href="/">홈</Link> | <Link href="/company">회사소개</Link>{' '}
-                | <Link href="/faq">FAQ</Link> |{' '}
+                <Link href="/">홈</Link> |{' '}
+                <Link href="/company">회사 소개</Link> |{' '}
+                <Link href="/inquiry">견적 문의</Link> |{' '}
+                <Link href="/faq">FAQ</Link> |{' '}
                 <Link href="https://buly.kr/9MRgv48" target="_blank">
                   일랑 블로그
                 </Link>
@@ -180,8 +184,10 @@ const Footer = () => {
                     'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
                 }}
               >
-                <Link href="/">홈</Link> | <Link href="/company">회사소개</Link>{' '}
-                | <Link href="/faq">FAQ</Link> |{' '}
+                <Link href="/">홈</Link> |{' '}
+                <Link href="/company">회사 소개</Link> |{' '}
+                <Link href="/inquiry">견적 문의</Link> |{' '}
+                <Link href="/faq">FAQ</Link> |{' '}
                 <Link href="https://buly.kr/9MRgv48" target="_blank">
                   일랑 블로그
                 </Link>

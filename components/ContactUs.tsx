@@ -721,22 +721,26 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             </div>
           </div>
         </FieldSet>
-        <Field className="mb-6">
-          <FieldLabel htmlFor="manuscriptFile">
-            원고 파일 첨부<span className="text-amber-700">*</span>
-          </FieldLabel>
-          <div className="col-span-2 pl-2">
+        <Field className="mb-6 mt-1 md:mt-2">
+          <div className=''>
+            <FieldLabel htmlFor="manuscriptFile">원고 파일 첨부</FieldLabel>
+          </div>
+          <div className="col-span-2 pl-2 ">
             <Input
               id="manuscriptFile"
               name="manuscriptFile"
               autoComplete="off"
               type="file"
-              className="h-10 border-0 shadow-none md:h-12"
+              className="h-10 border-0 shadow-none md:h-12 [&_input[type='file']]:p-2! pl-0!"
             />
+            <FieldDescription>
+              용량 제한은 5mb이며, 
+              용량이 큰 파일은 별도 문의해 주세요.
+            </FieldDescription>
           </div>
         </Field>
         <FieldSet>
-          <div className="my-2 flex flex-col items-center">
+          <div className="my-6 flex flex-col items-center">
             <Field
               orientation="horizontal"
               className="mb-3 flex items-center md:mb-4 xl:col-span-1"
