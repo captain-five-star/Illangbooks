@@ -101,51 +101,87 @@ export async function handleForm(
   // 메일 옵션
   const message = {
     from: process.env.SMTP_USERNAME,
-    to: process.env.RECEIVER_EMAIL,
+    to: process.env.SMTP_USERNAME,
     subject: '도서 문의 메일이 도착하였습니다.',
-    text: `저자명(기업명): ${inquiryData.name}\n연락처: ${inquiryData.phone}\n이메일: ${inquiryData.email}\n작업 도서명: ${inquiryData.bookTitle}\n도서 분야: ${inquiryData.bookCategory}\n출판 목적: ${inquiryData.purpose}\n원고 완성도: ${inquiryData.completeness}\n도서 소개 및 예상 독자층: ${inquiryData.bookDescription}\n희망 일정: ${inquiryData.schedule}\n일랑북스에 기대하는 역할: ${inquiryData.toIllangbooks.join(', ')}\n인쇄 계획: ${inquiryData.printingPlan.join(', ')}\n예상 부수: ${inquiryData.printRun}\n내지 인쇄 방식: ${inquiryData.printingMethod}\n표지 형태: ${inquiryData.coverType}\n인쇄·제작 방향에 대한 선호: ${inquiryData.printingPreferences}`,
+    text: `저자명(기업명) ${inquiryData.name}\n연락처 ${inquiryData.phone}\n이메일 ${inquiryData.email}\n작업 도서명 ${inquiryData.bookTitle}\n도서 분야 ${inquiryData.bookCategory}\n출판 목적 ${inquiryData.purpose}\n원고 완성도 ${inquiryData.completeness}\n도서 소개 및 예상 독자층 ${inquiryData.bookDescription}\n희망 일정 ${inquiryData.schedule}\n일랑북스에 기대하는 역할 ${inquiryData.toIllangbooks.join(', ')}\n인쇄 계획 ${inquiryData.printingPlan.join(', ')}\n예상 부수 ${inquiryData.printRun}\n내지 인쇄 방식 ${inquiryData.printingMethod}\n표지 형태 ${inquiryData.coverType}\n인쇄·제작 방향에 대한 선호 ${inquiryData.printingPreferences}`,
     html: `<div style="">
     도서 문의 메일이 도착했습니다.
     <br/><br/>
-        <strong>저자명(기업명):</strong> ${inquiryData.name}
+        <strong>저자명(기업명)</strong> 
+        <br/><br/>
+        ${inquiryData.name}
+        <br/><br/>
+        <strong>연락처</strong> 
+        <br/><br/>
+        ${inquiryData.phone}
+        <br/><br/>
+        <strong>이메일</strong> 
+        <br/><br/>
+        ${inquiryData.email}
+        <br/><br/>
+        <strong>작업 도서명</strong> 
+        <br/><br/>
+        ${inquiryData.bookTitle}
+        <br/><br/>
+        <strong>도서 분야</strong> 
+        <br/><br/>
+        ${inquiryData.bookCategory}
+        <br/><br/>
+        <strong>출판 목적</strong> 
+        <br/><br/>
+        ${inquiryData.purpose}
+        <br/><br/>
+        <strong>원고 완성도</strong> 
+        <br/><br/>
+        ${inquiryData.completeness}
+        <br/><br/>
+        <strong>도서 소개 및 예상 독자층</strong> 
+        <br/><br/>
+        ${inquiryData.bookDescription}
+        <br/><br/>
+        <strong>희망 일정</strong> 
+        <br/><br/>
+        ${inquiryData.schedule}
+        <br/><br/>
+        <strong>일랑북스에 기대하는 역할</strong> 
+        <br/><br/>
+        ${inquiryData.toIllangbooks.join(', ')}
+        <br/><br/>
+        <strong>인쇄 계획</strong> 
+        <br/><br/>
+        ${inquiryData.printingPlan.join(', ')}
+        <br/><br/>
+        <strong>예상 부수</strong> 
+        <br/><br/>
+        ${inquiryData.printRun}
+        <br/><br/>
+        <strong>내지 인쇄 방식</strong> 
+        <br/><br/>
+        ${inquiryData.printingMethod}
+        <br/><br/>
+        <strong>표지 형태</strong> 
+        <br/><br/>
+        ${inquiryData.coverType}
+        <br/><br/>
+        <strong>인쇄·제작 방향에 대한 선호</strong> 
+        <br/><br/>
+        ${inquiryData.printingPreferences}
         <br/>
-        <strong>연락처 :</strong> ${inquiryData.phone}
-        <br/>
-        <strong>이메일 :</strong> ${inquiryData.email}
-        <br/>
-        <strong>작업 도서명 :</strong> ${inquiryData.bookTitle}
-        <br/>
-        <strong>도서 분야 :</strong> ${inquiryData.bookCategory}
-        <br/>
-        <strong>출판 목적 :</strong> ${inquiryData.purpose}
-        <br/>
-        <strong>원고 완성도 :</strong> ${inquiryData.completeness}
-        <br/>
-        <strong>도서 소개 및 예상 독자층 :</strong> ${inquiryData.bookDescription}
-        <br/>
-        <strong>희망 일정 :</strong> ${inquiryData.schedule}
-        <br/>
-        <strong>일랑북스에 기대하는 역할 :</strong> ${inquiryData.toIllangbooks.join(', ')}
-        <br/>
-        <strong>인쇄 계획 :</strong> ${inquiryData.printingPlan.join(', ')}
-        <br/>
-        <strong>예상 부수 :</strong> ${inquiryData.printRun}
-        <br/>
-        <strong>내지 인쇄 방식 :</strong> ${inquiryData.printingMethod}
-        <br/>
-        <strong>표지 형태 :</strong> ${inquiryData.coverType}
-        <br/>
-        <strong>인쇄·제작 방향에 대한 선호 :</strong> ${inquiryData.printingPreferences}
-    </div>
-</div>`,
+    </div>`,
     attachments: attachments,
   };
 
   // send mail
   try {
     await transporter.sendMail(message);
-    return { success: true, message: '문의가 접수되었습니다.' };
+    return {
+      success: true,
+      message: '문의가 접수되었습니다. 빠른 시일 내에 답변 드리겠습니다.',
+    };
   } catch {
-    return { success: false, message: '전송에 실패했습니다.' };
+    return {
+      success: false,
+      message: '전송에 실패하였습니다. 작성하신 내용을 확인해 주세요.',
+    };
   }
 }
