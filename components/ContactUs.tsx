@@ -87,7 +87,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             document
               .querySelector<HTMLElement>(`label[for=${Object.keys(e)[0]}]`)
               ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            toast.error('입력한 내용을 다시 한 번 확인해 주세요.');
+            toast.error('입력한 내용을 다시 한번 확인해 주세요.');
           }
         )}
       >
@@ -627,98 +627,100 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                 </div>
               </FieldGroup>
             </FieldGroup>
-            <div className="my-4 flex flex-col gap-4 rounded-2xl bg-[#fdfdfd] px-4 py-4 shadow-[0_1px_6px_rgba(0,0,0,0.1)] xl:px-6 xl:py-6">
-              <Field className="">
-                <FieldLabel htmlFor="printRun" className="h-full">
-                  예상 부수
-                </FieldLabel>
-                <div className="col-span-2 h-full pl-2">
-                  <Select
-                    name="printRun"
-                    disabled={!checkedStates['printingExpected']}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="내용을 선택해 주세요." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="100부 미만">100부 미만</SelectItem>
-                      <SelectItem value="300~500부">300~500부</SelectItem>
-                      <SelectItem value="1000부">1000부</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="printingMethod" className="h-full">
-                  내지 인쇄 방식
-                </FieldLabel>
-                <div className="col-span-2 h-full pl-2">
-                  <Select
-                    name="printingMethod"
-                    disabled={!checkedStates['printingExpected']}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="내용을 선택해 주세요." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="전면 컬러">전면 컬러</SelectItem>
-                      <SelectItem value="일부 컬러">일부 컬러</SelectItem>
-                      <SelectItem value="흑백">흑백</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="coverType" className="h-full">
-                  표지 형태
-                </FieldLabel>
-                <div className="col-span-2 h-full pl-2">
-                  <Select
-                    name="coverType"
-                    disabled={!checkedStates['printingExpected']}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="내용을 선택해 주세요." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="일반(무선제본)">
-                        일반(무선제본)
-                      </SelectItem>
-                      <SelectItem value="양장">양장</SelectItem>
-                      <SelectItem value="미정(계약 후 협의)">
-                        미정(계약 후 협의)
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="printingPreference" className="h-full">
-                  인쇄·제작 방향에 대한 선호
-                </FieldLabel>
-                <div className="col-span-2 h-full pl-2">
-                  <Select
-                    name="printingPreference"
-                    disabled={!checkedStates['printingExpected']}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="내용을 선택해 주세요." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="디자인·후가공 등 고급스러운 이미지를 원함">
-                        디자인·후가공 등 고급스러운 이미지를 원함
-                      </SelectItem>
-                      <SelectItem value="제작비를 고려한 합리적인 구성을 원함">
-                        제작비를 고려한 합리적인 구성을 원함
-                      </SelectItem>
-                      <SelectItem value="미정(계약 후 협의)">
-                        미정(계약 후 협의)
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </Field>
-            </div>
+            {checkedStates['printingExpected'] && (
+              <div className="my-4 flex flex-col gap-4 rounded-2xl bg-[#fdfdfd] px-4 py-4 shadow-[0_1px_6px_rgba(0,0,0,0.1)] xl:px-6 xl:py-6">
+                <Field className="">
+                  <FieldLabel htmlFor="printRun" className="h-full">
+                    예상 부수
+                  </FieldLabel>
+                  <div className="col-span-2 h-full pl-2">
+                    <Select
+                      name="printRun"
+                      disabled={!checkedStates['printingExpected']}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="내용을 선택해 주세요." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="100부 미만">100부 미만</SelectItem>
+                        <SelectItem value="300~500부">300~500부</SelectItem>
+                        <SelectItem value="1000부">1000부</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="printingMethod" className="h-full">
+                    내지 인쇄 방식
+                  </FieldLabel>
+                  <div className="col-span-2 h-full pl-2">
+                    <Select
+                      name="printingMethod"
+                      disabled={!checkedStates['printingExpected']}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="내용을 선택해 주세요." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="전면 컬러">전면 컬러</SelectItem>
+                        <SelectItem value="일부 컬러">일부 컬러</SelectItem>
+                        <SelectItem value="흑백">흑백</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="coverType" className="h-full">
+                    표지 형태
+                  </FieldLabel>
+                  <div className="col-span-2 h-full pl-2">
+                    <Select
+                      name="coverType"
+                      disabled={!checkedStates['printingExpected']}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="내용을 선택해 주세요." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="일반(무선제본)">
+                          일반(무선제본)
+                        </SelectItem>
+                        <SelectItem value="양장">양장</SelectItem>
+                        <SelectItem value="미정(계약 후 협의)">
+                          미정(계약 후 협의)
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="printingPreference" className="h-full">
+                    인쇄·제작 방향에 대한 선호
+                  </FieldLabel>
+                  <div className="col-span-2 h-full pl-2">
+                    <Select
+                      name="printingPreference"
+                      disabled={!checkedStates['printingExpected']}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="내용을 선택해 주세요." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="디자인·후가공 등 고급스러운 이미지를 원함">
+                          디자인·후가공 등 고급스러운 이미지를 원함
+                        </SelectItem>
+                        <SelectItem value="제작비를 고려한 합리적인 구성을 원함">
+                          제작비를 고려한 합리적인 구성을 원함
+                        </SelectItem>
+                        <SelectItem value="미정(계약 후 협의)">
+                          미정(계약 후 협의)
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </Field>
+              </div>
+            )}
           </div>
         </FieldSet>
         <Field className="mb-6 mt-1 md:mt-2">

@@ -22,6 +22,7 @@ const Page = () => {
   ];
   return (
     <div
+      key={isMobile.toString()}
       className="h-full w-full"
       //   style={{
       //     minHeight: '100vh',
@@ -48,9 +49,9 @@ const Page = () => {
             viewport={{ once: true }}
           >
             <div className="h-full w-full rounded-2xl bg-white px-8 py-8 shadow-sm">
-              <p className="font-instrument mb-4 inline-block text-lg font-bold md:text-2xl">
+              {/* <p className="font-instrument mb-4 inline-block text-lg font-bold md:text-2xl">
                 CHECK LIST
-              </p>
+              </p> */}
               <ul className="block text-sm">
                 {checklist.map((list, index) => (
                   <li
@@ -62,8 +63,8 @@ const Page = () => {
                 ))}
               </ul>
             </div>
-            <p className="text-base md:text-lg xl:text-[21px]">
-              체크 항목이 적다고 해서 의뢰가 불가능한 것은 아닙니다. 다만 사전
+            <p className="pt-6 text-sm font-semibold text-neutral-500 md:text-base">
+              ※ 체크 항목이 적다고 해서 의뢰가 불가능한 것은 아닙니다. 다만 사전
               준비 없이 기획 방향 설정만을 요구하는 문의에는 응답이 제한될 수
               있습니다.
             </p>
