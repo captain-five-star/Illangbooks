@@ -139,7 +139,7 @@
   }
 }
 
-html{
+html {
   @apply antialiased;
   @apply font-pretendard;
   letter-spacing: -0.02em;
@@ -160,6 +160,15 @@ html{
   display: none;
 }
 
+.logo-mb {
+  display: block;
+}
+
+.logo-pc {
+  display: none;
+}
+
+
 @media (min-width: 810px) {
   .katalk-mb {
     display: none;
@@ -168,17 +177,27 @@ html{
   .katalk-pc {
     display: block;
   }
+
+  .logo-mb {
+    display: none;
+  }
+
+  .logo-pc {
+    display: block;
+  }
 }
 
-ol > li{
+ol>li {
   list-style: circled-decimal;
 }
-ul > li{
+
+ul>li {
   list-style: "- ";
 }
 
 @counter-style circled-decimal {
   system: fixed;
   symbols: ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳;
-  suffix: " "; /* 숫자 뒤 여백 */
+  suffix: " ";
+  /* 숫자 뒤 여백 */
 }

@@ -1,6 +1,8 @@
 'use client';
 import QnaBox from '@/components/QnaBox';
 import { motion } from 'motion/react';
+import Title from '@/components/Title';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Page = () => {
   const qnaData = [
@@ -36,6 +38,9 @@ const Page = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
+
+  const isMobile = useIsMobile();
+
   return (
     <>
       <div
@@ -45,6 +50,7 @@ const Page = () => {
           minHeight: '100vh',
           width: '100%',
         }}
+        key={isMobile.toString()}
       >
         <div className="framer-1t21uct" data-framer-name="섹션: FAQ">
           <motion.div
@@ -54,53 +60,11 @@ const Page = () => {
             viewport={{ once: true }}
             className="framer-5jmcbr"
           >
-            <motion.div
-              variants={variants}
-              className="framer-1opixmp h-full! w-full!"
-            >
-              <div
-                className="framer-7osg2r relative!"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'R0Y7SW5zdHJ1bWVudCBTYW5zLTcwMA==',
-                    '--framer-font-family':
-                      '"Instrument Sans", "Instrument Sans Placeholder", sans-serif',
-                    '--framer-font-size': '28px',
-                    '--framer-font-weight': '700',
-                    '--framer-text-color': 'rgb(33, 33, 33)',
-                  }}
-                >
-                  FAQ
-                </p>
-              </div>
-              <div
-                className="framer-9xgl4 relative! h-full w-full"
-                data-framer-component-type="RichTextContainer"
-                style={{
-                  transform: 'none',
-                }}
-              >
-                <p
-                  className="framer-text"
-                  style={{
-                    '--font-selector': 'Q1VTVE9NVjI7UHJldGVuZGFyZCBSZWd1bGFy',
-                    '--framer-font-family':
-                      '"Pretendard Regular", "Pretendard Regular Placeholder", sans-serif',
-                    '--framer-letter-spacing': '-0.02em',
-                    '--framer-line-height': '1.5em',
-                    '--framer-text-color': 'rgb(33, 33, 33)',
-                  }}
-                >
-                  자주 묻는 질문에 대한 답변을 정리해 두었습니다.
-                </p>
-              </div>
-            </motion.div>
+            <Title
+              title="FAQ"
+              isMobile={isMobile}
+              desc="자주 묻는 질문에 대한 답변을 정리해 두었습니다."
+            />
             <motion.div
               variants={variants}
               className="framer-ntn7d0 qna-container w-full!"
@@ -108,12 +72,10 @@ const Page = () => {
               {qnaData.map((item, index) => (
                 <QnaBox key={index} title={item.title} desc={item.desc} />
               ))}
-              <div className="framer-1977wgu" />
             </motion.div>
           </motion.div>
         </div>
       </div>
-      <div id="overlay" />
     </>
   );
 };

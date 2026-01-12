@@ -20,11 +20,11 @@ const TitleCol = ({
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <h2 className="font-instrument text-[28px] leading-[0.8] font-bold md:text-[48px] xl:text-6xl">
+      <h2 className="font-instrument text-[28px] leading-[0.8] font-bold md:text-[48px] xl:text-5xl">
         {title}
       </h2>
       {desc && (
-        <p className="pt-6 pb-2 text-base break-keep whitespace-pre-wrap md:pt-8 md:text-lg xl:text-[21px] dark:text-gray-300">
+        <p className="pt-6 pb-2 text-base break-keep whitespace-pre-wrap md:pt-8 md:text-lg dark:text-gray-300">
           {desc}
         </p>
       )}

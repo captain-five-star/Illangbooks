@@ -27,9 +27,6 @@ const HomeSec = () => {
         className="framer-xfdacz relative! h-full w-full"
       >
         <div className="framer-1bt0651">
-          <h2 className="title font-instrument letter-spacing-[-0.02em] text-[28px] font-bold md:text-5xl xl:text-6xl">
-            About
-          </h2>
           <div>
             <div className="h-full w-full text-base break-keep whitespace-pre-line md:text-lg">
               <HomeMDX />

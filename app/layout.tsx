@@ -9,6 +9,9 @@ import { Toaster } from '../components/ui/sonner';
 export const metadata: Metadata = {
   title: '일랑북스',
   description: '일랑북스입니다',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +26,6 @@ export default function RootLayout({
 
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-
         <link
           href="https://fonts.gstatic.com"
           rel="preconnect"

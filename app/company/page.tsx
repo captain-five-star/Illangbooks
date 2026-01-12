@@ -42,7 +42,7 @@ const Page = () => {
           <div className="framer-5wfw8l h-full">
             <div className="flex h-full flex-col items-center justify-center gap-4 md:gap-6 xl:items-baseline">
               <div>
-                <h2 className="font-pretendard text-[28px] leading-[1em] font-bold md:text-[48px] xl:text-6xl">
+                <h2 className="font-pretendard text-[28px] leading-[1em] font-bold md:text-[48px] xl:text-5xl">
                   팀원 소개
                 </h2>
               </div>

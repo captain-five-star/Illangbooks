@@ -20,7 +20,13 @@ import {
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { handleForm } from '@/app/actions/mail-handler';
-import { useActionState, useState, useEffect, startTransition } from 'react';
+import {
+  useActionState,
+  useState,
+  useEffect,
+  startTransition,
+  useRef,
+} from 'react';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
@@ -28,6 +34,15 @@ import * as z from 'zod';
 
 const formSchema = z.object({
   bookCategory: z.array(z.string()).min(1, '도서 분야를 선택해 주세요.'),
+  manuscriptFile: z
+    .instanceof(File)
+    .refine((file) => file instanceof File && file.size <= 5 * 1024 * 1024, {
+      message: '파일 크기는 4MB를 초과할 수 없습니다.',
+    })
+    .nullish(),
+  purpose: z.string(),
+  completeness: z.string().min(1, '원고 완성도를 선택해 주세요.'),
+  schedule: z.string().optional(),
 });
 
 const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
@@ -42,14 +57,30 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
     }));
   };
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   //form hook
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       bookCategory: [],
+      purpose: '',
+      completeness: '',
+      schedule: '',
+      manuscriptFile: null,
     },
     mode: 'onChange',
   });
+
+  //파일 용량 체크
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.size > 5 * 1024 * 1024) {
+      toast.error('파일 크기는 4MB를 초과할 수 없습니다.');
+      e.target.value = '';
+      return;
+    }
+  };
 
   //form action state
   const [formState, formAction] = useActionState(handleForm, null);
@@ -60,10 +91,12 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
 
     if (formState.success) {
       toast.success(formState.message);
+      form.reset();
+      formRef.current?.reset();
     } else {
       toast.error(formState.message);
     }
-  }, [formState]);
+  }, [formState, form]);
 
   return (
     <>
@@ -87,9 +120,13 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             document
               .querySelector<HTMLElement>(`label[for=${Object.keys(e)[0]}]`)
               ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            toast.error('입력한 내용을 다시 한번 확인해 주세요.');
+            toast.error(
+              `${Object.values(e)[0].message}` ||
+                '입력한 내용을 다시 한번 확인해 주세요.'
+            );
           }
         )}
+        ref={formRef}
       >
         <Separator className="my-6 xl:hidden" />
         <FieldSet>
@@ -407,56 +444,80 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             >
               책을 만드는 목적
             </FieldLabel>
-            <div className="col-span-2 h-full pl-2">
-              <Select name="purpose">
-                <SelectTrigger>
-                  <SelectValue placeholder="내용을 선택해 주세요." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="개인 브랜딩">개인 브랜딩</SelectItem>
-                  <SelectItem value="기업 교육 자료">기업 교육 자료</SelectItem>
-                  <SelectItem value="개인 소장·지인 공유">
-                    개인 소장·지인 공유
-                  </SelectItem>
-                  <SelectItem value="내부 자료용(기업·단체 성과물)">
-                    내부 자료용(기업·단체 성과물)
-                  </SelectItem>
-                  <SelectItem value="제한된 배포(기업·기관·학원 등)">
-                    제한된 배포(기업·기관·학원 등)
-                  </SelectItem>
-                  <SelectItem value="일반 독자 대상(서점 유통 염두)">
-                    일반 독자 대상(서점 유통 염두)
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              <FieldDescription>
-                *일랑북스는 유통 대행은 진행하지 않습니다.
-              </FieldDescription>
-            </div>
+            <Controller
+              control={form.control}
+              name="purpose"
+              render={({ field }) => (
+                <div className="col-span-2 h-full pl-2">
+                  <Select
+                    {...field}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="내용을 선택해 주세요." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="개인 브랜딩">개인 브랜딩</SelectItem>
+                      <SelectItem value="기업 교육 자료">
+                        기업 교육 자료
+                      </SelectItem>
+                      <SelectItem value="개인 소장·지인 공유">
+                        개인 소장·지인 공유
+                      </SelectItem>
+                      <SelectItem value="내부 자료용(기업·단체 성과물)">
+                        내부 자료용(기업·단체 성과물)
+                      </SelectItem>
+                      <SelectItem value="제한된 배포(기업·기관·학원 등)">
+                        제한된 배포(기업·기관·학원 등)
+                      </SelectItem>
+                      <SelectItem value="일반 독자 대상(서점 유통 염두)">
+                        일반 독자 대상(서점 유통 염두)
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FieldDescription>
+                    * 일랑북스는 유통 대행은 진행하지 않습니다.
+                  </FieldDescription>
+                </div>
+              )}
+            />
           </Field>
           <Field>
             <FieldLabel htmlFor="completeness" className="h-full">
               원고 완성도<span className="text-amber-700">*</span>
             </FieldLabel>
-            <div className="col-span-2 h-full pl-2">
-              <Select name="completeness" required>
-                <SelectTrigger>
-                  <SelectValue placeholder="내용을 선택해 주세요." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="완성(100%)">완성(100%)</SelectItem>
-                  <SelectItem value="거의 완성(약 80%)">
-                    거의 완성(약 80%)
-                  </SelectItem>
-                  <SelectItem value="초고 단계(약 50%)">
-                    초고 단계(약 50%)
-                  </SelectItem>
-                  <SelectItem value="기획·구성 단계(아이디어 위주)">
-                    기획·구성 단계(아이디어 위주)
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <Controller
+              control={form.control}
+              name="completeness"
+              render={({ field }) => (
+                <div className="col-span-2 h-full pl-2">
+                  <Select
+                    // name="completeness"
+                    {...field}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    required
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="내용을 선택해 주세요." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="완성(100%)">완성(100%)</SelectItem>
+                      <SelectItem value="거의 완성(약 80%)">
+                        거의 완성(약 80%)
+                      </SelectItem>
+                      <SelectItem value="초고 단계(약 50%)">
+                        초고 단계(약 50%)
+                      </SelectItem>
+                      <SelectItem value="기획·구성 단계(아이디어 위주)">
+                        기획·구성 단계(아이디어 위주)
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+            />
           </Field>
           <Field>
             <FieldLabel
@@ -481,18 +542,28 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             <FieldLabel htmlFor="schedule" className="h-full">
               원하는 일정
             </FieldLabel>
-            <div className="col-span-2 h-full pl-2">
-              <Select name="schedule">
-                <SelectTrigger>
-                  <SelectValue placeholder="내용을 선택해 주세요." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1-2개월">1-2개월</SelectItem>
-                  <SelectItem value="3-4개월">3-4개월</SelectItem>
-                  <SelectItem value="상담 후 협의">상담 후 협의</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <Controller
+              control={form.control}
+              name="schedule"
+              render={({ field }) => (
+                <div className="col-span-2 h-full pl-2">
+                  <Select
+                    {...field}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="내용을 선택해 주세요." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1-2개월">1-2개월</SelectItem>
+                      <SelectItem value="3-4개월">3-4개월</SelectItem>
+                      <SelectItem value="상담 후 협의">상담 후 협의</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+            />
           </Field>
           <FieldGroup className="grid grid-cols-3 align-top">
             <FieldLabel
@@ -555,7 +626,7 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
                   </FieldLabel>
                 </Field>
                 <FieldDescription>
-                  *인쇄·제작은 편집 진행 시에 한해 선택 가능합니다.
+                  * 인쇄·제작은 편집 진행 시에 한해 선택 가능합니다.
                 </FieldDescription>
               </div>
             </FieldGroup>
@@ -723,24 +794,40 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
             )}
           </div>
         </FieldSet>
-        <Field className="mb-6 mt-1 md:mt-2">
-          <div className=''>
-            <FieldLabel htmlFor="manuscriptFile">원고 파일 첨부</FieldLabel>
-          </div>
-          <div className="col-span-2 pl-2 ">
-            <Input
-              id="manuscriptFile"
-              name="manuscriptFile"
-              autoComplete="off"
-              type="file"
-              className="h-10 border-0 shadow-none md:h-12 [&_input[type='file']]:p-2! pl-0!"
-            />
-            <FieldDescription>
-              용량 제한은 5mb이며, 
-              용량이 큰 파일은 별도 문의해 주세요.
-            </FieldDescription>
-          </div>
-        </Field>
+        <Controller
+          control={form.control}
+          name="manuscriptFile"
+          render={({ fieldState }) => (
+            <Field
+              className="mt-1 mb-6 md:mt-2"
+              data-invalid={fieldState.invalid}
+            >
+              <div className="">
+                <FieldLabel htmlFor="manuscriptFile">원고 파일 첨부</FieldLabel>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </div>
+              <div className="col-span-2 pl-2">
+                <Input
+                  id="manuscriptFile"
+                  name="manuscriptFile"
+                  autoComplete="off"
+                  type="file"
+                  className="h-10 border-0 pl-0! shadow-none md:h-12 [&_input[type='file']]:p-2!"
+                  aria-invalid={fieldState.invalid}
+                  onChange={handleFileChange}
+                />
+                <FieldDescription>
+                  * 원고 일부(4MB 미만)를 첨부해 주세요.
+                  <br />
+                  파일 용량 초과 시 문의폼 제출 후 yilang2019@naver.com으로 별도
+                  전송 바랍니다.
+                </FieldDescription>
+              </div>
+            </Field>
+          )}
+        />
         <FieldSet>
           <div className="my-6 flex flex-col items-center">
             <Field

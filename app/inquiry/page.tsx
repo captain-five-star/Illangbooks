@@ -2,7 +2,6 @@
 
 import ContactUs from '../../components/ContactUs';
 import Title from '../../components/Title';
-import TitleCol from '../../components/TitleCol';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'motion/react';
 const Page = () => {
@@ -21,18 +20,11 @@ const Page = () => {
     '☑️  일정과 예산에 현실적이고 명확한 계획이 있다.',
   ];
   return (
-    <div
-      key={isMobile.toString()}
-      className="h-full w-full"
-      //   style={{
-      //     minHeight: '100vh',
-      //     width: '100%',
-      //   }}
-    >
+    <div key={isMobile.toString()} className="h-full w-full">
       <div className="h-full w-full bg-[#f9f9f9] px-10 pt-30 pb-15 md:w-full md:px-20 md:pt-40 md:pb-15 xl:px-40 xl:pt-50 xl:pb-25">
         <div className="flex flex-col gap-5 md:gap-10">
-          <TitleCol
-            title="문의 전 체크리스트"
+          <Title
+            title="체크리스트"
             isMobile={isMobile}
             desc="아래 항목은 견적 문의 응대를 판단하기 위한 최소 기준입니다. 모두
             충족할 필요는 없지만, 절반 이하에 해당하는 경우 견적서 제공이 제한될
@@ -49,14 +41,11 @@ const Page = () => {
             viewport={{ once: true }}
           >
             <div className="h-full w-full rounded-2xl bg-white px-8 py-8 shadow-sm">
-              {/* <p className="font-instrument mb-4 inline-block text-lg font-bold md:text-2xl">
-                CHECK LIST
-              </p> */}
               <ul className="block text-sm">
                 {checklist.map((list, index) => (
                   <li
                     key={index}
-                    className="mb-2 list-none! pl-2 text-sm whitespace-pre-wrap md:text-base"
+                    className="mb-2 list-none! pl-2 text-base whitespace-pre-wrap md:text-lg"
                   >
                     {list}
                   </li>

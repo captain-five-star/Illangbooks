@@ -53,7 +53,7 @@ export default function Home() {
             width={1400}
             height={385}
             alt="카톡문의"
-            className="katalk-pc left-[50%] max-h-[280px] translate-x-[-50%]"
+            className="katalk-pc left-[50%] max-h-70 translate-x-[-50%]"
             style={{
               objectFit: 'contain',
               position: 'relative',

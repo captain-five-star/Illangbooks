@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDownIcon, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
@@ -42,7 +42,33 @@ function AccordionTrigger({
       >
         <ChevronDownIcon className="text-muted-foreground pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-200" />
         <div className="flex h-full items-center">
-          <p className="items-center text-start text-base whitespace-pre-wrap lg:text-xl">
+          <p className="items-center text-start text-base whitespace-pre-wrap md:text-lg xl:text-[21px]">
+            {children}
+          </p>
+        </div>
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  );
+}
+
+export function AccordionTrigger02({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+  return (
+    <AccordionPrimitive.Header className="flex">
+      <AccordionPrimitive.Trigger
+        data-slot="accordion-trigger02"
+        className={cn(
+          'focus-visible:border-ring focus-visible:ring-ring/50 yt flex flex-1 items-start gap-2 rounded-md py-4 text-left text-xl font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
+          className
+        )}
+        {...props}
+      >
+        <X className="text-muted-foreground pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-200" />
+        <div className="flex h-full items-center">
+          <p className="items-center text-start text-base whitespace-pre-wrap md:text-lg xl:text-[21px]">
             {children}
           </p>
         </div>

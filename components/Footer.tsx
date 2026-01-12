@@ -245,7 +245,7 @@ const Footer = () => {
                     'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
                 }}
               >
-                Location : 서울시 마포구 와우산로 10길
+                Location : 서울특별시 마포구 와우산로 10길
               </p>
               <p
                 className="framer-text"
@@ -312,7 +312,7 @@ const Footer = () => {
                     'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
                 }}
               >
-                Location : 서울시 마포구 와우산로 10길
+                Location : 서울특별시 마포구 와우산로 10길
               </p>
               <p
                 className="framer-text"
@@ -381,7 +381,7 @@ const Footer = () => {
                     'var(--token-fb9bb685-3fe8-4a92-8607-dc4e4bca5eee, rgb(161, 161, 161))',
                 }}
               >
-                Location : 서울시 마포구 와우산로 10길
+                Location : 서울특별시 마포구 와우산로 10길
               </p>
               <p
                 className="framer-text"

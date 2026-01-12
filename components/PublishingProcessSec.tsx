@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import TitleCol from './TitleCol';
+import Title from './Title';
 import { useIsMobile } from '../hooks/use-mobile';
 import { Card, CardDescription, CardFooter, CardTitle } from './ui/card';
 
@@ -35,7 +35,7 @@ const PublishingProcessSec = () => {
     <div className="framer-j9mvpp" data-framer-name="섹션4: 출간과정">
       <div className="framer-7ki120">
         <div className="framer-fxsh2j">
-          <TitleCol title="Work Process" isMobile={isMobile} />
+          <Title title="Work Process" isMobile={isMobile} />
           <motion.div
             initial={{
               opacity: 0,

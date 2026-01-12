@@ -2,22 +2,18 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger02,
 } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { ReactNode } from 'react';
 
 const QnaBox = ({
   title = '',
-  target = '',
   desc = '',
-  list = '',
   foot = '',
 }: React.PropsWithChildren<{
   title: string;
-  target?: ReactNode;
-  desc?: ReactNode;
-  list?: ReactNode;
+  desc: ReactNode;
   foot?: ReactNode;
 }>) => {
   return (
@@ -25,20 +21,11 @@ const QnaBox = ({
       <Separator />
       <Accordion type="multiple" className="w-full px-2 py-2">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="cursor-pointer hover:no-underline">
+          <AccordionTrigger02 className="cursor-pointer hover:no-underline">
             {title}
-          </AccordionTrigger>
+          </AccordionTrigger02>
           <AccordionContent>
-            {target && (
-              <div className="mb-4">
-                <span className="mr-2 rounded-full bg-neutral-300 px-2 py-1">
-                  대상
-                </span>
-                {target}
-              </div>
-            )}
-            <div className="px-3">{list}</div>
-            <div className="px-0">{desc}</div>
+            <div className="px-3">{desc}</div>
             {foot && (
               <div className="text-primary pt-6 pb-4 font-semibold">{foot}</div>
             )}
@@ -46,7 +33,6 @@ const QnaBox = ({
         </AccordionItem>
       </Accordion>
     </>
-    // </div>
   );
 };
 

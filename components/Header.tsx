@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import SideBar from './SideBar';
 import Link from 'next/link';
 import { useIsTablet } from '../hooks/use-mobile';
@@ -17,116 +17,26 @@ const Header: FC = () => {
   return (
     <div className="framer-5x8ol7" data-framer-name="헤더">
       <SideBar isOpen={isOpen && isTablet} toggleBtn={toggleBtn} />
-      <div className="ssr-variant hidden-1vk2m8p hidden-xpwx9r">
-        <Link
-          className="framer-sm25a6 framer-lux5qc"
-          data-framer-name="로고"
-          href="./"
-          style={{
-            transform: 'translateY(-50%)',
-          }}
-        >
-          <div
-            data-framer-background-image-wrapper="true"
-            style={{
-              borderRadius: 'inherit',
-              bottom: '0',
-              left: '0',
-              position: 'absolute',
-              right: '0',
-              top: '0',
-            }}
-          >
-            <Image
-              alt=""
-              decoding="async"
-              height="356"
-              src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
-              style={{
-                borderRadius: 'inherit',
-                display: 'block',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                width: '100%',
-              }}
-              width="440"
-              loading="eager"
-            />
-          </div>
-        </Link>
-      </div>
-      <div className="ssr-variant hidden-xpwx9r hidden-72rtr7">
-        <Link
-          className="framer-sm25a6 framer-lux5qc"
-          data-framer-name="로고"
-          href="./"
-        >
-          <div
-            data-framer-background-image-wrapper="true"
-            style={{
-              borderRadius: 'inherit',
-              bottom: '0',
-              left: '0',
-              position: 'absolute',
-              right: '0',
-              top: '0',
-            }}
-          >
-            <Image
-              alt=""
-              decoding="async"
-              height="356"
-              src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
-              style={{
-                borderRadius: 'inherit',
-                display: 'block',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                width: '100%',
-              }}
-              width="440"
-              loading="eager"
-            />
-          </div>
-        </Link>
-      </div>
-      <div className="ssr-variant hidden-1vk2m8p hidden-72rtr7">
-        <Link
-          className="framer-sm25a6 framer-lux5qc"
-          data-framer-name="로고"
-          data-framer-page-link-current="true"
-          href="./"
-        >
-          <div
-            data-framer-background-image-wrapper="true"
-            style={{
-              borderRadius: 'inherit',
-              bottom: '0',
-              left: '0',
-              position: 'absolute',
-              right: '0',
-              top: '0',
-            }}
-          >
-            <Image
-              alt=""
-              decoding="async"
-              height="356"
-              src="https://framerusercontent.com/images/t5arNqU60IYXffoBly9Qbpeizg.png?width=440&height=356"
-              style={{
-                borderRadius: 'inherit',
-                display: 'block',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                width: '100%',
-              }}
-              width="440"
-              loading="eager"
-            />
-          </div>
+      <div className="relative">
+        <Link href="./">
+          <Image
+            alt="일랑북스_로고"
+            decoding="async"
+            height="40"
+            src="/logo.png"
+            width="80"
+            loading="eager"
+            className="logo-mb"
+          />
+          <Image
+            alt="일랑북스_로고"
+            decoding="async"
+            height="40"
+            src="/logo.png"
+            width="120"
+            loading="eager"
+            className="logo-pc"
+          />
         </Link>
       </div>
       <div className="framer-1ynakz9" id="hamburger" onClick={toggleBtn}>
@@ -323,7 +233,6 @@ const Header: FC = () => {
           </p>
         </div>
       </div>
-      {/* <div className="framer-1iv6rq5 hidden-72rtr7 hidden-xpwx9r" /> */}
     </div>
   );
 };

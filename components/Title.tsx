@@ -21,11 +21,11 @@ const Title = ({
       viewport={{ once: true }}
       className=""
     >
-      <h2 className="font-instrument text-[28px] leading-[1em] font-bold md:text-[48px] xl:text-6xl">
+      <h2 className="font-instrument text-[28px] leading-[1em] font-bold md:text-[48px] xl:text-5xl">
         {title}
       </h2>
       {desc && (
-        <p className="pt-4 text-base break-keep whitespace-pre-wrap md:pt-8 md:text-lg xl:text-[21px] dark:text-gray-300">
+        <p className="pt-4 text-base break-keep whitespace-pre-wrap md:pt-8 md:text-lg dark:text-gray-300">
           {desc}
         </p>
       )}

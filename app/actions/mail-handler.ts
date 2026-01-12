@@ -15,7 +15,7 @@ const formSchema = z.object({
   bookTitle: z.string().min(1),
   bookCategory: z.array(z.string()).min(1, '도서 분야를 선택해 주세요.'),
   purpose: z.string(),
-  completeness: z.string(),
+  completeness: z.string().min(1, '원고 완성도를 선택해 주세요.'),
   bookDescription: z.string().optional(),
   schedule: z.string().optional(),
   toIllangbooks: z.array(z.string()).default([]),
@@ -23,22 +23,24 @@ const formSchema = z.object({
   printRun: z
     .string()
     .nullish()
-    .transform((val) => val ?? ''),
+    .transform((val) => val ?? '-'),
   printingMethod: z
     .string()
     .nullish()
-    .transform((val) => val ?? ''),
+    .transform((val) => val ?? '-'),
   coverType: z
     .string()
     .nullish()
-    .transform((val) => val ?? ''),
+    .transform((val) => val ?? '-'),
   printingPreferences: z
     .string()
     .nullish()
-    .transform((val) => val ?? ''),
+    .transform((val) => val ?? '-'),
   manuscriptFile: z
-    .any()
-    .refine((file) => file instanceof File && file.size <= 5 * 1024 * 1024)
+    .instanceof(File)
+    .refine((file) => file instanceof File && file.size <= 5 * 1024 * 1024, {
+      message: '파일 크기는 4MB를 초과할 수 없습니다.',
+    })
     .nullish(),
 });
 
@@ -104,70 +106,70 @@ export async function handleForm(
     to: process.env.SMTP_USERNAME,
     subject: '도서 문의 메일이 도착하였습니다.',
     text: `저자명(기업명) ${inquiryData.name}\n연락처 ${inquiryData.phone}\n이메일 ${inquiryData.email}\n작업 도서명 ${inquiryData.bookTitle}\n도서 분야 ${inquiryData.bookCategory}\n출판 목적 ${inquiryData.purpose}\n원고 완성도 ${inquiryData.completeness}\n도서 소개 및 예상 독자층 ${inquiryData.bookDescription}\n희망 일정 ${inquiryData.schedule}\n일랑북스에 기대하는 역할 ${inquiryData.toIllangbooks.join(', ')}\n인쇄 계획 ${inquiryData.printingPlan.join(', ')}\n예상 부수 ${inquiryData.printRun}\n내지 인쇄 방식 ${inquiryData.printingMethod}\n표지 형태 ${inquiryData.coverType}\n인쇄·제작 방향에 대한 선호 ${inquiryData.printingPreferences}`,
-    html: `<div style="">
+    html: `<div>
     도서 문의 메일이 도착했습니다.
     <br/><br/>
         <strong>저자명(기업명)</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.name}
         <br/><br/>
         <strong>연락처</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.phone}
         <br/><br/>
         <strong>이메일</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.email}
         <br/><br/>
         <strong>작업 도서명</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.bookTitle}
         <br/><br/>
         <strong>도서 분야</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.bookCategory}
         <br/><br/>
         <strong>출판 목적</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.purpose}
         <br/><br/>
         <strong>원고 완성도</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.completeness}
         <br/><br/>
         <strong>도서 소개 및 예상 독자층</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.bookDescription}
         <br/><br/>
         <strong>희망 일정</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.schedule}
         <br/><br/>
         <strong>일랑북스에 기대하는 역할</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.toIllangbooks.join(', ')}
         <br/><br/>
         <strong>인쇄 계획</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.printingPlan.join(', ')}
         <br/><br/>
         <strong>예상 부수</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.printRun}
         <br/><br/>
         <strong>내지 인쇄 방식</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.printingMethod}
         <br/><br/>
         <strong>표지 형태</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.coverType}
         <br/><br/>
         <strong>인쇄·제작 방향에 대한 선호</strong> 
-        <br/><br/>
+        <br/>
         ${inquiryData.printingPreferences}
         <br/>
-    </div>`,
+</div>`,
     attachments: attachments,
   };
 
