@@ -32,7 +32,11 @@ const PublishingProcessSec = () => {
     },
   ];
   return (
-    <div className="framer-j9mvpp" data-framer-name="섹션4: 출간과정">
+    <div
+      className="framer-j9mvpp"
+      data-framer-name="섹션4: 출간과정"
+      key={isMobile.toString()}
+    >
       <div className="framer-7ki120">
         <div className="framer-fxsh2j">
           <Title title="Work Process" isMobile={isMobile} />

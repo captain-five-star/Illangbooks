@@ -83,7 +83,7 @@ export async function handleForm(
 
   // 에러 핸들링
   if (!validateFields.success) {
-    return { success: false, message: '문의 폼을 작성해 주세요.' };
+    return { success: false, message: '문의 폼을 확인해 주세요.' };
   }
 
   // transporter setup

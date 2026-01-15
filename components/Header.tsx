@@ -20,22 +20,13 @@ const Header: FC = () => {
       <div className="relative">
         <Link href="./">
           <Image
-            alt="일랑북스_로고"
+            alt="일랑북스 로고"
             decoding="async"
             height="40"
             src="/logo.png"
             width="80"
-            loading="eager"
-            className="logo-mb"
-          />
-          <Image
-            alt="일랑북스_로고"
-            decoding="async"
-            height="40"
-            src="/logo.png"
-            width="120"
-            loading="eager"
-            className="logo-pc"
+            priority
+            className="logo"
           />
         </Link>
       </div>

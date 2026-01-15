@@ -15,6 +15,7 @@ const SideBar = ({
         <div
           id="overlay"
           className="fixed top-0 left-0 z-40 h-full w-full bg-[rgba(90,90,90,0.9)]"
+          onClick={toggleBtn}
         >
           <div className="">
             <motion.div
@@ -27,7 +28,7 @@ const SideBar = ({
               exit={{ x: '100%' }}
               key="sidebar"
               className="framer-57kvng w-[80%]"
-              onClick={toggleBtn}
+              // onClick={toggleBtn}
               role="dialog"
             >
               <div className="framer-1kb52hl">

@@ -27,17 +27,6 @@ const Page = () => {
       desc: `원고 분량과 작업 범위에 따라 다르며, 견적 단계에서 대략적인 일정 범위를 안내드립니다. 정확한 일정은 계약 체결 후 확정됩니다.`,
     },
   ];
-  const variantsOuter = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.3 },
-    },
-  };
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
 
   const isMobile = useIsMobile();
 
@@ -53,27 +42,28 @@ const Page = () => {
         key={isMobile.toString()}
       >
         <div className="framer-1t21uct" data-framer-name="섹션: FAQ">
-          <motion.div
-            variants={variantsOuter}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="framer-5jmcbr"
-          >
+          <div className="framer-5jmcbr">
             <Title
               title="FAQ"
               isMobile={isMobile}
               desc="자주 묻는 질문에 대한 답변을 정리해 두었습니다."
             />
             <motion.div
-              variants={variants}
+              initial={{
+                opacity: 0,
+                y: isMobile ? 20 : 0,
+                x: isMobile ? 0 : 30,
+              }}
+              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="framer-ntn7d0 qna-container w-full!"
             >
               {qnaData.map((item, index) => (
                 <QnaBox key={index} title={item.title} desc={item.desc} />
               ))}
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </>

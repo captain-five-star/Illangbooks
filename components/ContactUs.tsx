@@ -76,27 +76,33 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && file.size > 5 * 1024 * 1024) {
-      toast.error('파일 크기는 4MB를 초과할 수 없습니다.');
+      toast.error('파일 크기는 4MB를 초과할 수 없습니다.', {
+        id: 'form-status',
+      });
       e.target.value = '';
       return;
     }
   };
 
   //form action state
-  const [formState, formAction] = useActionState(handleForm, null);
+  const [formState, formAction, isPending] = useActionState(handleForm, null);
 
   //state 변화를 감지하여 토스트 발생
   useEffect(() => {
+    if (isPending) {
+      toast.loading('문의 내용을 전송 중입니다.', { id: 'form-status' });
+    }
+
     if (!formState) return;
 
     if (formState.success) {
-      toast.success(formState.message);
+      toast.success(formState.message, { id: 'form-status' });
       form.reset();
       formRef.current?.reset();
     } else {
-      toast.error(formState.message);
+      toast.error(formState.message, { id: 'form-status' });
     }
-  }, [formState, form]);
+  }, [formState, form, isPending]);
 
   return (
     <>
@@ -122,7 +128,8 @@ const ContactUs = ({ isMobile }: { isMobile: boolean }) => {
               ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             toast.error(
               `${Object.values(e)[0].message}` ||
-                '입력한 내용을 다시 한번 확인해 주세요.'
+                '입력한 내용을 다시 한번 확인해 주세요.',
+              { id: 'form-status' }
             );
           }
         )}

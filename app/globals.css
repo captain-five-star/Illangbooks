@@ -154,18 +154,20 @@ html {
 /* 반응형 이미지 */
 .katalk-mb {
   display: block;
+  height: auto;
+  width: auto;
 }
 
 .katalk-pc {
   display: none;
+  height: auto;
+  width: auto;
 }
 
-.logo-mb {
+.logo {
   display: block;
-}
-
-.logo-pc {
-  display: none;
+  height: auto;
+  width: auto;
 }
 
 
@@ -178,13 +180,10 @@ html {
     display: block;
   }
 
-  .logo-mb {
-    display: none;
+  .logo {
+    width: 120px;
   }
 
-  .logo-pc {
-    display: block;
-  }
 }
 
 ol>li {
